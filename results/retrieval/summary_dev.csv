@@ -1,0 +1,4 @@
+config,split,method,desc,top_k,budget_chars,N,errors,hit1,hit1_rate,hit3,hit3_rate,hitk,context_evidence,context_evidence_rate,mrr10,filter_questions,median_ms,mean_context_chars,mean_context_tokens_est,mean_context_chunks,setup_seconds,cost_usd,run_at
+dense,dev,dense,"M1 dense pgvector (bge-base-en-v1.5, cosine, exact), top-3",3,4000,16,0,12/16,0.75,13/16,0.812,13/16,13/16,0.812,0.798,3,199.0,2712,678,3,22.12,0.0,2026-11-16T03:44:15+00:00
+bm25,dev,bm25,"M2 BM25Okapi k1=1.5 b=0.75, word tokens, top-3",3,4000,16,0,9/16,0.562,13/16,0.812,13/16,13/16,0.812,0.673,3,4.2,2827,707,3,0.1,0.0,2026-11-16T03:44:15+00:00
+hybrid,dev,hybrid,"M3 RRF(dense top-20, bm25 top-20), k=60, top-3",3,4000,16,0,10/16,0.625,13/16,0.812,13/16,13/16,0.812,0.719,3,201.4,2837,710,3,22.22,0.0,2026-11-16T03:44:18+00:00

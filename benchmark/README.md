@@ -88,3 +88,4 @@ Test chạy **một lần** cho baseline và cấu hình đã chọn; kết qu�
 ## Nhật ký
 
 - 2026-11-16: tạo benchmark Day 7 từ 22 câu Day 6 + 4 câu thiếu evidence; verify: 27/27 evidence, 4/4 absence, starter validate ok.
+- 2026-11-16: **chốt benchmark + tiêu chí chọn ở commit `88e0d72`**, trước khi chạy bất kỳ retrieval nào của Day 7 (GĐ3 chỉ chạy dev).

@@ -32,11 +32,9 @@ def cmd_export_chunks(args: argparse.Namespace) -> int:
 
 
 def cmd_search(args: argparse.Namespace) -> int:
-    if args.method != "dense":
-        raise SystemExit(f"method '{args.method}' is not implemented yet")
-    from .day6_store import DenseRetriever
+    from .eval_retrieval import RetrieverFactory
 
-    retriever = DenseRetriever(strategy=args.strategy)
+    retriever = RetrieverFactory().get({"method": args.method, "tokenizer": args.tokenizer})
     filters = {"chapter_id": args.chapter} if args.chapter else None
     started = time.perf_counter()
     results = retriever.search(args.query, top_k=args.top_k, filters=filters)
@@ -46,6 +44,20 @@ def cmd_search(args: argparse.Namespace) -> int:
         text = " ".join(r["text"].split())
         print(f"#{r['rank']} {r['score']:.4f} {r['id']} page={r['page']} "
               f"{r['metadata']['chapter_id']} | {text[:110]}")
+    return 0
+
+
+def cmd_retrieval_eval(args: argparse.Namespace) -> int:
+    from .eval_retrieval import OUT_DIR, run
+
+    summaries = run(args.split, [n.strip() for n in args.configs.split(",") if n.strip()],
+                    confirm_test=args.confirm_test)
+    cols = ["config", "N", "errors", "hit1", "hit3", "context_evidence", "mrr10", "median_ms",
+            "mean_context_tokens_est", "mean_context_chunks", "setup_seconds"]
+    print(" | ".join(cols))
+    for s in summaries:
+        print(" | ".join(str(s[c]) for c in cols))
+    print(f"traces + summary -> {OUT_DIR.relative_to(config.ROOT)}")
     return 0
 
 
@@ -101,8 +113,14 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--method", default="dense", choices=["dense", "bm25", "hybrid"])
     p.add_argument("--top-k", type=int, default=3)
     p.add_argument("--chapter", help="chapter_id filter, e.g. ch14 (only when given by the user)")
-    p.add_argument("--strategy", default=config.DAY6_STRATEGY)
+    p.add_argument("--tokenizer", default="word", choices=["word", "code"], help="BM25 tokenizer")
     p.set_defaults(func=cmd_search)
+
+    p = sub.add_parser("retrieval-eval", help="Hit@1/Hit@3/Context Evidence Rate per config on a split")
+    p.add_argument("--split", choices=["dev", "test"], required=True)
+    p.add_argument("--configs", default="dense,bm25,hybrid", help="comma-separated names from CONFIGS")
+    p.add_argument("--confirm-test", action="store_true", help="required for test (after choosing on dev)")
+    p.set_defaults(func=cmd_retrieval_eval)
 
     p = sub.add_parser("build-benchmark", help="Day 6 questions + unanswerable -> data/day7 JSON")
     p.set_defaults(func=cmd_build_benchmark)
