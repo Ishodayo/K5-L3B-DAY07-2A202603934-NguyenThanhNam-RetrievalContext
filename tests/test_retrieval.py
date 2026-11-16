@@ -71,6 +71,20 @@ class ContextTest(unittest.TestCase):
         self.assertLessEqual(len(ctx), 90)
 
 
+class NeighborTest(unittest.TestCase):
+    def test_expands_within_same_section_only(self):
+        from src.context import NeighborIndex
+        mk = lambda cid, page, sec: {**chunk(cid, "t " + cid, page), "metadata": {"section": sec}}
+        idx = NeighborIndex([mk("p1:000", 1, "A"), mk("p1:001", 1, "B"), mk("p2:000", 2, "B"), mk("p3:000", 3, "C")])
+        hit = {**mk("p1:001", 1, "B"), "rank": 1, "score": 0.9}
+        self.assertEqual([c["id"] for c in idx.expand([hit], "next")], ["p1:001", "p2:000"])
+        self.assertEqual([c["id"] for c in idx.expand([hit], "both")], ["p1:001", "p2:000"])  # p1:000 other section
+        last = {**mk("p2:000", 2, "B"), "rank": 1, "score": 0.5}
+        out = idx.expand([last], "both")
+        self.assertEqual([c["id"] for c in out], ["p1:001", "p2:000"])
+        self.assertEqual(out[0]["neighbor_of"], "p2:000")
+
+
 class MetricTest(unittest.TestCase):
     Q = {"id": "q", "split": "dev", "question": "what does // do",
          "gold": [{"source_id": "doc", "page": 61, "evidence": "rounds  down"}]}

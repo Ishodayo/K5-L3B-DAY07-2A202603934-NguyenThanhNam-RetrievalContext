@@ -1,0 +1,19 @@
+﻿query_id,answerable,status,citations,answer_grade,citation_support,abstention_correct,reason
+d01,1,answered,B:thinkpython2:p035:001,2,1,,Đủ 3 loại lỗi; p035:001 chứa nguyên câu 'Three kinds of errors can occur...'.
+d02,1,answered,B:thinkpython2:p035:001,2,1,,Đúng lý do 'exceptional (and bad)'; p035:001 có câu 'These errors are also called exceptions because...'.
+d03,1,answered,B:thinkpython2:p061:001,2,1,,Đúng; chỉ trích p061:001 (đủ).
+d04,1,answered,B:thinkpython2:p061:001,2,1,,"Đúng: x % y == 0; p061:001 có câu 'if x % y is zero, then x is divisible by y'."
+d05,1,answered,B:thinkpython2:p067:000,2,1,,"Đúng: không chạy mãi, báo lỗi maximum recursion depth; p067:000. Thiếu chi tiết ~1000 frame nhưng không bắt buộc."
+d06,1,answered,B:thinkpython2:p079:001;B:thinkpython2:p079:002,2,1;1,,Đúng; p079:001 + p079:002 ('use the function without looking at the body again') đều hỗ trợ.
+d07,1,answered,B:thinkpython2:p096:001,2,1,,Đúng: string immutable; p096:001 (mục 8.5) có TypeError.
+d08,1,answered,B:thinkpython2:p121:001,2,1,,Đủ 2 cách (sorted; copy rồi sort); p121:001 chứa cả hai.
+d09,1,answered,B:thinkpython2:p130:001,2,1,,Đúng: unhashable vì mutable; p130:001 hỗ trợ (không phải chunk gold).
+d10,1,answered,B:thinkpython2:p133:000;B:thinkpython2:p132:002,2,1;1,,Đúng; p132:002 ('To reassign a global variable ... you have to declare') + p133:000 hỗ trợ.
+d11,1,answered,B:thinkpython2:p133:002,2,1,,Đúng định nghĩa + ví dụ trung bình; p133:002.
+d12,1,answered,B:thinkpython2:p155:002,2,1,,Đúng; p155:002 chứa mục Rubberducking.
+d13,1,answered,B:thinkpython2:p164:000,2,1,,Đúng chức năng pickle; p164:000 chứa cả 2 ý (kể cả 'same effect as copying').
+d14,1,answered,B:thinkpython2:p164:000,2,1,,"Đúng: cùng giá trị, khác object, giống copy; p164:000."
+d15,1,answered,B:thinkpython2:p175:001;B:thinkpython2:p174:001,2,1;1,,Đúng; p175:001 (Glossary 'deep copy ... implemented by the deepcopy function') + p174:001 hỗ trợ.
+d16,1,answered,B:thinkpython2:p219:001,2,1,,"Đúng: object là None, lỗi ở object chứ không ở tên thuộc tính; p219:001."
+du1,0,abstain,,,,1,"Từ chối 'INSUFFICIENT_EVIDENCE', không thêm khẳng định; đã search 3 lần."
+du2,0,abstain,,,,1,"Từ chối, không thêm khẳng định; đã search 3 lần."

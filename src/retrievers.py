@@ -19,9 +19,10 @@ from . import config
 
 # Word tokens only (like the starter TF-IDF). Symbols such as "//" or "%" are dropped.
 WORD_RE = re.compile(r"\w+")
-# Code-aware: also keep runs of operator symbols ("//", "%", "==", "**", "+=") as tokens.
-CODE_RE = re.compile(r"\w+|[^\w\s]{1,3}")
-PUNCT_ONLY = set(".,;:!?\"'()[]{}“”‘’—–-•…")
+# Code-aware: also keep Python operators as tokens. An explicit operator list (longest first) is used
+# because a generic "1-3 symbol" rule glued punctuation to operators ("//," "%,") — found on dev d03.
+CODE_RE = re.compile(r"\w+|\*\*=|//=|//|\*\*|==|!=|<=|>=|\+=|-=|\*=|/=|%=|->|[%+\-*/<>=@&|^~]")
+PUNCT_ONLY = {"-"}  # a lone hyphen is mostly prose (dashes, hyphenation), not the minus operator
 
 
 class Retriever(Protocol):

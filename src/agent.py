@@ -25,7 +25,8 @@ from typing import Any, Protocol
 from .context import block, estimate_tokens
 
 ABSTAIN_MARK = "INSUFFICIENT_EVIDENCE"
-CITATION_RE = re.compile(r"\[([A-Za-z0-9_]+:[^\[\]\s]+?)\]")
+CITATION_RE = re.compile(r"\[([A-Za-z0-9_]+:[^\[\]\s,]+?)\]")
+BRACKET_RE = re.compile(r"\[([^\[\]]+)\]")
 
 SYSTEM_PROMPT = f"""You answer questions about the book "Think Python, 2nd Edition" (Allen B. Downey).
 You have one tool, search_book(query), that searches the book and returns passages. Each passage starts
@@ -141,6 +142,7 @@ class AgentConfig:
     model_env: str = "GEMINI_MODEL"
     candidates: int = 20
     rrf_k: int = 60
+    neighbors: str | None = None  # None | "next" | "both": add same-section neighbour chunks to context
     desc: str = ""
 
     @property
@@ -159,7 +161,10 @@ def parse_answer(text: str, context_ids: list[str]) -> dict[str, Any]:
     if text.strip().upper().startswith(ABSTAIN_MARK):
         return {"status": "abstain", "answer": text.strip(), "citations": [], "invalid_citations": [],
                 "reason": "model_abstained"}
-    cited = list(dict.fromkeys(CITATION_RE.findall(text)))
+    # Brackets may hold several IDs, e.g. "[B:x:p130:000, B:x:p130:001]" (seen on dev c1/d09).
+    found = CITATION_RE.findall(text) + [i.strip() for grp in BRACKET_RE.findall(text) if "," in grp
+                                         for i in grp.split(",") if ":" in i]
+    cited = list(dict.fromkeys(found))
     valid = [c for c in cited if c in context_ids]
     invalid = [c for c in cited if c not in context_ids]
     if not valid:
@@ -170,7 +175,8 @@ def parse_answer(text: str, context_ids: list[str]) -> dict[str, Any]:
 
 
 def run_agent(question: str, session: Session, retriever, cfg: AgentConfig, *,
-              filters: dict[str, Any] | None = None, max_turns: int | None = None) -> dict[str, Any]:
+              filters: dict[str, Any] | None = None, max_turns: int | None = None,
+              expander=None) -> dict[str, Any]:
     """Run one question. Returns a trace usable by starter/agent_metrics.py (status/events/citations)."""
     started = time.perf_counter()
     max_turns = max_turns or cfg.max_searches + 2
@@ -225,8 +231,13 @@ def run_agent(question: str, session: Session, retriever, cfg: AgentConfig, *,
                 t0 = time.perf_counter()
                 results = retriever.search(query, top_k=cfg.top_k, filters=filters)
                 n_search += 1
+                shown = results
+                if cfg.neighbors:
+                    if expander is None:
+                        raise RuntimeError("config uses neighbours but no expander was given")
+                    shown = expander.expand(results, cfg.neighbors)
                 added, dropped = [], []
-                for c in results:
+                for c in shown:
                     if c["id"] in included:
                         continue
                     b = block(c)
@@ -242,8 +253,9 @@ def run_agent(question: str, session: Session, retriever, cfg: AgentConfig, *,
                                "results": [{"rank": c["rank"], "id": c["id"], "page": c["page"],
                                             "chapter_id": c["metadata"].get("chapter_id"),
                                             "score": round(c["score"], 5)} for c in results],
+                               "neighbors": [c["id"] for c in shown if c.get("neighbor_of")],
                                "added_to_context": added, "dropped_by_budget": dropped})
-                by_id = {c["id"]: c for c in results}
+                by_id = {c["id"]: c for c in shown}
                 payload = {"passages": "\n\n".join(block(by_id[i]) for i in added) or
                            "No new passages (already shown, none found, or context budget full)."}
                 if dropped:

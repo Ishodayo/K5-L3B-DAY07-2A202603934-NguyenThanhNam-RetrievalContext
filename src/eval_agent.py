@@ -26,7 +26,45 @@ AGENT_CONFIGS: dict[str, AgentConfig] = {
         name="baseline", method="dense", top_k=3, budget_chars=4000, max_searches=3,
         desc="Gemini GEMINI_MODEL + search_book on M1 dense (pgvector Day 6), top-3 per search, "
              "context budget 4000 chars, max 3 searches"),
+    "m2_bm25": AgentConfig(
+        name="m2_bm25", method="bm25", top_k=3, budget_chars=4000, max_searches=3,
+        desc="Same agent, search_book on M2 BM25 (word tokens)"),
+    "m3_hybrid": AgentConfig(
+        name="m3_hybrid", method="hybrid", top_k=3, budget_chars=4000, max_searches=3,
+        desc="Same agent, search_book on M3 hybrid RRF(dense20, bm25 20)"),
+    "c1_neighbors": AgentConfig(
+        name="c1_neighbors", method="dense", top_k=3, budget_chars=10000, max_searches=3, neighbors="both",
+        desc="H1: baseline + previous/next chunk of the same section for every hit, budget 10000"),
+    "c2_budget": AgentConfig(
+        name="c2_budget", method="dense", top_k=3, budget_chars=10000, max_searches=3,
+        desc="H3 / control for C1: baseline with budget 10000 only (no neighbours)"),
+    "c_lite": AgentConfig(
+        name="c_lite", method="dense", top_k=3, budget_chars=10000, max_searches=3, neighbors="both",
+        model_env="GEMINI_MODEL_LITE",
+        desc="Trade-off: C1 settings with GEMINI_MODEL_LITE (gemini-3.5-flash-lite, $0.30/$2.50 per 1M)"),
 }
+
+
+def _expander(cfg: AgentConfig):
+    if not cfg.neighbors:
+        return None
+    from .eval_retrieval import neighbor_index
+    return neighbor_index()
+
+
+def context_evidence(traces: list[dict[str, Any]]) -> dict[str, Any]:
+    """Scoring only (after the run): does the final context contain gold evidence? Answerable cases."""
+    from .benchmark import QUESTIONS_OUT, evidence_hit
+    from .retrievers import load_chunks
+
+    gold = {q["id"]: q["gold"] for q in json.loads(QUESTIONS_OUT.read_text(encoding="utf-8"))}
+    chunks = {c["id"]: c for c in load_chunks()}
+    rows = [t for t in traces if t["query_id"] in gold]
+    hits = {t["query_id"]: any(evidence_hit(chunks[i], gold[t["query_id"]]) for i in t["context_ids"])
+            for t in rows}
+    return {"context_evidence": f"{sum(hits.values())}/{len(rows)}",
+            "context_evidence_rate": round(sum(hits.values()) / len(rows), 3) if rows else None,
+            "context_evidence_miss": sorted(k for k, v in hits.items() if not v)}
 
 
 # Paid tier, standard, text, USD per 1M tokens (input, output incl. thinking).
@@ -68,7 +106,8 @@ def build_retriever(cfg: AgentConfig):
 
 def ask(question: str, cfg: AgentConfig, filters: dict[str, Any] | None = None, retriever=None) -> dict[str, Any]:
     retriever = retriever or build_retriever(cfg)
-    trace = run_agent(question, GeminiSession(cfg.model), retriever, cfg, filters=filters)
+    trace = run_agent(question, GeminiSession(cfg.model), retriever, cfg, filters=filters,
+                      expander=_expander(cfg))
     trace["model"] = cfg.model
     trace["cost_usd"] = cost_usd(trace["tokens"], cfg.model)
     return trace
@@ -101,6 +140,9 @@ def summarize(traces: list[dict[str, Any]], cases: list[dict[str, Any]]) -> dict
         "abstain_on_answerable": f"{sum(t['status'] == 'abstain' for t in ok if answerable[t['query_id']])}"
                                  f"/{sum(answerable[t['query_id']] for t in ok)}",
         "invalid_citations_dropped": sum(len(t.get("invalid_citations", [])) for t in traces),
+        **context_evidence(traces),
+        "mean_context_chars": round(statistics.mean(t["context_chars"] for t in ok)) if ok else 0,
+        "budget_drops": sum(len(e.get("dropped_by_budget", [])) for t in ok for e in t["events"]),
         "tokens_total": tok,
         "mean_tokens_per_case": {k: round(v / len(traces)) for k, v in tok.items()} if traces else {},
         "mean_elapsed_s": round(statistics.mean(t["elapsed_s"] for t in traces), 2) if traces else None,
@@ -120,17 +162,6 @@ def _cost_summary(traces: list[dict[str, Any]]) -> dict[str, Any]:
             "price_per_m_in_out": {m: price_per_million(m) for m in models},
             "cost_note": "paid tier; thinking billed as output" if known else
                          "price unknown for model -> set GEMINI_PRICE_IN_PER_M / GEMINI_PRICE_OUT_PER_M in .env"}
-
-
-def review_template(trace: dict[str, Any], answerable: bool) -> dict[str, Any]:
-    r = {"query_id": trace["query_id"], "answerable": answerable, "status": trace["status"],
-         "citations": trace["citations"], "citation_support": [None] * len(trace["citations"]),
-         "reason": ""}
-    if answerable:
-        r["answer_grade"] = None  # 0/1/2 (abstain on answerable = 0)
-    else:
-        r["abstention_correct"] = None  # true/false, confirmed by reading the answer
-    return r
 
 
 def run(split: str, name: str, *, ids: list[str] | None = None, confirm_test: bool = False) -> dict[str, Any]:
@@ -162,16 +193,7 @@ def run(split: str, name: str, *, ids: list[str] | None = None, confirm_test: bo
                "updated_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
     (OUT_DIR / f"{name}_{split}_auto.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n",
                                                        encoding="utf-8")
-    reviews_path = OUT_DIR / f"{name}_{split}_reviews.json"
-    reviews = {r["query_id"]: r for r in json.loads(reviews_path.read_text(encoding="utf-8"))} \
-        if reviews_path.exists() else {}
-    answerable = {c["id"]: c["answerable"] for c in all_cases}
-    for t in traces:  # add templates for new traces; keep filled labels unless the trace changed
-        old = reviews.get(t["query_id"])
-        if old is None or old.get("citations") != t["citations"] or old.get("status") != t["status"]:
-            reviews[t["query_id"]] = review_template(t, answerable[t["query_id"]])
-    reviews_path.write_text(json.dumps(list(reviews.values()), ensure_ascii=False, indent=2) + "\n",
-                            encoding="utf-8")
+    # Manual labels: `python -m src.run review-sheet ...` then `import-reviews` (src/reviews.py).
     if split == "test":
         log = OUT_DIR / "test_runs.json"
         runs = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []

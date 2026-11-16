@@ -1,0 +1,147 @@
+[
+  {
+    "query_id": "d01",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đủ 3 loại lỗi; p035:001 chứa nguyên câu 'Three kinds of errors can occur...'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d02",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng lý do 'exceptional (and bad)'; p035:001 có câu 'These errors are also called exceptions because...'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d03",
+    "citation_support": [
+      true,
+      true
+    ],
+    "reason": "Đúng: chia rồi làm tròn xuống thành số nguyên; p061:001 (mục 5.1) và p069:000 (Glossary 'toward negative infinity') đều hỗ trợ.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d04",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: x % y == 0; p061:001 có câu 'if x % y is zero, then x is divisible by y'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d05",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: không chạy mãi, báo lỗi maximum recursion depth; p067:000. Thiếu chi tiết ~1000 frame nhưng không bắt buộc.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d06",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng 'leap of faith' + định nghĩa; p079:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d07",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: string immutable; p096:001 (mục 8.5) có TypeError.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d08",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đủ 2 cách (sorted; copy rồi sort); p121:001 chứa cả hai.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d09",
+    "citation_support": [
+      true,
+      true,
+      true
+    ],
+    "reason": "Đúng; p130:001 + p134:001 hỗ trợ; p142:001 ('use tuples as keys ... because you can't use lists') cũng hỗ trợ ý list không làm key được.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d10",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng điều kiện: chỉ khi gán lại biến; p133:000 có 'if you want to reassign the variable, you have to declare it'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d11",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng định nghĩa + ví dụ trung bình; p133:002.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d12",
+    "citation_support": [
+      true,
+      true
+    ],
+    "reason": "Đúng; p156:002 (Glossary rubber duck debugging) + p155:002 (mục Rubberducking).",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d13",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng chức năng pickle; p164:000 chứa cả 2 ý (kể cả 'same effect as copying').",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d14",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: cùng giá trị, khác object, giống copy; p164:000.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d15",
+    "citation_support": [
+      true,
+      true
+    ],
+    "reason": "Đúng; p174:001 + p175:001 (Glossary deep copy) hỗ trợ.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d16",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng; p219:001 có cả 'object is None', 'forgot to return a value' và 'list method, like sort, that returns None'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "du1",
+    "citation_support": [],
+    "reason": "Từ chối, không thêm khẳng định.",
+    "abstention_correct": true
+  },
+  {
+    "query_id": "du2",
+    "citation_support": [],
+    "reason": "Từ chối, không thêm khẳng định.",
+    "abstention_correct": true
+  }
+]

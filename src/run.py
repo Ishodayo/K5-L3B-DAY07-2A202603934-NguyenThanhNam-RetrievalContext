@@ -96,6 +96,54 @@ def cmd_agent_eval(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_review_sheet(args: argparse.Namespace) -> int:
+    from .reviews import export_sheet
+
+    for name in args.configs.split(","):
+        md, csv_path = export_sheet(name.strip(), args.split)
+        print(f"read  {md.relative_to(config.ROOT)}\nfill  {csv_path.relative_to(config.ROOT)}")
+    return 0
+
+
+def cmd_import_reviews(args: argparse.Namespace) -> int:
+    from .reviews import import_reviews
+
+    for name in args.configs.split(","):
+        r = import_reviews(name.strip(), args.split)
+        g = r["grounded_answer"]
+        print(f"{name}: grounded 0/1/2 = {g['0']}/{g['1']}/{g['2']} mean={g['mean']} | citation "
+              f"{r['citation_validity']['n']}/{r['citation_validity']['N']} | abstention "
+              f"{r['abstention']['n']}/{r['abstention']['N']} | false abstention "
+              f"{r['false_abstention']['n']}/{r['false_abstention']['N']}")
+    return 0
+
+
+def cmd_compare(args: argparse.Namespace) -> int:
+    from .compare import build
+
+    rows = build(args.split, [n.strip() for n in args.configs.split(",")])
+    cols = ["config", "hit1", "hit3", "retrieval_ctx", "agent_ctx", "grounded_mean", "citation_valid",
+            "abstention", "false_abstention", "mean_searches", "mean_elapsed_s", "cost_usd_total"]
+    print(" | ".join(cols))
+    for r in rows:
+        print(" | ".join(str(r[c]) for c in cols))
+    print(f"-> results/compare_{args.split}.csv")
+    return 0
+
+
+def cmd_select(args: argparse.Namespace) -> int:
+    from .compare import select
+
+    out = config.RESULTS_DIR / "selection.json"
+    if out.exists() and not args.overwrite:
+        raise SystemExit("results/selection.json already exists (use --overwrite only before running test)")
+    sel = select([n.strip() for n in args.configs.split(",")])
+    out.write_text(json.dumps(sel, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("\n".join(sel["steps"]))
+    print(f"SELECTED: {sel['selected_config']} -> {out.relative_to(config.ROOT)}")
+    return 0
+
+
 def cmd_build_benchmark(args: argparse.Namespace) -> int:
     from . import benchmark as bm
 
@@ -170,6 +218,26 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--ids", help="comma-separated subset of case ids")
     p.add_argument("--confirm-test", action="store_true")
     p.set_defaults(func=cmd_agent_eval)
+
+    p = sub.add_parser("review-sheet", help="write .md to read + blank .csv to fill for manual labels")
+    p.add_argument("--split", choices=["dev", "test"], required=True)
+    p.add_argument("--configs", default="baseline")
+    p.set_defaults(func=cmd_review_sheet)
+
+    p = sub.add_parser("import-reviews", help="filled .csv -> reviews.json -> agent metrics")
+    p.add_argument("--split", choices=["dev", "test"], required=True)
+    p.add_argument("--configs", default="baseline")
+    p.set_defaults(func=cmd_import_reviews)
+
+    p = sub.add_parser("compare", help="comparison table of agent configs (retrieval + agent + labels)")
+    p.add_argument("--split", choices=["dev", "test"], required=True)
+    p.add_argument("--configs", default="baseline,m2_bm25,m3_hybrid,c1_neighbors,c2_budget,c_lite")
+    p.set_defaults(func=cmd_compare)
+
+    p = sub.add_parser("select", help="apply the pre-registered selection rule on dev -> results/selection.json")
+    p.add_argument("--configs", default="baseline,m2_bm25,m3_hybrid,c1_neighbors,c2_budget,c_lite")
+    p.add_argument("--overwrite", action="store_true")
+    p.set_defaults(func=cmd_select)
 
     p = sub.add_parser("build-benchmark", help="Day 6 questions + unanswerable -> data/day7 JSON")
     p.set_defaults(func=cmd_build_benchmark)

@@ -1,0 +1,1693 @@
+[
+  {
+    "query_id": "d01",
+    "split": "dev",
+    "answerable": true,
+    "question": "What three kinds of errors can occur in a Python program?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The three kinds of errors that can occur in a program are syntax errors, runtime errors, and semantic errors [B:thinkpython2:p035:001].",
+    "citations": [
+      "B:thinkpython2:p035:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "three kinds of errors",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 437.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p035:001",
+            "page": 35,
+            "chapter_id": "ch02",
+            "score": 0.03252
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p215:000",
+            "page": 215,
+            "chapter_id": "appendix_A",
+            "score": 0.03175
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p144:000",
+            "page": 144,
+            "chapter_id": "ch12",
+            "score": 0.02996
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p035:001",
+          "B:thinkpython2:p215:000",
+          "B:thinkpython2:p144:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p035:001 | thinkpython2 2nd Edition (Copyright 2015) | page 35 | ch02]\n2.8 Debugging\nThree kinds of errors can occur in a program: syntax errors, runtime errors, and semantic\nerrors. It is useful to distinguish between them in order to track them down more quickly.\nSyntax error: “Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so (1 + 2) is legal,\nbut 8) is a syntax error.\nIf there is a syntax error anywhere in your program, Python displays an error message and quits, and you will not be able to run the program. During the first few\nweeks of your programming career, you might spend a lot of time tracking down\nsyntax errors. As you gain experience, you will make fewer errors and find them\nfaster.\nRuntime error: The second type of error is a runtime error, so called because the error does\nnot appear until after the program has started running. These errors are also called\nexceptions because they usually indicate that something exceptional (and bad) has\nhappened.\nRuntime errors are rare in the simple programs you will see in the first few chapters,\nso it might be a while before you encounter one.\n\n[B:thinkpython2:p215:000 | thinkpython2 2nd Edition (Copyright 2015) | page 215 | appendix_A]\nAppendix A\nDebugging\nWhen you are debugging, you should distinguish among different kinds of errors in order\nto track them down more quickly:\n• Syntax errors are discovered by the interpreter when it is translating the source code\ninto byte code. They indicate that there is something wrong with the structure of the\nprogram. Example: Omitting the colon at the end of a def statement generates the\nsomewhat redundant message SyntaxError: invalid syntax.\n• Runtime errors are produced by the interpreter if something goes wrong while the\nprogram is running. Most runtime error messages include information about where\nthe error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error “maximum recursion depth exceeded”.\n• Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated\nin the order you expect, yielding an incorrect result.\nThe first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable\nin more than one situation.\n\n[B:thinkpython2:p144:000 | thinkpython2 2nd Edition (Copyright 2015) | page 144 | ch12]\n12.8 Debugging\nLists, dictionaries and tuples are examples of data structures; in this chapter we are starting\nto see compound data structures, like lists of tuples, or dictionaries that contain tuples as\nkeys and lists as values. Compound data structures are useful, but they are prone to what\nI call shape errors; that is, errors caused when a data structure has the wrong type, size, or\nstructure. For example, if you are expecting a list with one integer and I give you a plain\nold integer (not in a list), it won’t work.\nTo help debug these kinds of errors, I have written a module called structshape that\nprovides a function, also called structshape, that takes any kind of data structure as\nan argument and returns a string that summarizes its shape. You can download it from\nhttps://thinkpython.com/code/structshape.py\nHere’s the result for a simple list:\n>>> from structshape import structshape\n>>> t = [1, 2, 3]\n>>> structshape(t)\n'list of 3 int'\nA fancier program might write “list of 3 ints”, but it was easier not to deal with plurals.\nHere’s a list of lists:",
+    "context_ids": [
+      "B:thinkpython2:p035:001",
+      "B:thinkpython2:p215:000",
+      "B:thinkpython2:p144:000"
+    ],
+    "context_chars": 3674,
+    "context_tokens_est": 919,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1744,
+      "output": 56,
+      "thoughts": 228
+    },
+    "elapsed_s": 4.72,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.005172,
+    "run_at": "2026-11-16T04:15:58+00:00"
+  },
+  {
+    "query_id": "d02",
+    "split": "dev",
+    "answerable": true,
+    "question": "Why are errors that only show up while a program is running also referred to as exceptions?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "Errors that do not appear until after a program has started running are called exceptions because they usually indicate that something exceptional (and bad) has happened [B:thinkpython2:p035:001].",
+    "citations": [
+      "B:thinkpython2:p035:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "exceptions runtime error",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 203.4,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p035:001",
+            "page": 35,
+            "chapter_id": "ch02",
+            "score": 0.03227
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p215:000",
+            "page": 215,
+            "chapter_id": "appendix_A",
+            "score": 0.03128
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p217:001",
+            "page": 217,
+            "chapter_id": "appendix_A",
+            "score": 0.03089
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p035:001",
+          "B:thinkpython2:p215:000",
+          "B:thinkpython2:p217:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p035:001 | thinkpython2 2nd Edition (Copyright 2015) | page 35 | ch02]\n2.8 Debugging\nThree kinds of errors can occur in a program: syntax errors, runtime errors, and semantic\nerrors. It is useful to distinguish between them in order to track them down more quickly.\nSyntax error: “Syntax” refers to the structure of a program and the rules about that structure. For example, parentheses have to come in matching pairs, so (1 + 2) is legal,\nbut 8) is a syntax error.\nIf there is a syntax error anywhere in your program, Python displays an error message and quits, and you will not be able to run the program. During the first few\nweeks of your programming career, you might spend a lot of time tracking down\nsyntax errors. As you gain experience, you will make fewer errors and find them\nfaster.\nRuntime error: The second type of error is a runtime error, so called because the error does\nnot appear until after the program has started running. These errors are also called\nexceptions because they usually indicate that something exceptional (and bad) has\nhappened.\nRuntime errors are rare in the simple programs you will see in the first few chapters,\nso it might be a while before you encounter one.\n\n[B:thinkpython2:p215:000 | thinkpython2 2nd Edition (Copyright 2015) | page 215 | appendix_A]\nAppendix A\nDebugging\nWhen you are debugging, you should distinguish among different kinds of errors in order\nto track them down more quickly:\n• Syntax errors are discovered by the interpreter when it is translating the source code\ninto byte code. They indicate that there is something wrong with the structure of the\nprogram. Example: Omitting the colon at the end of a def statement generates the\nsomewhat redundant message SyntaxError: invalid syntax.\n• Runtime errors are produced by the interpreter if something goes wrong while the\nprogram is running. Most runtime error messages include information about where\nthe error occurred and what functions were executing. Example: An infinite recursion eventually causes the runtime error “maximum recursion depth exceeded”.\n• Semantic errors are problems with a program that runs without producing error messages but doesn’t do the right thing. Example: An expression may not be evaluated\nin the order you expect, yielding an incorrect result.\nThe first step in debugging is to figure out which kind of error you are dealing with. Although the following sections are organized by error type, some techniques are applicable\nin more than one situation.\n\n[B:thinkpython2:p217:001 | thinkpython2 2nd Edition (Copyright 2015) | page 217 | appendix_A]\nA.2 Runtime errors\nOnce your program is syntactically correct, Python can read it and at least start running it.\nWhat could possibly go wrong?",
+    "context_ids": [
+      "B:thinkpython2:p035:001",
+      "B:thinkpython2:p215:000",
+      "B:thinkpython2:p217:001"
+    ],
+    "context_chars": 2750,
+    "context_tokens_est": 688,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1532,
+      "output": 62,
+      "thoughts": 416
+    },
+    "elapsed_s": 3.51,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.0066,
+    "run_at": "2026-11-16T04:16:02+00:00"
+  },
+  {
+    "query_id": "d03",
+    "split": "dev",
+    "answerable": true,
+    "question": "What does the // operator do in Python?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The floor division operator, `//`, divides two numbers and rounds down to an integer [B:thinkpython2:p061:001]. This rounding down is done toward negative infinity [B:thinkpython2:p069:000].",
+    "citations": [
+      "B:thinkpython2:p061:001",
+      "B:thinkpython2:p069:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "floor division operator",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 186.1,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p061:001",
+            "page": 61,
+            "chapter_id": "ch05",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p062:000",
+            "page": 62,
+            "chapter_id": "ch05",
+            "score": 0.032
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p069:000",
+            "page": 69,
+            "chapter_id": "ch05",
+            "score": 0.03151
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p061:001",
+          "B:thinkpython2:p062:000",
+          "B:thinkpython2:p069:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p061:001 | thinkpython2 2nd Edition (Copyright 2015) | page 61 | ch05]\n5.1 Floor division and modulus\nThe floor division operator, //, divides two numbers and rounds down to an integer. For\nexample, suppose the run time of a movie is 105 minutes. You might want to know how\nlong that is in hours. Conventional division returns a floating-point number:\n>>> minutes = 105\n>>> minutes / 60\n1.75\nBut we don’t normally write hours with decimal points. Floor division returns the integer\nnumber of hours, rounding down:\n>>> minutes = 105\n>>> hours = minutes // 60\n>>> hours\n1\nTo get the remainder, you could subtract off one hour in minutes:\n>>> remainder = minutes - hours * 60\n>>> remainder\n45\nAn alternative is to use the modulus operator, %, which divides two numbers and returns\nthe remainder.\n>>> remainder = minutes % 60\n>>> remainder\n45\nThe modulus operator is more useful than it seems. For example, you can check whether\none number is divisible by another—if x % y is zero, then x is divisible by y.\n\n[B:thinkpython2:p062:000 | thinkpython2 2nd Edition (Copyright 2015) | page 62 | ch05]\nAlso, you can extract the right-most digit or digits from a number. For example, x % 10\nyields the right-most digit of x (in base 10). Similarly x % 100 yields the last two digits.\nIf you are using Python 2, division works differently. The division operator, /, performs\nfloor division if both operands are integers, and floating-point division if either operand is\na float.\n\n[B:thinkpython2:p069:000 | thinkpython2 2nd Edition (Copyright 2015) | page 69 | ch05]\n5.13 Glossary\nfloor division: An operator, denoted //, that divides two numbers and rounds down (toward negative infinity) to an integer.\nmodulus operator: An operator, denoted with a percent sign (%), that works on integers\nand returns the remainder when one number is divided by another.\nboolean expression: An expression whose value is either True or False.\nrelational operator: One of the operators that compares its operands: ==, !=, >, <, >=, and\n<=.\nlogical operator: One of the operators that combines boolean expressions: and, or, and\nnot.\nconditional statement: A statement that controls the flow of execution depending on some\ncondition.\ncondition: The boolean expression in a conditional statement that determines which\nbranch runs.\ncompound statement: A statement that consists of a header and a body. The header ends\nwith a colon (:). The body is indented relative to the header.\nbranch: One of the alternative sequences of statements in a conditional statement.\nchained conditional: A conditional statement with a series of alternative branches.\nnested conditional: A conditional statement that appears in one of the branches of another\nconditional statement.",
+    "context_ids": [
+      "B:thinkpython2:p061:001",
+      "B:thinkpython2:p062:000",
+      "B:thinkpython2:p069:000"
+    ],
+    "context_chars": 2745,
+    "context_tokens_est": 687,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1572,
+      "output": 75,
+      "thoughts": 548
+    },
+    "elapsed_s": 11.51,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.007965,
+    "run_at": "2026-11-16T04:16:13+00:00"
+  },
+  {
+    "query_id": "d04",
+    "split": "dev",
+    "answerable": true,
+    "question": "How can I check whether one whole number divides evenly into another?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "You can use the modulus operator (`%`), which divides two numbers and returns the remainder [B:thinkpython2:p061:001]. If `x % y` is zero, then `x` is divisible by `y` [B:thinkpython2:p061:001].",
+    "citations": [
+      "B:thinkpython2:p061:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "divides evenly modulus operator",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 182.5,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p061:001",
+            "page": 61,
+            "chapter_id": "ch05",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p069:000",
+            "page": 69,
+            "chapter_id": "ch05",
+            "score": 0.03226
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p160:001",
+            "page": 160,
+            "chapter_id": "ch14",
+            "score": 0.03078
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p061:001",
+          "B:thinkpython2:p069:000",
+          "B:thinkpython2:p160:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "divisible remainder zero",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 167.1,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p061:001",
+            "page": 61,
+            "chapter_id": "ch05",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p083:001",
+            "page": 83,
+            "chapter_id": "ch06",
+            "score": 0.03175
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p077:000",
+            "page": 77,
+            "chapter_id": "ch06",
+            "score": 0.03126
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [],
+        "dropped_by_budget": [
+          "B:thinkpython2:p083:001",
+          "B:thinkpython2:p077:000"
+        ]
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p061:001 | thinkpython2 2nd Edition (Copyright 2015) | page 61 | ch05]\n5.1 Floor division and modulus\nThe floor division operator, //, divides two numbers and rounds down to an integer. For\nexample, suppose the run time of a movie is 105 minutes. You might want to know how\nlong that is in hours. Conventional division returns a floating-point number:\n>>> minutes = 105\n>>> minutes / 60\n1.75\nBut we don’t normally write hours with decimal points. Floor division returns the integer\nnumber of hours, rounding down:\n>>> minutes = 105\n>>> hours = minutes // 60\n>>> hours\n1\nTo get the remainder, you could subtract off one hour in minutes:\n>>> remainder = minutes - hours * 60\n>>> remainder\n45\nAn alternative is to use the modulus operator, %, which divides two numbers and returns\nthe remainder.\n>>> remainder = minutes % 60\n>>> remainder\n45\nThe modulus operator is more useful than it seems. For example, you can check whether\none number is divisible by another—if x % y is zero, then x is divisible by y.\n\n[B:thinkpython2:p069:000 | thinkpython2 2nd Edition (Copyright 2015) | page 69 | ch05]\n5.13 Glossary\nfloor division: An operator, denoted //, that divides two numbers and rounds down (toward negative infinity) to an integer.\nmodulus operator: An operator, denoted with a percent sign (%), that works on integers\nand returns the remainder when one number is divided by another.\nboolean expression: An expression whose value is either True or False.\nrelational operator: One of the operators that compares its operands: ==, !=, >, <, >=, and\n<=.\nlogical operator: One of the operators that combines boolean expressions: and, or, and\nnot.\nconditional statement: A statement that controls the flow of execution depending on some\ncondition.\ncondition: The boolean expression in a conditional statement that determines which\nbranch runs.\ncompound statement: A statement that consists of a header and a body. The header ends\nwith a colon (:). The body is indented relative to the header.\nbranch: One of the alternative sequences of statements in a conditional statement.\nchained conditional: A conditional statement with a series of alternative branches.\nnested conditional: A conditional statement that appears in one of the branches of another\nconditional statement.\n\n[B:thinkpython2:p160:001 | thinkpython2 2nd Edition (Copyright 2015) | page 160 | ch14]\n14.3 Format operator\nThe argument of write has to be a string, so if we want to put other values in a file, we\nhave to convert them to strings. The easiest way to do that is with str:\n>>> x = 52\n>>> fout.write(str(x))\nAn alternative is to use the format operator, %. When applied to integers, % is the modulus\noperator. But when the first operand is a string, % is the format operator.\nThe first operand is the format string, which contains one or more format sequences,\nwhich specify how the second operand is formatted. The result is a string.\nFor example, the format sequence '%d' means that the second operand should be formatted as a decimal integer:\n>>> camels = 42\n>>> '%d' % camels\n'42'\nThe result is the string '42', which is not to be confused with the integer value 42.\nA format sequence can appear anywhere in the string, so you can embed a value in a\nsentence:",
+    "context_ids": [
+      "B:thinkpython2:p061:001",
+      "B:thinkpython2:p069:000",
+      "B:thinkpython2:p160:001"
+    ],
+    "context_chars": 3245,
+    "context_tokens_est": 812,
+    "n_searches": 2,
+    "n_model_calls": 3,
+    "tokens": {
+      "input": 3248,
+      "output": 107,
+      "thoughts": 590
+    },
+    "elapsed_s": 5.07,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.011145,
+    "run_at": "2026-11-16T04:16:18+00:00"
+  },
+  {
+    "query_id": "d05",
+    "split": "dev",
+    "answerable": true,
+    "question": "Does a function with infinite recursion really run forever in Python?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "No, a program with infinite recursion does not really run forever in Python [B:thinkpython2:p067:000]. Instead, when the maximum recursion depth is reached, Python stops execution and reports a \"RuntimeError: Maximum recursion depth exceeded\" error [B:thinkpython2:p067:000][B:thinkpython2:p217:003].",
+    "citations": [
+      "B:thinkpython2:p067:000",
+      "B:thinkpython2:p217:003"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "infinite recursion run forever",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 185.6,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p066:002",
+            "page": 66,
+            "chapter_id": "ch05",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p067:000",
+            "page": 67,
+            "chapter_id": "ch05",
+            "score": 0.03226
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p217:003",
+            "page": 217,
+            "chapter_id": "appendix_A",
+            "score": 0.03175
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p066:002",
+          "B:thinkpython2:p067:000",
+          "B:thinkpython2:p217:003"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p066:002 | thinkpython2 2nd Edition (Copyright 2015) | page 66 | ch05]\n5.10 Infinite recursion\nIf a recursion never reaches a base case, it goes on making recursive calls forever, and the\nprogram never terminates. This is known as infinite recursion, and it is generally not a\ngood idea. Here is a minimal program with an infinite recursion:\n\n[B:thinkpython2:p067:000 | thinkpython2 2nd Edition (Copyright 2015) | page 67 | ch05]\ndef recurse():\nrecurse()\nIn most programming environments, a program with infinite recursion does not really run\nforever. Python reports an error message when the maximum recursion depth is reached:\nFile \"<stdin>\", line 2, in recurse\nFile \"<stdin>\", line 2, in recurse\nFile \"<stdin>\", line 2, in recurse\n.\n.\n.\nFile \"<stdin>\", line 2, in recurse\nRuntimeError: Maximum recursion depth exceeded\nThis traceback is a little bigger than the one we saw in the previous chapter. When the error\noccurs, there are 1000 recurse frames on the stack!\nIf you encounter an infinite recursion by accident, review your function to confirm that\nthere is a base case that does not make a recursive call. And if there is a base case, check\nwhether you are guaranteed to reach it.\n\n[B:thinkpython2:p217:003 | thinkpython2 2nd Edition (Copyright 2015) | page 217 | appendix_A]\nA.2.2 My program hangs.\nIf a program stops and seems to be doing nothing, it is “hanging”. Often that means that it\nis caught in an infinite loop or infinite recursion.\n• If there is a particular loop that you suspect is the problem, add a print statement\nimmediately before the loop that says “entering the loop” and another immediately\nafter that says “exiting the loop”.\nRun the program. If you get the first message and not the second, you’ve got an\ninfinite loop. Go to the “Infinite Loop” section below.\n• Most of the time, an infinite recursion will cause the program to run for a while and\nthen produce a “RuntimeError: Maximum recursion depth exceeded” error. If that\nhappens, go to the “Infinite Recursion” section below.\nIf you are not getting this error but you suspect there is a problem with a recursive\nmethod or function, you can still use the techniques in the “Infinite Recursion” section.\n• If neither of those steps works, start testing other loops and other recursive functions\nand methods.\n• If that doesn’t work, then it is possible that you don’t understand the flow of execution in your program. Go to the “Flow of Execution” section below.",
+    "context_ids": [
+      "B:thinkpython2:p066:002",
+      "B:thinkpython2:p067:000",
+      "B:thinkpython2:p217:003"
+    ],
+    "context_chars": 2466,
+    "context_tokens_est": 617,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1535,
+      "output": 106,
+      "thoughts": 607
+    },
+    "elapsed_s": 4.34,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.008719,
+    "run_at": "2026-11-16T04:16:23+00:00"
+  },
+  {
+    "query_id": "d06",
+    "split": "dev",
+    "answerable": true,
+    "question": "What is the idea of trusting that a called function returns the correct result instead of tracing through its execution?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "This idea is called the \"leap of faith\" [B:thinkpython2:p079:001]. Instead of following the flow of execution when coming to a function call, you assume that the function works correctly and returns the right result [B:thinkpython2:p079:001].",
+    "citations": [
+      "B:thinkpython2:p079:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "leap of faith",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 169.3,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p079:001",
+            "page": 79,
+            "chapter_id": "ch06",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p079:002",
+            "page": 79,
+            "chapter_id": "ch06",
+            "score": 0.032
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p080:000",
+            "page": 80,
+            "chapter_id": "ch06",
+            "score": 0.03041
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p079:001",
+          "B:thinkpython2:p079:002",
+          "B:thinkpython2:p080:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p079:001 | thinkpython2 2nd Edition (Copyright 2015) | page 79 | ch06]\n6.6 Leap of faith\nFollowing the flow of execution is one way to read programs, but it can quickly become\noverwhelming. An alternative is what I call the “leap of faith”. When you come to a\nfunction call, instead of following the flow of execution, you assume that the function works\ncorrectly and returns the right result.\nIn fact, you are already practicing this leap of faith when you use built-in functions. When\nyou call math.cos or math.exp, you don’t examine the bodies of those functions. You just\nassume that they work because the people who wrote the built-in functions were good\nprogrammers.\n\n[B:thinkpython2:p079:002 | thinkpython2 2nd Edition (Copyright 2015) | page 79 | ch06]\nThe same is true when you call one of your own functions. For example, in Section 6.4, we\nwrote a function called is_divisible that determines whether one number is divisible by\nanother. Once we have convinced ourselves that this function is correct—by examining the\ncode and testing—we can use the function without looking at the body again.\nThe same is true of recursive programs. When you get to the recursive call, instead of\nfollowing the flow of execution, you should assume that the recursive call works (returns\nthe correct result) and then ask yourself, “Assuming that I can find the factorial of n − 1,\ncan I compute the factorial of n?” It is clear that you can, by multiplying by n.\nOf course, it’s a bit strange to assume that the function works correctly when you haven’t\nfinished writing it, but that’s why it’s called a leap of faith!\n\n[B:thinkpython2:p080:000 | thinkpython2 2nd Edition (Copyright 2015) | page 80 | ch06]\ndef fibonacci(n):\nif n == 0:\nreturn 0\nelif n == 1:\nreturn 1\nelse:\nreturn fibonacci(n-1) + fibonacci(n-2)\nIf you try to follow the flow of execution here, even for fairly small values of n, your head\nexplodes. But according to the leap of faith, if you assume that the two recursive calls work\ncorrectly, then it is clear that you get the right result by adding them together.",
+    "context_ids": [
+      "B:thinkpython2:p079:001",
+      "B:thinkpython2:p079:002",
+      "B:thinkpython2:p080:000"
+    ],
+    "context_chars": 2091,
+    "context_tokens_est": 523,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1506,
+      "output": 86,
+      "thoughts": 494
+    },
+    "elapsed_s": 3.77,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.007479,
+    "run_at": "2026-11-16T04:16:26+00:00"
+  },
+  {
+    "query_id": "d07",
+    "split": "dev",
+    "answerable": true,
+    "question": "Why do you get an error when you try to change one character of a string with greeting[0] = 'J'?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "You get an error because strings are immutable, which means you cannot change an existing string [B:thinkpython2:p096:001]. Trying to use the `[]` operator on the left side of an assignment results in a `TypeError` because a string object does not support item assignment [B:thinkpython2:p096:001].",
+    "citations": [
+      "B:thinkpython2:p096:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "greeting[0] = 'J'",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 202.7,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p096:001",
+            "page": 96,
+            "chapter_id": "ch08",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p100:000",
+            "page": 100,
+            "chapter_id": "ch08",
+            "score": 0.03175
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p100:001",
+            "page": 100,
+            "chapter_id": "ch08",
+            "score": 0.02908
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p096:001",
+          "B:thinkpython2:p100:000",
+          "B:thinkpython2:p100:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p096:001 | thinkpython2 2nd Edition (Copyright 2015) | page 96 | ch08]\n8.5 Strings are immutable\nIt is tempting to use the [] operator on the left side of an assignment, with the intention of\nchanging a character in a string. For example:\n>>> greeting = 'Hello, world!'\n>>> greeting[0] = 'J'\nTypeError: 'str' object does not support item assignment\nThe “object” in this case is the string and the “item” is the character you tried to assign.\nFor now, an object is the same thing as a value, but we will refine that definition later\n(Section 10.10).\nThe reason for the error is that strings are immutable, which means you can’t change an\nexisting string. The best you can do is create a new string that is a variation on the original:\n>>> greeting = 'Hello, world!'\n>>> new_greeting = 'J' + greeting[1:]\n>>> new_greeting\n'Jello, world!'\nThis example concatenates a new first letter onto a slice of greeting. It has no effect on the\noriginal string.\n\n[B:thinkpython2:p100:000 | thinkpython2 2nd Edition (Copyright 2015) | page 100 | ch08]\nj = j-1\nreturn True\nThe first if statement checks whether the words are the same length. If not, we can return\nFalse immediately. Otherwise, for the rest of the function, we can assume that the words\nare the same length. This is an example of the guardian pattern in Section 6.8.\ni and j are indices: i traverses word1 forward while j traverses word2 backward. If we\nfind two letters that don’t match, we can return False immediately. If we get through the\nwhole loop and all the letters match, we return True.\nIf we test this function with the words “pots” and “stop”, we expect the return value True,\nbut we get an IndexError:\n>>> is_reverse('pots', 'stop')\n...\nFile \"reverse.py\", line 15, in is_reverse\nif word1[i] != word2[j]:\nIndexError: string index out of range\nFor debugging this kind of error, my first move is to print the values of the indices immediately before the line where the error appears.\nwhile j > 0:\nprint(i, j) # print here\nif word1[i] != word2[j]:\nreturn False\ni = i+1\nj = j-1\nNow when I run the program again, I get more information:\n>>> is_reverse('pots', 'stop')\n0 4\n...\n\n[B:thinkpython2:p100:001 | thinkpython2 2nd Edition (Copyright 2015) | page 100 | ch08]\nIndexError: string index out of range\nThe first time through the loop, the value of j is 4, which is out of range for the\nstring 'pots'. The index of the last character is 3, so the initial value for j should be\nlen(word2)-1.\nIf I fix that error and run the program again, I get:\n>>> is_reverse('pots', 'stop')\n0 3\n1 2\n2 1\nTrue\nThis time we get the right answer, but it looks like the loop only ran three times, which is\nsuspicious. To get a better idea of what is happening, it is useful to draw a state diagram.\nDuring the first iteration, the frame for is_reverse is shown in Figure 8.2.\nI took some license by arranging the variables in the frame and adding dotted lines to show\nthat the values of i and j indicate characters in word1 and word2.\nStarting with this diagram, run the program on paper, changing the values of i and j\nduring each iteration. Find and fix the second error in this function.",
+    "context_ids": [
+      "B:thinkpython2:p096:001",
+      "B:thinkpython2:p100:000",
+      "B:thinkpython2:p100:001"
+    ],
+    "context_chars": 3144,
+    "context_tokens_est": 786,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1821,
+      "output": 102,
+      "thoughts": 558
+    },
+    "elapsed_s": 4.01,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.008672,
+    "run_at": "2026-11-16T04:16:30+00:00"
+  },
+  {
+    "query_id": "d08",
+    "split": "dev",
+    "answerable": true,
+    "question": "If I need a sorted version of a list but must keep the original list unchanged, what should I do?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "You can use the built-in function `sorted`, which returns a new, sorted list and leaves the original list alone [B:thinkpython2:p121:001]. Alternatively, you can make a copy of the original list using a slice like `t[:]` and then call `sort()` on the copy [B:thinkpython2:p121:001].",
+    "citations": [
+      "B:thinkpython2:p121:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "sorted list unchanged",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 203.2,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p121:001",
+            "page": 121,
+            "chapter_id": "ch10",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p143:002",
+            "page": 143,
+            "chapter_id": "ch12",
+            "score": 0.03151
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p123:000",
+            "page": 123,
+            "chapter_id": "ch10",
+            "score": 0.0308
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p121:001",
+          "B:thinkpython2:p143:002",
+          "B:thinkpython2:p123:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p121:001 | thinkpython2 2nd Edition (Copyright 2015) | page 121 | ch10]\n>>> t = [3, 1, 2]\n>>> t2 = t[:]\n>>> t2.sort()\n>>> t\n[3, 1, 2]\n>>> t2\n[1, 2, 3]\nIn this example you could also use the built-in function sorted, which returns a new,\nsorted list and leaves the original alone.\n>>> t2 = sorted(t)\n>>> t\n[3, 1, 2]\n>>> t2\n[1, 2, 3]\n\n[B:thinkpython2:p143:002 | thinkpython2 2nd Edition (Copyright 2015) | page 143 | ch12]\n3. If you are passing a sequence as an argument to a function, using tuples reduces the\npotential for unexpected behavior due to aliasing.\nBecause tuples are immutable, they don’t provide methods like sort and reverse, which\nmodify existing lists. But Python provides the built-in function sorted, which takes any\nsequence and returns a new list with the same elements in sorted order, and reversed,\nwhich takes a sequence and returns an iterator that traverses the list in reverse order.\n\n[B:thinkpython2:p123:000 | thinkpython2 2nd Edition (Copyright 2015) | page 123 | ch10]\nExercise 10.4. Write a function called chop that takes a list, modifies it by removing the first and\nlast elements, and returns None. For example:\n>>> t = [1, 2, 3, 4]\n>>> chop(t)\n>>> t\n[2, 3]\nExercise 10.5. Write a function called is_sorted that takes a list as a parameter and returns True\nif the list is sorted in ascending order and False otherwise. For example:\n>>> is_sorted([1, 2, 2])\nTrue\n>>> is_sorted(['b', 'a'])\nFalse\nExercise 10.6. Two words are anagrams if you can rearrange the letters from one to spell the other.\nWrite a function called is_anagram that takes two strings and returns True if they are anagrams.\nExercise 10.7. Write a function called has_duplicates that takes a list and returns True if there\nis any element that appears more than once. It should not modify the original list.\nExercise 10.8. This exercise pertains to the so-called Birthday Paradox, which you can read about\nat http: // en. wikipedia. org/ wiki/ Birthday_ paradox .",
+    "context_ids": [
+      "B:thinkpython2:p121:001",
+      "B:thinkpython2:p143:002",
+      "B:thinkpython2:p123:000"
+    ],
+    "context_chars": 1978,
+    "context_tokens_est": 495,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1532,
+      "output": 102,
+      "thoughts": 545
+    },
+    "elapsed_s": 4.15,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.008121,
+    "run_at": "2026-11-16T04:16:35+00:00"
+  },
+  {
+    "query_id": "d09",
+    "split": "dev",
+    "answerable": true,
+    "question": "Can a list be used as a key in a Python dictionary?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "No, a list cannot be used as a key in a Python dictionary because dictionary keys must be hashable, and mutable types like lists are not hashable [B:thinkpython2:p130:001][B:thinkpython2:p134:001]. Attempting to use a list as a dictionary key results in a `TypeError` because list objects are unhashable [B:thinkpython2:p130:001].",
+    "citations": [
+      "B:thinkpython2:p130:001",
+      "B:thinkpython2:p134:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "dictionary key list hashable",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 189.5,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p130:001",
+            "page": 130,
+            "chapter_id": "ch11",
+            "score": 0.03252
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p134:001",
+            "page": 134,
+            "chapter_id": "ch11",
+            "score": 0.03252
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p228:000",
+            "page": 228,
+            "chapter_id": "appendix_B",
+            "score": 0.0308
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p130:001",
+          "B:thinkpython2:p134:001",
+          "B:thinkpython2:p228:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p130:001 | thinkpython2 2nd Edition (Copyright 2015) | page 130 | ch11]\nTypeError: list objects are unhashable\nI mentioned earlier that a dictionary is implemented using a hashtable and that means that\nthe keys have to be hashable.\nA hash is a function that takes a value (of any kind) and returns an integer. Dictionaries\nuse these integers, called hash values, to store and look up key-value pairs.\nThis system works fine if the keys are immutable. But if the keys are mutable, like lists,\nbad things happen. For example, when you create a key-value pair, Python hashes the key\nand stores it in the corresponding location. If you modify the key and then hash it again, it\nwould go to a different location. In that case you might have two entries for the same key,\nor you might not be able to find a key. Either way, the dictionary wouldn’t work correctly.\nThat’s why keys have to be hashable, and why mutable types like lists aren’t. The simplest\nway to get around this limitation is to use tuples, which we will see in the next chapter.\n\n[B:thinkpython2:p134:001 | thinkpython2 2nd Edition (Copyright 2015) | page 134 | ch11]\n11.9 Glossary\nmapping: A relationship in which each element of one set corresponds to an element of\nanother set.\ndictionary: A mapping from keys to their corresponding values.\nkey-value pair: The representation of the mapping from a key to a value.\nitem: In a dictionary, another name for a key-value pair.\nkey: An object that appears in a dictionary as the first part of a key-value pair.\nvalue: An object that appears in a dictionary as the second part of a key-value pair. This is\nmore specific than our previous use of the word “value”.\nimplementation: A way of performing a computation.\nhashtable: The algorithm used to implement Python dictionaries.\nhash function: A function used by a hashtable to compute the location for a key.\nhashable: A type that has a hash function. Immutable types like integers, floats and strings\nare hashable; mutable types like lists and dictionaries are not.\nlookup: A dictionary operation that takes a key and finds the corresponding value.\nreverse lookup: A dictionary operation that takes a value and finds one or more keys that\nmap to it.\nraise statement: A statement that (deliberately) raises an exception.\n\n[B:thinkpython2:p228:000 | thinkpython2 2nd Edition (Copyright 2015) | page 228 | appendix_B]\nB.4 Hashtables\nTo explain how hashtables work and why their performance is so good, I start with a simple\nimplementation of a map and gradually improve it until it’s a hashtable.\nI use Python to demonstrate these implementations, but in real life you wouldn’t write\ncode like this in Python; you would just use a dictionary! So for the rest of this chapter, you\nhave to imagine that dictionaries don’t exist and you want to implement a data structure\nthat maps from keys to values. The operations you have to implement are:\nadd(k, v): Add a new item that maps from key k to value v. With a Python dictionary, d,\nthis operation is written d[k] = v.\nget(k): Look up and return the value that corresponds to key k. With a Python dictionary,\nd, this operation is written d[k] or d.get(k).\nFor now, I assume that each key only appears once. The simplest implementation of this\ninterface uses a list of tuples, where each tuple is a key-value pair.\nclass LinearMap:\ndef __init__(self):\nself.items = []\ndef add(self, k, v):\nself.items.append((k, v))\ndef get(self, k):\nfor key, val in self.items:\nif key == k:",
+    "context_ids": [
+      "B:thinkpython2:p130:001",
+      "B:thinkpython2:p134:001",
+      "B:thinkpython2:p228:000"
+    ],
+    "context_chars": 3490,
+    "context_tokens_est": 873,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1802,
+      "output": 121,
+      "thoughts": 667
+    },
+    "elapsed_s": 4.46,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.009795,
+    "run_at": "2026-11-16T04:16:39+00:00"
+  },
+  {
+    "query_id": "d10",
+    "split": "dev",
+    "answerable": true,
+    "question": "When a global variable refers to a dictionary, in which case must a function declare it with the global statement?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "If a global variable refers to a dictionary, a function must declare it with the `global` statement if you want to reassign the variable [B:thinkpython2:p133:000]. You can add, remove, and replace elements of a global dictionary without declaring the variable, but reassigning the variable itself requires the declaration [B:thinkpython2:p133:000].",
+    "citations": [
+      "B:thinkpython2:p133:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "global dictionary statement",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 159.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p134:002",
+            "page": 134,
+            "chapter_id": "ch11",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p132:002",
+            "page": 132,
+            "chapter_id": "ch11",
+            "score": 0.032
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p133:000",
+            "page": 133,
+            "chapter_id": "ch11",
+            "score": 0.032
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p134:002",
+          "B:thinkpython2:p132:002",
+          "B:thinkpython2:p133:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p134:002 | thinkpython2 2nd Edition (Copyright 2015) | page 134 | ch11]\nsingleton: A list (or other sequence) with a single element.\ncall graph: A diagram that shows every frame created during the execution of a program,\nwith an arrow from each caller to each callee.\nmemo: A computed value stored to avoid unnecessary future computation.\nglobal variable: A variable defined outside a function. Global variables can be accessed\nfrom any function.\nglobal statement: A statement that declares a variable name global.\nflag: A boolean variable used to indicate whether a condition is true.\ndeclaration: A statement like global that tells the interpreter something about a variable.\n\n[B:thinkpython2:p132:002 | thinkpython2 2nd Edition (Copyright 2015) | page 132 | ch11]\nTo reassign a global variable inside a function you have to declare the global variable before\nyou use it:\nbeen_called = False\ndef example2():\nglobal been_called\nbeen_called = True\nThe global statement tells the interpreter something like, “In this function, when I say\nbeen_called, I mean the global variable; don’t create a local one.”\nHere’s an example that tries to update a global variable:\ncount = 0\ndef example3():\ncount = count + 1 # WRONG\nIf you run it you get:\n\n[B:thinkpython2:p133:000 | thinkpython2 2nd Edition (Copyright 2015) | page 133 | ch11]\nUnboundLocalError: local variable 'count' referenced before assignment\nPython assumes that count is local, and under that assumption you are reading it before\nwriting it. The solution, again, is to declare count global.\ndef example3():\nglobal count\ncount += 1\nIf a global variable refers to a mutable value, you can modify the value without declaring\nthe variable:\nknown = {0:0, 1:1}\ndef example4():\nknown[2] = 1\nSo you can add, remove and replace elements of a global list or dictionary, but if you want\nto reassign the variable, you have to declare it:\ndef example5():\nglobal known\nknown = dict()\nGlobal variables can be useful, but if you have a lot of them, and you modify them frequently, they can make programs hard to debug.",
+    "context_ids": [
+      "B:thinkpython2:p134:002",
+      "B:thinkpython2:p132:002",
+      "B:thinkpython2:p133:000"
+    ],
+    "context_chars": 2074,
+    "context_tokens_est": 519,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1461,
+      "output": 106,
+      "thoughts": 766
+    },
+    "elapsed_s": 4.81,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.010039,
+    "run_at": "2026-11-16T04:16:44+00:00"
+  },
+  {
+    "query_id": "d11",
+    "split": "dev",
+    "answerable": true,
+    "question": "In the Dictionaries chapter's debugging advice, what is a \"sanity check\"?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": {
+      "chapter_id": "ch11"
+    },
+    "status": "answered",
+    "answer": "A sanity check is code written to check for errors automatically by detecting results that are \"insane\" [B:thinkpython2:p133:002]. For example, when computing the average of a list of numbers, a sanity check might check that the result is not greater than the largest element in the list or less than the smallest [B:thinkpython2:p133:002].",
+    "citations": [
+      "B:thinkpython2:p133:002"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "sanity check",
+        "filter": {
+          "chapter_id": "ch11"
+        },
+        "top_k": 3,
+        "retrieval_ms": 208.1,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p133:002",
+            "page": 133,
+            "chapter_id": "ch11",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p135:000",
+            "page": 135,
+            "chapter_id": "ch11",
+            "score": 0.03175
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p135:003",
+            "page": 135,
+            "chapter_id": "ch11",
+            "score": 0.03175
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p133:002",
+          "B:thinkpython2:p135:000",
+          "B:thinkpython2:p135:003"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p133:002 | thinkpython2 2nd Edition (Copyright 2015) | page 133 | ch11]\nWrite self-checks: Sometimes you can write code to check for errors automatically. For\nexample, if you are computing the average of a list of numbers, you could check that\nthe result is not greater than the largest element in the list or less than the smallest.\nThis is called a “sanity check” because it detects results that are “insane”.\nAnother kind of check compares the results of two different computations to see if\nthey are consistent. This is called a “consistency check”.\n\n[B:thinkpython2:p135:000 | thinkpython2 2nd Edition (Copyright 2015) | page 135 | ch11]\n11.10 Exercises\nExercise 11.1. Write a function that reads the words in words.txt and stores them as keys in a\ndictionary. It doesn’t matter what the values are. Then you can use the in operator as a fast way to\ncheck whether a string is in the dictionary.\nIf you did Exercise 10.10, you can compare the speed of this implementation with the list in operator\nand the bisection search.\nExercise 11.2. Read the documentation of the dictionary method setdefault and use it to write a\nmore concise version of invert_dict. Solution: https: // thinkpython. com/ code/ invert_\ndict. py .\nExercise 11.3. Memoize the Ackermann function from Exercise 6.2 and see if memoization\nmakes it possible to evaluate the function with bigger arguments. Hint: no. Solution: https:\n// thinkpython. com/ code/ ackermann_ memo. py .\nExercise 11.4. If you did Exercise 10.7, you already have a function named has_duplicates that\ntakes a list as a parameter and returns True if there is any object that appears more than once in the\nlist.\nUse a dictionary to write a faster, simpler version of has_duplicates. Solution: https: //\nthinkpython. com/ code/ has_ duplicates. py .\n\n[B:thinkpython2:p135:003 | thinkpython2 2nd Edition (Copyright 2015) | page 135 | ch11]\nYou can use the dictionary from Exercise 11.1 to check whether a string is in the word list.\nTo check whether two words are homophones, you can use the CMU Pronouncing\nDictionary. You can download it from http: // www. speech. cs. cmu. edu/ cgi-bin/\ncmudict or from https: // thinkpython. com/ code/ c06d and you can also download https: // thinkpython. com/ code/ pronounce. py , which provides a function named\nread_dictionary that reads the pronouncing dictionary and returns a Python dictionary that\nmaps from each word to a string that describes its primary pronunciation.",
+    "context_ids": [
+      "B:thinkpython2:p133:002",
+      "B:thinkpython2:p135:000",
+      "B:thinkpython2:p135:003"
+    ],
+    "context_chars": 2476,
+    "context_tokens_est": 619,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1563,
+      "output": 105,
+      "thoughts": 439
+    },
+    "elapsed_s": 6.86,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.007241,
+    "run_at": "2026-11-16T04:16:51+00:00"
+  },
+  {
+    "query_id": "d12",
+    "split": "dev",
+    "answerable": true,
+    "question": "In the data structure selection case study, what does the debugging tip called rubberducking suggest?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": {
+      "chapter_id": "ch13"
+    },
+    "status": "answered",
+    "answer": "Rubber duck debugging suggests explaining your problem to an inanimate object such as a rubber duck [B:thinkpython2:p155:002][B:thinkpython2:p156:002]. Articulating the problem can help you find the answer or solve it, even if the rubber duck doesn't know Python [B:thinkpython2:p155:002][B:thinkpython2:p156:002].",
+    "citations": [
+      "B:thinkpython2:p155:002",
+      "B:thinkpython2:p156:002"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "rubber ducking",
+        "filter": {
+          "chapter_id": "ch13"
+        },
+        "top_k": 3,
+        "retrieval_ms": 242.9,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p156:002",
+            "page": 156,
+            "chapter_id": "ch13",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p155:002",
+            "page": 155,
+            "chapter_id": "ch13",
+            "score": 0.03226
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p156:001",
+            "page": 156,
+            "chapter_id": "ch13",
+            "score": 0.01587
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p156:002",
+          "B:thinkpython2:p155:002",
+          "B:thinkpython2:p156:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p156:002 | thinkpython2 2nd Edition (Copyright 2015) | page 156 | ch13]\n13.11 Glossary\ndeterministic: Pertaining to a program that does the same thing each time it runs, given\nthe same inputs.\npseudorandom: Pertaining to a sequence of numbers that appears to be random, but is\ngenerated by a deterministic program.\ndefault value: The value given to an optional parameter if no argument is provided.\noverride: To replace a default value with an argument.\nbenchmarking: The process of choosing between data structures by implementing alternatives and testing them on a sample of the possible inputs.\nrubber duck debugging: Debugging by explaining your problem to an inanimate object\nsuch as a rubber duck. Articulating the problem can help you solve it, even if the\nrubber duck doesn’t know Python.\n\n[B:thinkpython2:p155:002 | thinkpython2 2nd Edition (Copyright 2015) | page 155 | ch13]\n13.10 Debugging\nWhen you are debugging a program, and especially if you are working on a hard bug,\nthere are five things to try:\nReading: Examine your code, read it back to yourself, and check that it says what you\nmeant to say.\nRunning: Experiment by making changes and running different versions. Often if you\ndisplay the right thing at the right place in the program, the problem becomes obvious, but sometimes you have to build scaffolding.\nRuminating: Take some time to think! What kind of error is it: syntax, runtime, or semantic? What information can you get from the error messages, or from the output of the\nprogram? What kind of error could cause the problem you’re seeing? What did you\nchange last, before the problem appeared?\nRubberducking: If you explain the problem to someone else, you sometimes find the\nanswer before you finish asking the question. Often you don’t need the other\nperson; you could just talk to a rubber duck. And that’s the origin of the wellknown strategy called rubber duck debugging. I am not making this up; see\nhttps://en.wikipedia.org/wiki/Rubber_duck_debugging.\n\n[B:thinkpython2:p156:001 | thinkpython2 2nd Edition (Copyright 2015) | page 156 | ch13]\nBut even the best debugging techniques will fail if there are too many errors, or if the code\nyou are trying to fix is too big and complicated. Sometimes the best option is to retreat,\nsimplifying the program until you get to something that works and that you understand.\nBeginning programmers are often reluctant to retreat because they can’t stand to delete a\nline of code (even if it’s wrong). If it makes you feel better, copy your program into another\nfile before you start stripping it down. Then you can copy the pieces back one at a time.\nFinding a hard bug requires reading, running, ruminating, and sometimes retreating. If\nyou get stuck on one of these activities, try the others.",
+    "context_ids": [
+      "B:thinkpython2:p156:002",
+      "B:thinkpython2:p155:002",
+      "B:thinkpython2:p156:001"
+    ],
+    "context_chars": 2787,
+    "context_tokens_est": 697,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1589,
+      "output": 121,
+      "thoughts": 425
+    },
+    "elapsed_s": 3.56,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.007298,
+    "run_at": "2026-11-16T04:16:54+00:00"
+  },
+  {
+    "query_id": "d13",
+    "split": "dev",
+    "answerable": true,
+    "question": "What does the pickle module do?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The pickle module translates almost any type of object into a string suitable for storage in a database, and then translates strings back into objects [B:thinkpython2:p164:000]. Pickling and then unpickling an object has the same effect as copying it [B:thinkpython2:p164:000].",
+    "citations": [
+      "B:thinkpython2:p164:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "pickle module",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 237.9,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p164:000",
+            "page": 164,
+            "chapter_id": "ch14",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p040:001",
+            "page": 40,
+            "chapter_id": "ch03",
+            "score": 0.03175
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p217:000",
+            "page": 217,
+            "chapter_id": "appendix_A",
+            "score": 0.03128
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p164:000",
+          "B:thinkpython2:p040:001",
+          "B:thinkpython2:p217:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p164:000 | thinkpython2 2nd Edition (Copyright 2015) | page 164 | ch14]\n14.7 Pickling\nA limitation of dbm is that the keys and values have to be strings or bytes. If you try to use\nany other type, you get an error.\nThe pickle module can help. It translates almost any type of object into a string suitable\nfor storage in a database, and then translates strings back into objects.\npickle.dumps takes an object as a parameter and returns a string representation (dumps is\nshort for “dump string”):\n>>> import pickle\n>>> t = [1, 2, 3]\n>>> pickle.dumps(t)\nb'\\x80\\x03]q\\x00(K\\x01K\\x02K\\x03e.'\nThe format isn’t obvious to human readers; it is meant to be easy for pickle to interpret.\npickle.loads (“load string”) reconstitutes the object:\n>>> t1 = [1, 2, 3]\n>>> s = pickle.dumps(t1)\n>>> t2 = pickle.loads(s)\n>>> t2\n[1, 2, 3]\nAlthough the new object has the same value as the old, it is not (in general) the same object:\n>>> t1 == t2\nTrue\n>>> t1 is t2\nFalse\nIn other words, pickling and then unpickling has the same effect as copying the object.\nYou can use pickle to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a module called shelve.\n\n[B:thinkpython2:p040:001 | thinkpython2 2nd Edition (Copyright 2015) | page 40 | ch03]\n3.2 Math functions\nPython has a math module that provides most of the familiar mathematical functions. A\nmodule is a file that contains a collection of related functions.\nBefore we can use the functions in a module, we have to import it with an import statement:\n>>> import math\nThis statement creates a module object named math. If you display the module object, you\nget some information about it:\n>>> math\n<module 'math' (built-in)>\nThe module object contains the functions and variables defined in the module. To access\none of the functions, you have to specify the name of the module and the name of the\nfunction, separated by a dot (also known as a period). This format is called dot notation.\n>>> ratio = signal_power / noise_power\n>>> decibels = 10 * math.log10(ratio)\n>>> radians = 0.7\n>>> height = math.sin(radians)\nThe first example uses math.log10 to compute a signal-to-noise ratio in decibels (assuming\nthat signal_power and noise_power are defined). The math module also provides log,\nwhich computes logarithms base e.\n\n[B:thinkpython2:p217:000 | thinkpython2 2nd Edition (Copyright 2015) | page 217 | appendix_A]\n• You changed the name of the file, but you are still running the old name.\n• Something in your development environment is configured incorrectly.\n• If you are writing a module and using import, make sure you don’t give your module\nthe same name as one of the standard Python modules.\n• If you are using import to read a module, remember that you have to restart the\ninterpreter or use reload to read a modified file. If you import the module again, it\ndoesn’t do anything.\nIf you get stuck and you can’t figure out what is going on, one approach is to start again\nwith a new program like “Hello, World!”, and make sure you can get a known program to\nrun. Then gradually add the pieces of the original program to the new one.",
+    "context_ids": [
+      "B:thinkpython2:p164:000",
+      "B:thinkpython2:p040:001",
+      "B:thinkpython2:p217:000"
+    ],
+    "context_chars": 3148,
+    "context_tokens_est": 787,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1743,
+      "output": 91,
+      "thoughts": 519
+    },
+    "elapsed_s": 3.76,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.008105,
+    "run_at": "2026-11-16T04:16:58+00:00"
+  },
+  {
+    "query_id": "d14",
+    "split": "dev",
+    "answerable": true,
+    "question": "After pickling and then unpickling a list, is the result the same object as the original list?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "No, although the reconstituted list has the same value as the original list, it is not (in general) the same object [B:thinkpython2:p164:000]. Pickling and then unpickling has the same effect as copying the object [B:thinkpython2:p164:000].",
+    "citations": [
+      "B:thinkpython2:p164:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "pickle unpickle list object",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 223.0,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p164:000",
+            "page": 164,
+            "chapter_id": "ch14",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p145:000",
+            "page": 145,
+            "chapter_id": "ch12",
+            "score": 0.03105
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p141:000",
+            "page": 141,
+            "chapter_id": "ch12",
+            "score": 0.03058
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p164:000",
+          "B:thinkpython2:p145:000",
+          "B:thinkpython2:p141:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p164:000 | thinkpython2 2nd Edition (Copyright 2015) | page 164 | ch14]\n14.7 Pickling\nA limitation of dbm is that the keys and values have to be strings or bytes. If you try to use\nany other type, you get an error.\nThe pickle module can help. It translates almost any type of object into a string suitable\nfor storage in a database, and then translates strings back into objects.\npickle.dumps takes an object as a parameter and returns a string representation (dumps is\nshort for “dump string”):\n>>> import pickle\n>>> t = [1, 2, 3]\n>>> pickle.dumps(t)\nb'\\x80\\x03]q\\x00(K\\x01K\\x02K\\x03e.'\nThe format isn’t obvious to human readers; it is meant to be easy for pickle to interpret.\npickle.loads (“load string”) reconstitutes the object:\n>>> t1 = [1, 2, 3]\n>>> s = pickle.dumps(t1)\n>>> t2 = pickle.loads(s)\n>>> t2\n[1, 2, 3]\nAlthough the new object has the same value as the old, it is not (in general) the same object:\n>>> t1 == t2\nTrue\n>>> t1 is t2\nFalse\nIn other words, pickling and then unpickling has the same effect as copying the object.\nYou can use pickle to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a module called shelve.\n\n[B:thinkpython2:p145:000 | thinkpython2 2nd Edition (Copyright 2015) | page 145 | ch12]\ngather: An operation that collects multiple arguments into a tuple.\nscatter: An operation that makes a sequence behave like multiple arguments.\nzip object: The result of calling a built-in function zip; an object that iterates through a\nsequence of tuples.\niterator: An object that can iterate through a sequence, but which does not provide list\noperators and methods.\ndata structure: A collection of related values, often organized in lists, dictionaries, tuples,\netc.\nshape error: An error caused because a value has the wrong shape; that is, the wrong type\nor size.\n\n[B:thinkpython2:p141:000 | thinkpython2 2nd Edition (Copyright 2015) | page 141 | ch12]\n>>> for pair in zip(s, t):\n... print(pair)\n...\n('a', 0)\n('b', 1)\n('c', 2)\nA zip object is a kind of iterator, which is any object that iterates through a sequence.\nIterators are similar to lists in some ways, but unlike lists, you can’t use an index to select\nan element from an iterator.\nIf you want to use list operators and methods, you can use a zip object to make a list:\n>>> list(zip(s, t))\n[('a', 0), ('b', 1), ('c', 2)]\nThe result is a list of tuples; in this example, each tuple contains a character from the string\nand the corresponding element from the list.\nIf the sequences are not the same length, the result has the length of the shorter one.\n>>> list(zip('Anne', 'Elk'))\n[('A', 'E'), ('n', 'l'), ('n', 'k')]\nYou can use tuple assignment in a for loop to traverse a list of tuples:\nt = [('a', 0), ('b', 1), ('c', 2)]\nfor letter, number in t:",
+    "context_ids": [
+      "B:thinkpython2:p164:000",
+      "B:thinkpython2:p145:000",
+      "B:thinkpython2:p141:000"
+    ],
+    "context_chars": 2810,
+    "context_tokens_est": 703,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1762,
+      "output": 92,
+      "thoughts": 491
+    },
+    "elapsed_s": 3.95,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.00789,
+    "run_at": "2026-11-16T04:17:02+00:00"
+  },
+  {
+    "query_id": "d15",
+    "split": "dev",
+    "answerable": true,
+    "question": "Which function duplicates an object together with every object nested inside it?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The `copy` module provides `deepcopy`, which copies not only the object but also the objects it refers to, and the objects they refer to, and so on [B:thinkpython2:p174:001]. This operation is called a deep copy and results in completely separate objects [B:thinkpython2:p174:001].",
+    "citations": [
+      "B:thinkpython2:p174:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "deepcopy copy duplicate nested object",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 175.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p173:001",
+            "page": 173,
+            "chapter_id": "ch15",
+            "score": 0.03252
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p174:001",
+            "page": 174,
+            "chapter_id": "ch15",
+            "score": 0.03227
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p174:000",
+            "page": 174,
+            "chapter_id": "ch15",
+            "score": 0.0315
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p173:001",
+          "B:thinkpython2:p174:001",
+          "B:thinkpython2:p174:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p173:001 | thinkpython2 2nd Edition (Copyright 2015) | page 173 | ch15]\n15.6 Copying\nAliasing can make a program difficult to read because changes in one place might have\nunexpected effects in another place. It is hard to keep track of all the variables that might\nrefer to a given object.\nCopying an object is often an alternative to aliasing. The copy module contains a function\ncalled copy that can duplicate any object:\n>>> p1 = Point()\n>>> p1.x = 3.0\n>>> p1.y = 4.0\n>>> import copy\n>>> p2 = copy.copy(p1)\np1 and p2 contain the same data, but they are not the same Point.\n>>> print_point(p1)\n(3, 4)\n>>> print_point(p2)\n(3, 4)\n>>> p1 is p2\nFalse\n\n[B:thinkpython2:p174:001 | thinkpython2 2nd Edition (Copyright 2015) | page 174 | ch15]\nFor most applications, this is not what you want. In this example, invoking\ngrow_rectangle on one of the Rectangles would not affect the other, but invoking\nmove_rectangle on either would affect both! This behavior is confusing and error-prone.\nFortunately, the copy module provides a method named deepcopy that copies not only the\nobject but also the objects it refers to, and the objects they refer to, and so on. You will not\nbe surprised to learn that this operation is called a deep copy.\n>>> box3 = copy.deepcopy(box)\n>>> box3 is box\nFalse\n>>> box3.corner is box.corner\nFalse\nbox3 and box are completely separate objects.\nAs an exercise, write a version of move_rectangle that creates and returns a new Rectangle\ninstead of modifying the old one.\n\n[B:thinkpython2:p174:000 | thinkpython2 2nd Edition (Copyright 2015) | page 174 | ch15]\ny\n0.0x\n0.0\nwidth\nheight\n100.0\ncorner\n200.0\nbox 100.0\n200.0\nwidth\nheight\ncorner\nbox2\nFigure 15.3: Object diagram.\n>>> p1 == p2\nFalse\nThe is operator indicates that p1 and p2 are not the same object, which is what we expected. But you might have expected == to yield True because these points contain the\nsame data. In that case, you will be disappointed to learn that for instances, the default\nbehavior of the == operator is the same as the is operator; it checks object identity, not\nobject equivalence. That’s because for programmer-defined types, Python doesn’t know\nwhat should be considered equivalent. At least, not yet.\nIf you use copy.copy to duplicate a Rectangle, you will find that it copies the Rectangle\nobject but not the embedded Point.\n>>> box2 = copy.copy(box)\n>>> box2 is box\nFalse\n>>> box2.corner is box.corner\nTrue\nFigure 15.3 shows what the object diagram looks like. This operation is called a shallow\ncopy because it copies the object and any references it contains, but not the embedded\nobjects.",
+    "context_ids": [
+      "B:thinkpython2:p173:001",
+      "B:thinkpython2:p174:001",
+      "B:thinkpython2:p174:000"
+    ],
+    "context_chars": 2615,
+    "context_tokens_est": 654,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1646,
+      "output": 98,
+      "thoughts": 717
+    },
+    "elapsed_s": 4.71,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.009804,
+    "run_at": "2026-11-16T04:17:07+00:00"
+  },
+  {
+    "query_id": "d16",
+    "split": "dev",
+    "answerable": true,
+    "question": "According to the debugging appendix, what does it mean when an AttributeError says an object has NoneType?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": {
+      "chapter_id": "appendix_A"
+    },
+    "status": "answered",
+    "answer": "If an `AttributeError` indicates that an object has `NoneType`, it means that the object is `None`, so the problem is the object rather than the attribute name [B:thinkpython2:p219:001]. Possible causes include forgetting to return a value from a function or using the result of a list method, such as `sort`, that returns `None` [B:thinkpython2:p219:001].",
+    "citations": [
+      "B:thinkpython2:p219:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "AttributeError NoneType",
+        "filter": {
+          "chapter_id": "appendix_A"
+        },
+        "top_k": 3,
+        "retrieval_ms": 231.2,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p219:001",
+            "page": 219,
+            "chapter_id": "appendix_A",
+            "score": 0.03279
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p219:002",
+            "page": 219,
+            "chapter_id": "appendix_A",
+            "score": 0.01613
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p217:001",
+            "page": 217,
+            "chapter_id": "appendix_A",
+            "score": 0.01587
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p219:001",
+          "B:thinkpython2:p219:002",
+          "B:thinkpython2:p217:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p219:001 | thinkpython2 2nd Edition (Copyright 2015) | page 219 | appendix_A]\n• You are passing the wrong number of arguments to a function. For methods,\nlook at the method definition and check that the first parameter is self. Then\nlook at the method invocation; make sure you are invoking the method on an\nobject with the right type and providing the other arguments correctly.\nKeyError: You are trying to access an element of a dictionary using a key that the dictionary does not contain. If the keys are strings, remember that capitalization matters.\nAttributeError: You are trying to access an attribute or method that does not exist. Check\nthe spelling! You can use the built-in function vars to list the attributes that do exist.\nIf an AttributeError indicates that an object has NoneType, that means that it is None.\nSo the problem is not the attribute name, but the object.\nThe reason the object is none might be that you forgot to return a value from a function; if you get to the end of a function without hitting a return statement, it returns\nNone. Another common cause is using the result from a list method, like sort, that\nreturns None.\n\n[B:thinkpython2:p219:002 | thinkpython2 2nd Edition (Copyright 2015) | page 219 | appendix_A]\nIndexError: The index you are using to access a list, string, or tuple is greater than its\nlength minus one. Immediately before the site of the error, add a print statement to\ndisplay the value of the index and the length of the array. Is the array the right size?\nIs the index the right value?\nThe Python debugger (pdb) is useful for tracking down exceptions because it allows you to\nexamine the state of the program immediately before the error. You can read about pdb at\nhttps://docs.python.org/3/library/pdb.html.\n\n[B:thinkpython2:p217:001 | thinkpython2 2nd Edition (Copyright 2015) | page 217 | appendix_A]\nA.2 Runtime errors\nOnce your program is syntactically correct, Python can read it and at least start running it.\nWhat could possibly go wrong?",
+    "context_ids": [
+      "B:thinkpython2:p219:001",
+      "B:thinkpython2:p219:002",
+      "B:thinkpython2:p217:001"
+    ],
+    "context_chars": 2019,
+    "context_tokens_est": 505,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1420,
+      "output": 116,
+      "thoughts": 568
+    },
+    "elapsed_s": 4.25,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.008286,
+    "run_at": "2026-11-16T04:17:11+00:00"
+  },
+  {
+    "query_id": "du1",
+    "split": "dev",
+    "answerable": false,
+    "question": "How do you use the with statement to open a file so that Python closes it automatically?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "abstain",
+    "answer": "INSUFFICIENT_EVIDENCE: information about the with statement for opening files.",
+    "citations": [],
+    "invalid_citations": [],
+    "reason": "model_abstained",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "with statement open file",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 167.6,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p162:001",
+            "page": 162,
+            "chapter_id": "ch14",
+            "score": 0.03227
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p159:002",
+            "page": 159,
+            "chapter_id": "ch14",
+            "score": 0.03226
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p160:000",
+            "page": 160,
+            "chapter_id": "ch14",
+            "score": 0.03178
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p162:001",
+          "B:thinkpython2:p159:002",
+          "B:thinkpython2:p160:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "with statement",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 164.5,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p033:000",
+            "page": 33,
+            "chapter_id": "ch02",
+            "score": 0.032
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p063:001",
+            "page": 63,
+            "chapter_id": "ch05",
+            "score": 0.03062
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p053:000",
+            "page": 53,
+            "chapter_id": "ch04",
+            "score": 0.03055
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p033:000",
+          "B:thinkpython2:p063:001"
+        ],
+        "dropped_by_budget": [
+          "B:thinkpython2:p053:000"
+        ]
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "with",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 169.1,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p094:001",
+            "page": 94,
+            "chapter_id": "ch08",
+            "score": 0.02781
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p108:000",
+            "page": 108,
+            "chapter_id": "ch09",
+            "score": 0.02669
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p125:002",
+            "page": 125,
+            "chapter_id": "ch11",
+            "score": 0.02669
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [],
+        "dropped_by_budget": [
+          "B:thinkpython2:p094:001",
+          "B:thinkpython2:p108:000",
+          "B:thinkpython2:p125:002"
+        ]
+      },
+      {
+        "event": "search_limit",
+        "query": "with statement file close"
+      },
+      {
+        "event": "model_abstained"
+      }
+    ],
+    "context": "[B:thinkpython2:p162:001 | thinkpython2 2nd Edition (Copyright 2015) | page 162 | ch14]\n14.5 Catching exceptions\nA lot of things can go wrong when you try to read and write files. If you try to open a file\nthat doesn’t exist, you get an FileNotFoundError:\n>>> fin = open('bad_file')\nFileNotFoundError: [Errno 2] No such file or directory: 'bad_file'\nIf you don’t have permission to access a file:\n>>> fout = open('/etc/passwd', 'w')\nPermissionError: [Errno 13] Permission denied: '/etc/passwd'\nAnd if you try to open a directory for reading, you get\n>>> fin = open('/home')\nIsADirectoryError: [Errno 21] Is a directory: '/home'\nTo avoid these errors, you could use functions like os.path.exists and os.path.isfile,\nbut it would take a lot of time and code to check all the possibilities (if “Errno 21” is any\nindication, there are at least 21 things that can go wrong).\nIt is better to go ahead and try—and deal with problems if they happen—which is exactly\nwhat the try statement does. The syntax is similar to an if...else statement:\ntry:\nfin = open('bad_file')\nexcept:\nprint('Something went wrong.')\n\n[B:thinkpython2:p159:002 | thinkpython2 2nd Edition (Copyright 2015) | page 159 | ch14]\n14.2 Reading and writing\nA text file is a sequence of characters stored on a permanent medium like a hard drive,\nflash memory, or CD-ROM. We saw how to open and read a file in Section 9.1.\nTo write a file, you have to open it with mode 'w' as a second parameter:\n>>> fout = open('output.txt', 'w')\n\n[B:thinkpython2:p160:000 | thinkpython2 2nd Edition (Copyright 2015) | page 160 | ch14]\nIf the file already exists, opening it in write mode clears out the old data and starts fresh,\nso be careful! If the file doesn’t exist, a new one is created.\nopen returns a file object that provides methods for working with the file. The write\nmethod puts data into the file.\n>>> line1 = \"This here's the wattle,\\n\"\n>>> fout.write(line1)\n24\nThe return value is the number of characters that were written. The file object keeps track\nof where it is, so if you call write again, it adds the new data to the end of the file.\n>>> line2 = \"the emblem of our land.\\n\"\n>>> fout.write(line2)\n24\nWhen you are done writing, you should close the file.\n>>> fout.close()\nIf you don’t close the file, it gets closed for you when the program ends.\n\n[B:thinkpython2:p033:000 | thinkpython2 2nd Edition (Copyright 2015) | page 33 | ch02]\nThe first line is an assignment statement that gives a value to n. The second line is a print\nstatement that displays the value of n.\nWhen you type a statement, the interpreter executes it, which means that it does whatever\nthe statement says. In general, statements don’t have values.\n\n[B:thinkpython2:p063:001 | thinkpython2 2nd Edition (Copyright 2015) | page 63 | ch05]\n5.4 Conditional execution\nIn order to write useful programs, we almost always need the ability to check conditions\nand change the behavior of the program accordingly. Conditional statements give us this\nability. The simplest form is the if statement:\nif x > 0:\nprint('x is positive')\nThe boolean expression after if is called the condition. If it is true, the indented statement\nruns. If not, nothing happens.\nif statements have the same structure as function definitions: a header followed by an\nindented body. Statements like this are called compound statements.\nThere is no limit on the number of statements that can appear in the body, but there has to\nbe at least one. Occasionally, it is useful to have a body with no statements (usually as a\nplace keeper for code you haven’t written yet). In that case, you can use the pass statement,\nwhich does nothing.\nif x < 0:\npass # TODO: need to handle negative values!",
+    "context_ids": [
+      "B:thinkpython2:p162:001",
+      "B:thinkpython2:p159:002",
+      "B:thinkpython2:p160:000",
+      "B:thinkpython2:p033:000",
+      "B:thinkpython2:p063:001"
+    ],
+    "context_chars": 3692,
+    "context_tokens_est": 923,
+    "n_searches": 3,
+    "n_model_calls": 5,
+    "tokens": {
+      "input": 6702,
+      "output": 88,
+      "thoughts": 551
+    },
+    "elapsed_s": 6.75,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.015804,
+    "run_at": "2026-11-16T04:17:18+00:00"
+  },
+  {
+    "query_id": "du2",
+    "split": "dev",
+    "answerable": false,
+    "question": "How do you write a decorator that wraps a function, and what does the @ syntax do?",
+    "config": "m3_hybrid",
+    "method": "hybrid",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "abstain",
+    "answer": "INSUFFICIENT_EVIDENCE: details on how to write a decorator and what the @ syntax does are not contained in the passages.",
+    "citations": [],
+    "invalid_citations": [],
+    "reason": "model_abstained",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "decorator",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 206.2,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p042:000",
+            "page": 42,
+            "chapter_id": "ch03",
+            "score": 0.01639
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p190:000",
+            "page": 190,
+            "chapter_id": "ch17",
+            "score": 0.01613
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p202:000",
+            "page": 202,
+            "chapter_id": "ch18",
+            "score": 0.01587
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p042:000",
+          "B:thinkpython2:p190:000",
+          "B:thinkpython2:p202:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "decorators",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 204.9,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p042:000",
+            "page": 42,
+            "chapter_id": "ch03",
+            "score": 0.01639
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p202:000",
+            "page": 202,
+            "chapter_id": "ch18",
+            "score": 0.01613
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p190:000",
+            "page": 190,
+            "chapter_id": "ch17",
+            "score": 0.01587
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "hybrid",
+        "query": "wrapper",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 166.7,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p201:002",
+            "page": 201,
+            "chapter_id": "ch18",
+            "score": 0.01639
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p201:001",
+            "page": 201,
+            "chapter_id": "ch18",
+            "score": 0.01613
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p140:000",
+            "page": 140,
+            "chapter_id": "ch12",
+            "score": 0.01587
+          }
+        ],
+        "neighbors": [],
+        "added_to_context": [
+          "B:thinkpython2:p201:002"
+        ],
+        "dropped_by_budget": [
+          "B:thinkpython2:p201:001",
+          "B:thinkpython2:p140:000"
+        ]
+      },
+      {
+        "event": "search_limit",
+        "query": "memoize"
+      },
+      {
+        "event": "model_abstained"
+      }
+    ],
+    "context": "[B:thinkpython2:p042:000 | thinkpython2 2nd Edition (Copyright 2015) | page 42 | ch03]\n>>> def print_lyrics():\n... print(\"I'm a lumberjack, and I'm okay.\")\n... print(\"I sleep all night and I work all day.\")\n...\nTo end the function, you have to enter an empty line.\nDefining a function creates a function object, which has type function:\n>>> print(print_lyrics)\n<function print_lyrics at 0xb7e99e9c>\n>>> type(print_lyrics)\n<class 'function'>\nThe syntax for calling the new function is the same as for built-in functions:\n>>> print_lyrics()\nI'm a lumberjack, and I'm okay.\nI sleep all night and I work all day.\nOnce you have defined a function, you can use it inside another function. For example, to\nrepeat the previous refrain, we could write a function called repeat_lyrics:\ndef repeat_lyrics():\nprint_lyrics()\nprint_lyrics()\nAnd then call repeat_lyrics:\n>>> repeat_lyrics()\nI'm a lumberjack, and I'm okay.\nI sleep all night and I work all day.\nI'm a lumberjack, and I'm okay.\nI sleep all night and I work all day.\nBut that’s not really how the song goes.\n\n[B:thinkpython2:p190:000 | thinkpython2 2nd Edition (Copyright 2015) | page 190 | ch17]\nelse:\nd[c] = d[c]+1\nreturn d\nThis function also works for lists, tuples, and even dictionaries, as long as the elements of\ns are hashable, so they can be used as keys in d.\n>>> t = ['spam', 'egg', 'spam', 'spam', 'bacon', 'spam']\n>>> histogram(t)\n{'bacon': 1, 'egg': 1, 'spam': 4}\nFunctions that work with several types are called polymorphic. Polymorphism can facilitate code reuse. For example, the built-in function sum, which adds the elements of a\nsequence, works as long as the elements of the sequence support addition.\nSince Time objects provide an add method, they work with sum:\n>>> t1 = Time(7, 43)\n>>> t2 = Time(7, 41)\n>>> t3 = Time(7, 37)\n>>> total = sum([t1, t2, t3])\n>>> print(total)\n23:01:00\nIn general, if all of the operations inside a function work with a given type, the function\nworks with that type.\nThe best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.\n\n[B:thinkpython2:p202:000 | thinkpython2 2nd Edition (Copyright 2015) | page 202 | ch18]\ntry:\nself.suffix_map[self.prefix].append(word)\nexcept KeyError:\n# if there is no entry for this prefix, make one\nself.suffix_map[self.prefix] = [word]\nself.prefix = shift(self.prefix, word)\nTransforming a program like this—changing the design without changing the behavior—is\nanother example of refactoring (see Section 4.7).\nThis example suggests a development plan for designing objects and methods:\n1. Start by writing functions that read and write global variables (when necessary).\n2. Once you get the program working, look for associations between global variables\nand the functions that use them.\n3. Encapsulate related variables as attributes of an object.\n4. Transform the associated functions into methods of the new class.\nAs an exercise, download my Markov code from https://thinkpython.com/code/\nmarkov.py, and follow the steps described above to encapsulate the global variables\nas attributes of a new class called Markov. Solution: https://thinkpython.com/code/\nmarkov2.py.\n\n[B:thinkpython2:p201:002 | thinkpython2 2nd Edition (Copyright 2015) | page 201 | ch18]\nTo run multiple analyses, and keep them separate, we can encapsulate the state of each\nanalysis in an object. Here’s what that looks like:\nclass Markov:\ndef __init__(self):\nself.suffix_map = {}\nself.prefix = ()\nNext, we transform the functions into methods. For example, here’s process_word:\ndef process_word(self, word, order=2):\nif len(self.prefix) < order:\nself.prefix += (word,)\nreturn",
+    "context_ids": [
+      "B:thinkpython2:p042:000",
+      "B:thinkpython2:p190:000",
+      "B:thinkpython2:p202:000",
+      "B:thinkpython2:p201:002"
+    ],
+    "context_chars": 3682,
+    "context_tokens_est": 921,
+    "n_searches": 3,
+    "n_model_calls": 5,
+    "tokens": {
+      "input": 6908,
+      "output": 93,
+      "thoughts": 443
+    },
+    "elapsed_s": 6.3,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.015186,
+    "run_at": "2026-11-16T04:17:24+00:00"
+  }
+]

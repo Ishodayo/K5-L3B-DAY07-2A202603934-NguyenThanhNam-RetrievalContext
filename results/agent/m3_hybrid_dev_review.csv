@@ -1,0 +1,19 @@
+﻿query_id,answerable,status,citations,answer_grade,citation_support,abstention_correct,reason
+d01,1,answered,B:thinkpython2:p035:001,2,1,,Đủ 3 loại lỗi; p035:001 chứa nguyên câu 'Three kinds of errors can occur...'.
+d02,1,answered,B:thinkpython2:p035:001,2,1,,Đúng lý do 'exceptional (and bad)'; p035:001 có câu 'These errors are also called exceptions because...'.
+d03,1,answered,B:thinkpython2:p061:001;B:thinkpython2:p069:000,2,1;1,,Đúng: chia rồi làm tròn xuống thành số nguyên; p061:001 (mục 5.1) và p069:000 (Glossary 'toward negative infinity') đều hỗ trợ.
+d04,1,answered,B:thinkpython2:p061:001,2,1,,"Đúng: x % y == 0; p061:001 có câu 'if x % y is zero, then x is divisible by y'."
+d05,1,answered,B:thinkpython2:p067:000;B:thinkpython2:p217:003,2,1;0,,"Đúng nhờ p067:000. Citation p217:003 KHÔNG hỗ trợ: chỉ nói chương trình 'hanging' có thể do infinite recursion, không nói tới maximum recursion depth → 0."
+d06,1,answered,B:thinkpython2:p079:001,2,1,,Đúng 'leap of faith' + định nghĩa; p079:001.
+d07,1,answered,B:thinkpython2:p096:001,2,1,,Đúng: string immutable; p096:001 (mục 8.5) có TypeError.
+d08,1,answered,B:thinkpython2:p121:001,2,1,,Đủ 2 cách (sorted; copy rồi sort); p121:001 chứa cả hai.
+d09,1,answered,B:thinkpython2:p130:001;B:thinkpython2:p134:001,2,1;1,,"Đúng: list không làm key vì mutable/unhashable. p130:001 ('if the keys are mutable, like lists, bad things happen') và p134:001 (Glossary hashable) hỗ trợ, dù không phải chunk gold p130:000."
+d10,1,answered,B:thinkpython2:p133:000,2,1,,"Đúng điều kiện: chỉ khi gán lại biến; p133:000 có 'if you want to reassign the variable, you have to declare it'."
+d11,1,answered,B:thinkpython2:p133:002,2,1,,Đúng định nghĩa + ví dụ trung bình; p133:002.
+d12,1,answered,B:thinkpython2:p155:002;B:thinkpython2:p156:002,2,1;1,,Đúng; p155:002 (mục Rubberducking) + p156:002 (Glossary 'rubber duck debugging') mỗi chunk hỗ trợ một phần.
+d13,1,answered,B:thinkpython2:p164:000,2,1,,Đúng chức năng pickle; p164:000 chứa cả 2 ý (kể cả 'same effect as copying').
+d14,1,answered,B:thinkpython2:p164:000,2,1,,"Đúng: cùng giá trị, khác object, giống copy; p164:000."
+d15,1,answered,B:thinkpython2:p174:001,2,1,,Đúng; p174:001 chứa cả 'called a deep copy' và 'completely separate objects'.
+d16,1,answered,B:thinkpython2:p219:001,2,1,,"Đúng: object là None, lỗi ở object chứ không ở tên thuộc tính; p219:001."
+du1,0,abstain,,,,1,"Từ chối 'INSUFFICIENT_EVIDENCE', không thêm khẳng định; đã search 3 lần."
+du2,0,abstain,,,,1,"Từ chối, không thêm khẳng định; đã search 3 lần."

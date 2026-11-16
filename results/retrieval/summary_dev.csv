@@ -1,4 +1,10 @@
-config,split,method,desc,top_k,budget_chars,N,errors,hit1,hit1_rate,hit3,hit3_rate,hitk,context_evidence,context_evidence_rate,mrr10,filter_questions,median_ms,mean_context_chars,mean_context_tokens_est,mean_context_chunks,setup_seconds,cost_usd,run_at
-dense,dev,dense,"M1 dense pgvector (bge-base-en-v1.5, cosine, exact), top-3",3,4000,16,0,12/16,0.75,13/16,0.812,13/16,13/16,0.812,0.798,3,199.0,2712,678,3,22.12,0.0,2026-11-16T03:44:15+00:00
-bm25,dev,bm25,"M2 BM25Okapi k1=1.5 b=0.75, word tokens, top-3",3,4000,16,0,9/16,0.562,13/16,0.812,13/16,13/16,0.812,0.673,3,4.2,2827,707,3,0.1,0.0,2026-11-16T03:44:15+00:00
-hybrid,dev,hybrid,"M3 RRF(dense top-20, bm25 top-20), k=60, top-3",3,4000,16,0,10/16,0.625,13/16,0.812,13/16,13/16,0.812,0.719,3,201.4,2837,710,3,22.22,0.0,2026-11-16T03:44:18+00:00
+config,split,method,tokenizer,neighbors,desc,top_k,budget_chars,N,errors,hit1,hit1_rate,hit3,hit3_rate,hitk,context_evidence,context_evidence_rate,mrr10,filter_questions,median_ms,mean_context_chars,mean_context_tokens_est,mean_context_chunks,setup_seconds,cost_usd,run_at
+dense,dev,dense,-,-,"M1 dense pgvector (bge-base-en-v1.5, cosine, exact), top-3",3,4000,16,0,12/16,0.75,13/16,0.812,13/16,13/16,0.812,0.798,3,290.2,2712,678,3,26.8,0.0,2026-11-16T04:07:45+00:00
+bm25,dev,bm25,word,-,"M2 BM25Okapi k1=1.5 b=0.75, word tokens, top-3",3,4000,16,0,9/16,0.562,13/16,0.812,13/16,13/16,0.812,0.673,3,4.7,2827,707,3,0.12,0.0,2026-11-16T04:07:45+00:00
+hybrid,dev,hybrid,word,-,"M3 RRF(dense top-20, bm25 top-20), k=60, top-3",3,4000,16,0,10/16,0.625,13/16,0.812,13/16,13/16,0.812,0.719,3,217.8,2837,710,3,26.92,0.0,2026-11-16T04:07:49+00:00
+dense_8k,dev,dense,-,-,"C2 control: dense top-3, budget 8000 (no neighbours)",3,8000,16,0,12/16,0.75,13/16,0.812,13/16,13/16,0.812,0.798,3,259.4,2712,678,3,26.8,0.0,2026-11-16T04:07:53+00:00
+dense_nb,dev,dense,-,next,"C1/H1: dense top-3 + next chunk of the same section, budget 8000",3,8000,16,0,12/16,0.75,13/16,0.812,13/16,14/16,0.875,0.798,3,204.6,3401,850,4,26.8,0.0,2026-11-16T04:07:56+00:00
+dense_nb2,dev,dense,-,both,"H1 variant: dense top-3 + previous and next chunk of the same section, budget 10000",3,10000,16,0,12/16,0.75,13/16,0.812,13/16,15/16,0.938,0.798,3,208.8,4318,1080,5,26.8,0.0,2026-11-16T04:08:00+00:00
+bm25_code,dev,bm25,code,-,"H2: BM25 with code-aware tokens (keeps //, %, ==)",3,4000,16,0,9/16,0.562,13/16,0.812,13/16,13/16,0.812,0.667,3,4.0,2822,706,3,0.41,0.0,2026-11-16T04:08:36+00:00
+hybrid_code,dev,hybrid,code,-,"H2: RRF(dense, bm25_code)",3,4000,16,0,10/16,0.625,13/16,0.812,13/16,13/16,0.812,0.731,3,230.6,2887,722,3,22.64,0.0,2026-11-16T04:09:03+00:00
+hybrid_nb,dev,hybrid,word,next,H1 on M3: hybrid top-3 + next same-section chunk,3,8000,16,0,10/16,0.625,13/16,0.812,13/16,14/16,0.875,0.719,3,204.1,3533,884,4,26.92,0.0,2026-11-16T04:08:07+00:00

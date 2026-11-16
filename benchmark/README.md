@@ -83,7 +83,7 @@ Test chạy **một lần** cho baseline và cấu hình đã chọn; kết qu�
 - Cùng một cuốn sách, cùng tác giả → dev/test không độc lập hoàn toàn về chủ đề (vd `hashable` ở ch11 dev và appendix_B test).
 - Câu hỏi do người làm viết sau khi đọc trang gold → có thể trùng từ với evidence, có lợi cho lexical retrieval. Câu `paraphrase` được viết lại để giảm trùng từ.
 - Test nhỏ (6 + 2 câu): mỗi câu có đáp án = 16,7 điểm % → chỉ minh họa, không kết luận tổng quát.
-- Người chấm là học viên (tác giả benchmark) → có thể thiên lệch; ghi lý do cho từng nhãn.
+- Nhãn agent: AI gợi ý, học viên duyệt và xác nhận — đọc lại câu trả lời, đối chiếu với text chunk (`results/agent/{config}_{split}_review.md` / `.csv`).
 
 ## Nhật ký
 

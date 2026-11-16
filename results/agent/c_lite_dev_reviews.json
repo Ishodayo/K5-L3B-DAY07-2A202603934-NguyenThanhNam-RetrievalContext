@@ -1,0 +1,144 @@
+[
+  {
+    "query_id": "d01",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đủ 3 loại lỗi; p035:001 chứa nguyên câu 'Three kinds of errors can occur...'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d02",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng lý do 'exceptional (and bad)'; p035:001 có câu 'These errors are also called exceptions because...'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d03",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng; p061:001 đủ.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d04",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: x % y == 0; p061:001 có câu 'if x % y is zero, then x is divisible by y'.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d05",
+    "citation_support": [
+      false
+    ],
+    "reason": "Nội dung đúng nhưng chỉ trích p066:002 — chunk này nói đệ quy vô hạn 'goes on making recursive calls forever, and the program never terminates' và KHÔNG nói về maximum recursion depth → citation không hỗ trợ (ý đúng nằm ở p067:000, có trong context nhưng không được trích) → 1.",
+    "answer_grade": 1
+  },
+  {
+    "query_id": "d06",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng 'leap of faith' + định nghĩa; p079:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d07",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: string immutable; p096:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d08",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng một trong hai cách đáp án chấp nhận (copy t[:] rồi sort); p121:001 hỗ trợ. Không nêu sorted. Agent viết '[p121:000 | p121:001]' nên chỉ p121:001 được ghi nhận.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d09",
+    "citation_support": [
+      true,
+      true
+    ],
+    "reason": "Đúng; p130:000 (chunk gold: 'cannot be keys' + traceback) và p134:001 (Glossary hashable) hỗ trợ.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d10",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng điều kiện; p133:000.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d11",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng định nghĩa + ví dụ trung bình; p133:002.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d12",
+    "citation_support": [
+      true,
+      true
+    ],
+    "reason": "Đúng; p155:002 + p156:002.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d13",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng chức năng pickle; p164:000.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d14",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng: cùng giá trị nhưng không cùng object; p164:000.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d15",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng deepcopy; p174:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "d16",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng; p219:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "du1",
+    "citation_support": [],
+    "reason": "Từ chối, không thêm khẳng định.",
+    "abstention_correct": true
+  },
+  {
+    "query_id": "du2",
+    "citation_support": [],
+    "reason": "Từ chối, không thêm khẳng định.",
+    "abstention_correct": true
+  }
+]

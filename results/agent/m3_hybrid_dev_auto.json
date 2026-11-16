@@ -1,0 +1,53 @@
+{
+  "config": "m3_hybrid",
+  "desc": "Same agent, search_book on M3 hybrid RRF(dense20, bm25 20)",
+  "split": "dev",
+  "model": "gemini-3.5-flash",
+  "covered": "18/18",
+  "cases": 18,
+  "errors": 0,
+  "status": {
+    "answered": 16,
+    "abstain": 2
+  },
+  "tool_use": "18/18",
+  "searches_distribution": {
+    "1": 15,
+    "2": 1,
+    "3": 2
+  },
+  "mean_searches": 1.28,
+  "answered_with_citation": "16/18",
+  "abstain_on_unanswerable": "2/2",
+  "abstain_on_answerable": "0/16",
+  "invalid_citations_dropped": 0,
+  "context_evidence": "15/16",
+  "context_evidence_rate": 0.938,
+  "context_evidence_miss": [
+    "d09"
+  ],
+  "mean_context_chars": 2827,
+  "budget_drops": 8,
+  "tokens_total": {
+    "input": 41086,
+    "output": 1727,
+    "thoughts": 9572
+  },
+  "mean_tokens_per_case": {
+    "input": 2283,
+    "output": 96,
+    "thoughts": 532
+  },
+  "mean_elapsed_s": 5.03,
+  "cost_usd_total": 0.163321,
+  "cost_usd_per_case": 0.009073,
+  "price_per_m_in_out": {
+    "gemini-3.5-flash": [
+      1.5,
+      9.0
+    ]
+  },
+  "cost_note": "paid tier; thinking billed as output",
+  "note": "automatic counts only; grounded answer / citation support / abstention need manual reviews",
+  "updated_at": "2026-11-16T04:17:24+00:00"
+}

@@ -1,0 +1,19 @@
+﻿query_id,answerable,status,citations,answer_grade,citation_support,abstention_correct,reason
+d01,1,answered,B:thinkpython2:p035:001,2,1,,Đủ 3 loại lỗi; p035:001 chứa nguyên câu 'Three kinds of errors can occur...'.
+d02,1,answered,B:thinkpython2:p035:001,2,1,,Đúng lý do 'exceptional (and bad)'; p035:001 có câu 'These errors are also called exceptions because...'.
+d03,1,answered,B:thinkpython2:p061:001;B:thinkpython2:p069:000,2,1;1,,Đúng: chia rồi làm tròn xuống thành số nguyên; p061:001 (mục 5.1) và p069:000 (Glossary 'toward negative infinity') đều hỗ trợ.
+d04,1,answered,B:thinkpython2:p061:001,2,1,,"Đúng: x % y == 0; p061:001 có câu 'if x % y is zero, then x is divisible by y'."
+d05,1,answered,B:thinkpython2:p067:000,2,1,,"Đúng: không chạy mãi, báo lỗi maximum recursion depth; p067:000. Thiếu chi tiết ~1000 frame nhưng không bắt buộc."
+d06,1,answered,B:thinkpython2:p079:001,2,1,,Đúng 'leap of faith' + định nghĩa; p079:001.
+d07,1,answered,B:thinkpython2:p096:001,2,1,,Đúng: string immutable; p096:001 (mục 8.5) có TypeError.
+d08,1,answered,B:thinkpython2:p121:001,2,1,,Đủ 2 cách (sorted; copy rồi sort); p121:001 chứa cả hai.
+d09,1,answered,B:thinkpython2:p130:001;B:thinkpython2:p134:001;B:thinkpython2:p142:001,2,1;1;1,,Đúng; p130:001 + p134:001 hỗ trợ; p142:001 ('use tuples as keys ... because you can't use lists') cũng hỗ trợ ý list không làm key được.
+d10,1,answered,B:thinkpython2:p133:000,2,1,,"Đúng điều kiện: chỉ khi gán lại biến; p133:000 có 'if you want to reassign the variable, you have to declare it'."
+d11,1,answered,B:thinkpython2:p133:002,2,1,,Đúng định nghĩa + ví dụ trung bình; p133:002.
+d12,1,answered,B:thinkpython2:p156:002;B:thinkpython2:p155:002,2,1;1,,Đúng; p156:002 (Glossary rubber duck debugging) + p155:002 (mục Rubberducking).
+d13,1,answered,B:thinkpython2:p164:000,2,1,,Đúng chức năng pickle; p164:000 chứa cả 2 ý (kể cả 'same effect as copying').
+d14,1,answered,B:thinkpython2:p164:000,2,1,,"Đúng: cùng giá trị, khác object, giống copy; p164:000."
+d15,1,answered,B:thinkpython2:p174:001;B:thinkpython2:p175:001,2,1;1,,Đúng; p174:001 + p175:001 (Glossary deep copy) hỗ trợ.
+d16,1,answered,B:thinkpython2:p219:001,2,1,,"Đúng; p219:001 có cả 'object is None', 'forgot to return a value' và 'list method, like sort, that returns None'."
+du1,0,abstain,,,,1,"Từ chối, không thêm khẳng định."
+du2,0,abstain,,,,1,"Từ chối, không thêm khẳng định."

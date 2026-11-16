@@ -1,0 +1,51 @@
+{
+  "config": "c1_neighbors",
+  "desc": "H1: baseline + previous/next chunk of the same section for every hit, budget 10000",
+  "split": "dev",
+  "model": "gemini-3.5-flash",
+  "covered": "18/18",
+  "cases": 18,
+  "errors": 0,
+  "status": {
+    "answered": 16,
+    "abstain": 2
+  },
+  "tool_use": "18/18",
+  "searches_distribution": {
+    "1": 14,
+    "2": 2,
+    "3": 2
+  },
+  "mean_searches": 1.33,
+  "answered_with_citation": "16/18",
+  "abstain_on_unanswerable": "2/2",
+  "abstain_on_answerable": "0/16",
+  "invalid_citations_dropped": 0,
+  "context_evidence": "16/16",
+  "context_evidence_rate": 1.0,
+  "context_evidence_miss": [],
+  "mean_context_chars": 4843,
+  "budget_drops": 3,
+  "tokens_total": {
+    "input": 59088,
+    "output": 1725,
+    "thoughts": 9596
+  },
+  "mean_tokens_per_case": {
+    "input": 3283,
+    "output": 96,
+    "thoughts": 533
+  },
+  "mean_elapsed_s": 5.83,
+  "cost_usd_total": 0.190524,
+  "cost_usd_per_case": 0.010585,
+  "price_per_m_in_out": {
+    "gemini-3.5-flash": [
+      1.5,
+      9.0
+    ]
+  },
+  "cost_note": "paid tier; thinking billed as output",
+  "note": "automatic counts only; grounded answer / citation support / abstention need manual reviews",
+  "updated_at": "2026-11-16T04:19:40+00:00"
+}

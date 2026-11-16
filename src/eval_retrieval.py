@@ -30,9 +30,32 @@ CONFIGS: dict[str, dict[str, Any]] = {
              "desc": "M2 BM25Okapi k1=1.5 b=0.75, word tokens, top-3"},
     "hybrid": {"method": "hybrid", "top_k": 3, "budget_chars": 4000, "candidates": 20, "rrf_k": 60,
                "desc": "M3 RRF(dense top-20, bm25 top-20), k=60, top-3"},
+    # --- GĐ5 improvement experiments (dev only) ---
+    "dense_8k": {"method": "dense", "top_k": 3, "budget_chars": 8000,
+                 "desc": "C2 control: dense top-3, budget 8000 (no neighbours)"},
+    "dense_nb": {"method": "dense", "top_k": 3, "budget_chars": 8000, "neighbors": "next",
+                 "desc": "C1/H1: dense top-3 + next chunk of the same section, budget 8000"},
+    "dense_nb2": {"method": "dense", "top_k": 3, "budget_chars": 10000, "neighbors": "both",
+                  "desc": "H1 variant: dense top-3 + previous and next chunk of the same section, budget 10000"},
+    "bm25_code": {"method": "bm25", "tokenizer": "code", "top_k": 3, "budget_chars": 4000,
+                  "desc": "H2: BM25 with code-aware tokens (keeps //, %, ==)"},
+    "hybrid_code": {"method": "hybrid", "tokenizer": "code", "top_k": 3, "budget_chars": 4000,
+                    "candidates": 20, "rrf_k": 60, "desc": "H2: RRF(dense, bm25_code)"},
+    "hybrid_nb": {"method": "hybrid", "top_k": 3, "budget_chars": 8000, "neighbors": "next",
+                  "candidates": 20, "rrf_k": 60, "desc": "H1 on M3: hybrid top-3 + next same-section chunk"},
 }
 
 OUT_DIR = config.RESULTS_DIR / "retrieval"
+_NEIGHBORS = None
+
+
+def neighbor_index():
+    global _NEIGHBORS
+    if _NEIGHBORS is None:
+        from .context import NeighborIndex
+        from .retrievers import load_chunks
+        _NEIGHBORS = NeighborIndex(load_chunks())
+    return _NEIGHBORS
 
 
 class RetrieverFactory:
@@ -91,7 +114,10 @@ def evaluate_question(q: dict[str, Any], retriever, cfg: dict[str, Any]) -> dict
                       "rr": 0.0, "context_hit": False, "context_chars": 0, "context_tokens_est": 0})
         return trace
     elapsed_ms = (time.perf_counter() - started) * 1000
-    context, ids = pack_context(results[:top_k], cfg["budget_chars"])
+    candidates = results[:top_k]
+    if cfg.get("neighbors"):
+        candidates = neighbor_index().expand(candidates, cfg["neighbors"])
+    context, ids = pack_context(candidates, cfg["budget_chars"])
     labelled = []
     for c in results:
         labelled.append({"rank": c["rank"], "id": c["id"], "page": c["page"],
@@ -106,7 +132,8 @@ def evaluate_question(q: dict[str, Any], retriever, cfg: dict[str, Any]) -> dict
         "hit1": first_hit == 1, "hit3": first_hit is not None and first_hit <= 3,
         "hitk": first_hit is not None and first_hit <= top_k,
         "rr": 1.0 / first_hit if first_hit else 0.0,
-        "context_hit": any(r["hit"] and r["id"] in ids for r in labelled),
+        "context_hit": any(evidence_hit(c, q["gold"]) for c in candidates if c["id"] in ids),
+        "neighbors_added": [c["id"] for c in candidates if c.get("neighbor_of") and c["id"] in ids],
         "gold_pages": sorted({g["page"] for g in q["gold"]}),  # for error analysis only (after retrieval)
     })
     return trace
@@ -122,6 +149,8 @@ def summarize(name: str, cfg: dict[str, Any], traces: list[dict[str, Any]], setu
 
     return {
         "config": name, "split": traces[0]["split"] if traces else None, "method": cfg["method"],
+        "tokenizer": cfg.get("tokenizer", "word") if cfg["method"] != "dense" else "-",
+        "neighbors": cfg.get("neighbors", "-"),
         "desc": cfg.get("desc", ""), "top_k": cfg["top_k"], "budget_chars": cfg["budget_chars"],
         "N": n, "errors": n - len(ok),
         "hit1": frac("hit1"), "hit1_rate": round(sum(t["hit1"] for t in traces) / n, 3),

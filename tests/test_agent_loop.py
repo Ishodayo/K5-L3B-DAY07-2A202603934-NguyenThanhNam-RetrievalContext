@@ -62,6 +62,10 @@ class ParseAnswerTest(unittest.TestCase):
         self.assertEqual(parse_answer("No citation here.", [CID_A])["reason"], "invalid_or_missing_citations")
         self.assertEqual(parse_answer("INSUFFICIENT_EVIDENCE: not in book", [CID_A])["status"], "abstain")
 
+    def test_several_ids_in_one_bracket(self):
+        p = parse_answer(f"Lists are unhashable [{CID_A}, {CID_B}].", [CID_A, CID_B])
+        self.assertEqual(p["citations"], [CID_A, CID_B])
+
 
 class RunAgentTest(unittest.TestCase):
     def test_search_then_answer_with_citation(self):
