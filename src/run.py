@@ -61,6 +61,41 @@ def cmd_retrieval_eval(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_ask(args: argparse.Namespace) -> int:
+    from .eval_agent import AGENT_CONFIGS, ask
+
+    cfg = AGENT_CONFIGS[args.config]
+    filters = {"chapter_id": args.chapter} if args.chapter else None
+    t = ask(args.question, cfg, filters)
+    for e in t["events"]:
+        if e["event"] == "search":
+            print(f"search[{e['method']}] {e['query']!r} -> "
+                  + ", ".join(f"p{r['page']}" for r in e["results"]) + f" | +ctx {len(e['added_to_context'])}")
+        else:
+            print(e["event"], e.get("error", ""))
+    print(f"\nstatus={t['status']} reason={t['reason']} model={t['model']} searches={t['n_searches']} "
+          f"model_calls={t['n_model_calls']} tokens={t['tokens']} time={t['elapsed_s']}s cost=${t['cost_usd']}")
+    print(f"citations={t['citations']} invalid={t['invalid_citations']}")
+    print("\n" + (t["answer"] or t.get("error", "")))
+    if args.save:
+        out = config.RESULTS_DIR / "agent" / "ask_examples.json"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        rows = json.loads(out.read_text(encoding="utf-8")) if out.exists() else []
+        rows.append(t)
+        out.write_text(json.dumps(rows, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print(f"\nsaved -> {out.relative_to(config.ROOT)}")
+    return 0 if t["status"] != "error" else 1
+
+
+def cmd_agent_eval(args: argparse.Namespace) -> int:
+    from .eval_agent import run
+
+    ids = [i.strip() for i in args.ids.split(",")] if args.ids else None
+    summary = run(args.split, args.config, ids=ids, confirm_test=args.confirm_test)
+    print(json.dumps(summary, ensure_ascii=False, indent=2))
+    return 0
+
+
 def cmd_build_benchmark(args: argparse.Namespace) -> int:
     from . import benchmark as bm
 
@@ -121,6 +156,20 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--configs", default="dense,bm25,hybrid", help="comma-separated names from CONFIGS")
     p.add_argument("--confirm-test", action="store_true", help="required for test (after choosing on dev)")
     p.set_defaults(func=cmd_retrieval_eval)
+
+    p = sub.add_parser("ask", help="ask the agent one question (real Gemini + retriever)")
+    p.add_argument("question")
+    p.add_argument("--config", default="baseline")
+    p.add_argument("--chapter", help="user-provided chapter_id scope, e.g. ch14")
+    p.add_argument("--save", action="store_true", help="append the trace to results/agent/ask_examples.json")
+    p.set_defaults(func=cmd_ask)
+
+    p = sub.add_parser("agent-eval", help="run the agent on a split, save traces + review template")
+    p.add_argument("--split", choices=["dev", "test"], required=True)
+    p.add_argument("--config", default="baseline")
+    p.add_argument("--ids", help="comma-separated subset of case ids")
+    p.add_argument("--confirm-test", action="store_true")
+    p.set_defaults(func=cmd_agent_eval)
 
     p = sub.add_parser("build-benchmark", help="Day 6 questions + unanswerable -> data/day7 JSON")
     p.set_defaults(func=cmd_build_benchmark)

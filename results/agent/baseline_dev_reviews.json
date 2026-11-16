@@ -1,0 +1,39 @@
+[
+  {
+    "query_id": "d03",
+    "answerable": true,
+    "status": "answered",
+    "citations": [
+      "B:thinkpython2:p061:001",
+      "B:thinkpython2:p069:000"
+    ],
+    "citation_support": [
+      null,
+      null
+    ],
+    "reason": "",
+    "answer_grade": null
+  },
+  {
+    "query_id": "d13",
+    "answerable": true,
+    "status": "answered",
+    "citations": [
+      "B:thinkpython2:p164:000"
+    ],
+    "citation_support": [
+      null
+    ],
+    "reason": "",
+    "answer_grade": null
+  },
+  {
+    "query_id": "du1",
+    "answerable": false,
+    "status": "abstain",
+    "citations": [],
+    "citation_support": [],
+    "reason": "",
+    "abstention_correct": null
+  }
+]

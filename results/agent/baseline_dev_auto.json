@@ -1,0 +1,45 @@
+{
+  "config": "baseline",
+  "desc": "Gemini GEMINI_MODEL + search_book on M1 dense (pgvector Day 6), top-3 per search, context budget 4000 chars, max 3 searches",
+  "split": "dev",
+  "model": "gemini-3.5-flash",
+  "covered": "3/18",
+  "cases": 3,
+  "errors": 0,
+  "status": {
+    "answered": 2,
+    "abstain": 1
+  },
+  "tool_use": "3/3",
+  "searches_distribution": {
+    "1": 2,
+    "3": 1
+  },
+  "mean_searches": 1.67,
+  "answered_with_citation": "2/3",
+  "abstain_on_unanswerable": "1/1",
+  "abstain_on_answerable": "0/2",
+  "invalid_citations_dropped": 0,
+  "tokens_total": {
+    "input": 10284,
+    "output": 272,
+    "thoughts": 1301
+  },
+  "mean_tokens_per_case": {
+    "input": 3428,
+    "output": 91,
+    "thoughts": 434
+  },
+  "mean_elapsed_s": 63.4,
+  "cost_usd_total": 0.029584,
+  "note": "automatic counts only; grounded answer / citation support / abstention need manual reviews",
+  "updated_at": "2026-11-16T03:58:53+00:00",
+  "cost_usd_per_case": 0.009861,
+  "price_per_m_in_out": {
+    "gemini-3.5-flash": [
+      1.5,
+      9.0
+    ]
+  },
+  "cost_note": "paid tier; thinking billed as output"
+}

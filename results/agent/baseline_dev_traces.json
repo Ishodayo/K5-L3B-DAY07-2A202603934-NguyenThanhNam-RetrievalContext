@@ -1,0 +1,326 @@
+[
+  {
+    "query_id": "d03",
+    "split": "dev",
+    "answerable": true,
+    "question": "What does the // operator do in Python?",
+    "config": "baseline",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The `//` operator is the floor division operator, which divides two numbers and rounds down (toward negative infinity) to an integer [B:thinkpython2:p061:001] [B:thinkpython2:p069:000].",
+    "citations": [
+      "B:thinkpython2:p061:001",
+      "B:thinkpython2:p069:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "// operator floor division",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 793.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p061:001",
+            "page": 61,
+            "chapter_id": "ch05",
+            "score": 0.6839
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p069:000",
+            "page": 69,
+            "chapter_id": "ch05",
+            "score": 0.66757
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p062:000",
+            "page": 62,
+            "chapter_id": "ch05",
+            "score": 0.6438
+          }
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p061:001",
+          "B:thinkpython2:p069:000",
+          "B:thinkpython2:p062:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p061:001 | thinkpython2 2nd Edition (Copyright 2015) | page 61 | ch05]\n5.1 Floor division and modulus\nThe floor division operator, //, divides two numbers and rounds down to an integer. For\nexample, suppose the run time of a movie is 105 minutes. You might want to know how\nlong that is in hours. Conventional division returns a floating-point number:\n>>> minutes = 105\n>>> minutes / 60\n1.75\nBut we don’t normally write hours with decimal points. Floor division returns the integer\nnumber of hours, rounding down:\n>>> minutes = 105\n>>> hours = minutes // 60\n>>> hours\n1\nTo get the remainder, you could subtract off one hour in minutes:\n>>> remainder = minutes - hours * 60\n>>> remainder\n45\nAn alternative is to use the modulus operator, %, which divides two numbers and returns\nthe remainder.\n>>> remainder = minutes % 60\n>>> remainder\n45\nThe modulus operator is more useful than it seems. For example, you can check whether\none number is divisible by another—if x % y is zero, then x is divisible by y.\n\n[B:thinkpython2:p069:000 | thinkpython2 2nd Edition (Copyright 2015) | page 69 | ch05]\n5.13 Glossary\nfloor division: An operator, denoted //, that divides two numbers and rounds down (toward negative infinity) to an integer.\nmodulus operator: An operator, denoted with a percent sign (%), that works on integers\nand returns the remainder when one number is divided by another.\nboolean expression: An expression whose value is either True or False.\nrelational operator: One of the operators that compares its operands: ==, !=, >, <, >=, and\n<=.\nlogical operator: One of the operators that combines boolean expressions: and, or, and\nnot.\nconditional statement: A statement that controls the flow of execution depending on some\ncondition.\ncondition: The boolean expression in a conditional statement that determines which\nbranch runs.\ncompound statement: A statement that consists of a header and a body. The header ends\nwith a colon (:). The body is indented relative to the header.\nbranch: One of the alternative sequences of statements in a conditional statement.\nchained conditional: A conditional statement with a series of alternative branches.\nnested conditional: A conditional statement that appears in one of the branches of another\nconditional statement.\n\n[B:thinkpython2:p062:000 | thinkpython2 2nd Edition (Copyright 2015) | page 62 | ch05]\nAlso, you can extract the right-most digit or digits from a number. For example, x % 10\nyields the right-most digit of x (in base 10). Similarly x % 100 yields the last two digits.\nIf you are using Python 2, division works differently. The division operator, /, performs\nfloor division if both operands are integers, and floating-point division if either operand is\na float.",
+    "context_ids": [
+      "B:thinkpython2:p061:001",
+      "B:thinkpython2:p069:000",
+      "B:thinkpython2:p062:000"
+    ],
+    "context_chars": 2745,
+    "context_tokens_est": 687,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1598,
+      "output": 78,
+      "thoughts": 427
+    },
+    "elapsed_s": 69.39,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.006942,
+    "run_at": "2026-11-16T03:56:52+00:00"
+  },
+  {
+    "query_id": "d13",
+    "split": "dev",
+    "answerable": true,
+    "question": "What does the pickle module do?",
+    "config": "baseline",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The `pickle` module translates almost any type of object into a string suitable for storage in a database, and then translates strings back into objects [B:thinkpython2:p164:000]. Pickling and then unpickling has the same effect as copying the object, which allows non-strings to be stored in a database [B:thinkpython2:p164:000].",
+    "citations": [
+      "B:thinkpython2:p164:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "pickle module",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 196.5,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p164:000",
+            "page": 164,
+            "chapter_id": "ch14",
+            "score": 0.65581
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p217:000",
+            "page": 217,
+            "chapter_id": "appendix_A",
+            "score": 0.51795
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p040:001",
+            "page": 40,
+            "chapter_id": "ch03",
+            "score": 0.51346
+          }
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p164:000",
+          "B:thinkpython2:p217:000",
+          "B:thinkpython2:p040:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p164:000 | thinkpython2 2nd Edition (Copyright 2015) | page 164 | ch14]\n14.7 Pickling\nA limitation of dbm is that the keys and values have to be strings or bytes. If you try to use\nany other type, you get an error.\nThe pickle module can help. It translates almost any type of object into a string suitable\nfor storage in a database, and then translates strings back into objects.\npickle.dumps takes an object as a parameter and returns a string representation (dumps is\nshort for “dump string”):\n>>> import pickle\n>>> t = [1, 2, 3]\n>>> pickle.dumps(t)\nb'\\x80\\x03]q\\x00(K\\x01K\\x02K\\x03e.'\nThe format isn’t obvious to human readers; it is meant to be easy for pickle to interpret.\npickle.loads (“load string”) reconstitutes the object:\n>>> t1 = [1, 2, 3]\n>>> s = pickle.dumps(t1)\n>>> t2 = pickle.loads(s)\n>>> t2\n[1, 2, 3]\nAlthough the new object has the same value as the old, it is not (in general) the same object:\n>>> t1 == t2\nTrue\n>>> t1 is t2\nFalse\nIn other words, pickling and then unpickling has the same effect as copying the object.\nYou can use pickle to store non-strings in a database. In fact, this combination is so common that it has been encapsulated in a module called shelve.\n\n[B:thinkpython2:p217:000 | thinkpython2 2nd Edition (Copyright 2015) | page 217 | appendix_A]\n• You changed the name of the file, but you are still running the old name.\n• Something in your development environment is configured incorrectly.\n• If you are writing a module and using import, make sure you don’t give your module\nthe same name as one of the standard Python modules.\n• If you are using import to read a module, remember that you have to restart the\ninterpreter or use reload to read a modified file. If you import the module again, it\ndoesn’t do anything.\nIf you get stuck and you can’t figure out what is going on, one approach is to start again\nwith a new program like “Hello, World!”, and make sure you can get a known program to\nrun. Then gradually add the pieces of the original program to the new one.\n\n[B:thinkpython2:p040:001 | thinkpython2 2nd Edition (Copyright 2015) | page 40 | ch03]\n3.2 Math functions\nPython has a math module that provides most of the familiar mathematical functions. A\nmodule is a file that contains a collection of related functions.\nBefore we can use the functions in a module, we have to import it with an import statement:\n>>> import math\nThis statement creates a module object named math. If you display the module object, you\nget some information about it:\n>>> math\n<module 'math' (built-in)>\nThe module object contains the functions and variables defined in the module. To access\none of the functions, you have to specify the name of the module and the name of the\nfunction, separated by a dot (also known as a period). This format is called dot notation.\n>>> ratio = signal_power / noise_power\n>>> decibels = 10 * math.log10(ratio)\n>>> radians = 0.7\n>>> height = math.sin(radians)\nThe first example uses math.log10 to compute a signal-to-noise ratio in decibels (assuming\nthat signal_power and noise_power are defined). The math module also provides log,\nwhich computes logarithms base e.",
+    "context_ids": [
+      "B:thinkpython2:p164:000",
+      "B:thinkpython2:p217:000",
+      "B:thinkpython2:p040:001"
+    ],
+    "context_chars": 3148,
+    "context_tokens_est": 787,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1747,
+      "output": 104,
+      "thoughts": 436
+    },
+    "elapsed_s": 26.89,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.007481,
+    "run_at": "2026-11-16T03:57:19+00:00"
+  },
+  {
+    "query_id": "du1",
+    "split": "dev",
+    "answerable": false,
+    "question": "How do you use the with statement to open a file so that Python closes it automatically?",
+    "config": "baseline",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 4000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "abstain",
+    "answer": "INSUFFICIENT_EVIDENCE: information on how to use the with statement to open a file.",
+    "citations": [],
+    "invalid_citations": [],
+    "reason": "model_abstained",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "with statement open file",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 266.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p160:000",
+            "page": 160,
+            "chapter_id": "ch14",
+            "score": 0.65699
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p159:002",
+            "page": 159,
+            "chapter_id": "ch14",
+            "score": 0.62188
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p162:001",
+            "page": 162,
+            "chapter_id": "ch14",
+            "score": 0.61944
+          }
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p160:000",
+          "B:thinkpython2:p159:002",
+          "B:thinkpython2:p162:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "with statement",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 299.3,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p032:002",
+            "page": 32,
+            "chapter_id": "ch02",
+            "score": 0.63309
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p063:001",
+            "page": 63,
+            "chapter_id": "ch05",
+            "score": 0.59367
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p033:000",
+            "page": 33,
+            "chapter_id": "ch02",
+            "score": 0.59299
+          }
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p032:002",
+          "B:thinkpython2:p063:001"
+        ],
+        "dropped_by_budget": [
+          "B:thinkpython2:p033:000"
+        ]
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "with open",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 237.5,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p160:000",
+            "page": 160,
+            "chapter_id": "ch14",
+            "score": 0.58751
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p107:000",
+            "page": 107,
+            "chapter_id": "ch09",
+            "score": 0.58524
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p098:000",
+            "page": 98,
+            "chapter_id": "ch08",
+            "score": 0.574
+          }
+        ],
+        "added_to_context": [],
+        "dropped_by_budget": [
+          "B:thinkpython2:p107:000",
+          "B:thinkpython2:p098:000"
+        ]
+      },
+      {
+        "event": "search_limit",
+        "query": "with"
+      },
+      {
+        "event": "model_abstained"
+      }
+    ],
+    "context": "[B:thinkpython2:p160:000 | thinkpython2 2nd Edition (Copyright 2015) | page 160 | ch14]\nIf the file already exists, opening it in write mode clears out the old data and starts fresh,\nso be careful! If the file doesn’t exist, a new one is created.\nopen returns a file object that provides methods for working with the file. The write\nmethod puts data into the file.\n>>> line1 = \"This here's the wattle,\\n\"\n>>> fout.write(line1)\n24\nThe return value is the number of characters that were written. The file object keeps track\nof where it is, so if you call write again, it adds the new data to the end of the file.\n>>> line2 = \"the emblem of our land.\\n\"\n>>> fout.write(line2)\n24\nWhen you are done writing, you should close the file.\n>>> fout.close()\nIf you don’t close the file, it gets closed for you when the program ends.\n\n[B:thinkpython2:p159:002 | thinkpython2 2nd Edition (Copyright 2015) | page 159 | ch14]\n14.2 Reading and writing\nA text file is a sequence of characters stored on a permanent medium like a hard drive,\nflash memory, or CD-ROM. We saw how to open and read a file in Section 9.1.\nTo write a file, you have to open it with mode 'w' as a second parameter:\n>>> fout = open('output.txt', 'w')\n\n[B:thinkpython2:p162:001 | thinkpython2 2nd Edition (Copyright 2015) | page 162 | ch14]\n14.5 Catching exceptions\nA lot of things can go wrong when you try to read and write files. If you try to open a file\nthat doesn’t exist, you get an FileNotFoundError:\n>>> fin = open('bad_file')\nFileNotFoundError: [Errno 2] No such file or directory: 'bad_file'\nIf you don’t have permission to access a file:\n>>> fout = open('/etc/passwd', 'w')\nPermissionError: [Errno 13] Permission denied: '/etc/passwd'\nAnd if you try to open a directory for reading, you get\n>>> fin = open('/home')\nIsADirectoryError: [Errno 21] Is a directory: '/home'\nTo avoid these errors, you could use functions like os.path.exists and os.path.isfile,\nbut it would take a lot of time and code to check all the possibilities (if “Errno 21” is any\nindication, there are at least 21 things that can go wrong).\nIt is better to go ahead and try—and deal with problems if they happen—which is exactly\nwhat the try statement does. The syntax is similar to an if...else statement:\ntry:\nfin = open('bad_file')\nexcept:\nprint('Something went wrong.')\n\n[B:thinkpython2:p032:002 | thinkpython2 2nd Edition (Copyright 2015) | page 32 | ch02]\n2.3 Expressions and statements\nAn expression is a combination of values, variables, and operators. A value all by itself is\nconsidered an expression, and so is a variable, so the following are all legal expressions:\n>>> 42\n42\n>>> n\n17\n>>> n + 25\n42\nWhen you type an expression at the prompt, the interpreter evaluates it, which means that\nit finds the value of the expression. In this example, n has the value 17 and n + 25 has the\nvalue 42.\nA statement is a unit of code that has an effect, like creating a variable or displaying a\nvalue.\n>>> n = 17\n>>> print(n)\n\n[B:thinkpython2:p063:001 | thinkpython2 2nd Edition (Copyright 2015) | page 63 | ch05]\n5.4 Conditional execution\nIn order to write useful programs, we almost always need the ability to check conditions\nand change the behavior of the program accordingly. Conditional statements give us this\nability. The simplest form is the if statement:\nif x > 0:\nprint('x is positive')\nThe boolean expression after if is called the condition. If it is true, the indented statement\nruns. If not, nothing happens.\nif statements have the same structure as function definitions: a header followed by an\nindented body. Statements like this are called compound statements.\nThere is no limit on the number of statements that can appear in the body, but there has to\nbe at least one. Occasionally, it is useful to have a body with no statements (usually as a\nplace keeper for code you haven’t written yet). In that case, you can use the pass statement,\nwhich does nothing.\nif x < 0:\npass # TODO: need to handle negative values!",
+    "context_ids": [
+      "B:thinkpython2:p160:000",
+      "B:thinkpython2:p159:002",
+      "B:thinkpython2:p162:001",
+      "B:thinkpython2:p032:002",
+      "B:thinkpython2:p063:001"
+    ],
+    "context_chars": 3970,
+    "context_tokens_est": 993,
+    "n_searches": 3,
+    "n_model_calls": 5,
+    "tokens": {
+      "input": 6939,
+      "output": 90,
+      "thoughts": 438
+    },
+    "elapsed_s": 93.91,
+    "model": "gemini-3.5-flash",
+    "cost_usd": 0.015161,
+    "run_at": "2026-11-16T03:58:53+00:00"
+  }
+]
