@@ -1,0 +1,51 @@
+{
+  "config": "c_lite",
+  "desc": "Trade-off: C1 settings with GEMINI_MODEL_LITE (gemini-3.5-flash-lite, $0.30/$2.50 per 1M)",
+  "split": "test",
+  "model": "gemini-3.5-flash-lite",
+  "covered": "8/8",
+  "cases": 8,
+  "errors": 0,
+  "status": {
+    "answered": 5,
+    "abstain": 3
+  },
+  "tool_use": "8/8",
+  "searches_distribution": {
+    "1": 5,
+    "2": 2,
+    "3": 1
+  },
+  "mean_searches": 1.5,
+  "answered_with_citation": "5/8",
+  "abstain_on_unanswerable": "2/2",
+  "abstain_on_answerable": "1/6",
+  "invalid_citations_dropped": 0,
+  "context_evidence": "6/6",
+  "context_evidence_rate": 1.0,
+  "context_evidence_miss": [],
+  "mean_context_chars": 6258,
+  "budget_drops": 3,
+  "tokens_total": {
+    "input": 29874,
+    "output": 531,
+    "thoughts": 0
+  },
+  "mean_tokens_per_case": {
+    "input": 3734,
+    "output": 66,
+    "thoughts": 0
+  },
+  "mean_elapsed_s": 7.34,
+  "cost_usd_total": 0.01029,
+  "cost_usd_per_case": 0.001286,
+  "price_per_m_in_out": {
+    "gemini-3.5-flash-lite": [
+      0.3,
+      2.5
+    ]
+  },
+  "cost_note": "paid tier; thinking billed as output",
+  "note": "automatic counts only; grounded answer / citation support / abstention need manual reviews",
+  "updated_at": "2026-11-16T04:58:55+00:00"
+}

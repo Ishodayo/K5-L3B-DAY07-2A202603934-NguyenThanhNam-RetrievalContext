@@ -1,0 +1,7 @@
+# Day 7 runtime dependencies (Python 3.11+, tested on 3.15.2). Full pip freeze: results/requirements-lock.txt
+psycopg[binary]==3.3.9
+sentence-transformers==6.3.0
+torch==2.15.0
+rank-bm25==0.2.2
+google-genai==3.3.0
+python-dotenv==1.2.4

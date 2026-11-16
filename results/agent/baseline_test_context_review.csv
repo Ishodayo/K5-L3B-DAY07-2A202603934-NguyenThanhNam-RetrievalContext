@@ -1,0 +1,7 @@
+﻿query_id,context_ids,context_grade,reason
+t01,B:thinkpython2:p139:001;B:thinkpython2:p179:001;B:thinkpython2:p160:001,2,p139:001 đủ evidence + nguồn.
+t02,B:thinkpython2:p178:001;B:thinkpython2:p179:002;B:thinkpython2:p180:000;B:thinkpython2:p182:000;B:thinkpython2:p047:003,2,p178:001 + p182:000 đủ.
+t03,B:thinkpython2:p189:000;B:thinkpython2:p154:001;B:thinkpython2:p061:000,2,p189:000 đủ.
+t04,B:thinkpython2:p202:001;B:thinkpython2:p194:001;B:thinkpython2:p193:000,2,p194:001 + p202:001 đủ.
+t05,B:thinkpython2:p231:000;B:thinkpython2:p228:000;B:thinkpython2:p230:001,0,Không có p229:000: bị bỏ do budget 4000 đầy (dropped_by_budget ở search 3).
+t06,B:thinkpython2:p207:001;B:thinkpython2:p213:001;B:thinkpython2:p206:001,2,p207:001 đủ.

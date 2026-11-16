@@ -1,0 +1,922 @@
+[
+  {
+    "query_id": "t01",
+    "split": "test",
+    "answerable": true,
+    "question": "What does the built-in function divmod return?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "The built-in function `divmod` takes two arguments and returns a tuple containing two values: the quotient and the remainder [B:thinkpython2:p139:001].",
+    "citations": [
+      "B:thinkpython2:p139:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "divmod",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 467.0,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p139:001",
+            "page": 139,
+            "chapter_id": "ch12",
+            "score": 0.51484
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p179:001",
+            "page": 179,
+            "chapter_id": "ch16",
+            "score": 0.50698
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p160:001",
+            "page": 160,
+            "chapter_id": "ch14",
+            "score": 0.48254
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p179:002",
+          "B:thinkpython2:p160:002"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p139:001",
+          "B:thinkpython2:p179:001",
+          "B:thinkpython2:p179:002",
+          "B:thinkpython2:p160:001",
+          "B:thinkpython2:p160:002"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p139:001 | thinkpython2 2nd Edition (Copyright 2015) | page 139 | ch12]\n12.3 Tuples as return values\nStrictly speaking, a function can only return one value, but if the value is a tuple, the effect\nis the same as returning multiple values. For example, if you want to divide two integers\nand compute the quotient and remainder, it is inefficient to compute x//y and then x%y. It\nis better to compute them both at the same time.\nThe built-in function divmod takes two arguments and returns a tuple of two values, the\nquotient and remainder. You can store the result as a tuple:\n>>> t = divmod(7, 3)\n>>> t\n(2, 1)\nOr use tuple assignment to store the elements separately:\n>>> quot, rem = divmod(7, 3)\n>>> quot\n2\n>>> rem\n1\nHere is an example of a function that returns a tuple:\ndef min_max(t):\nreturn min(t), max(t)\nmax and min are built-in functions that find the largest and smallest elements of a sequence.\nmin_max computes both and returns a tuple of two values.\n\n[B:thinkpython2:p179:001 | thinkpython2 2nd Edition (Copyright 2015) | page 179 | ch16]\n16.3 Modifiers\nSometimes it is useful for a function to modify the objects it gets as parameters. In that case,\nthe changes are visible to the caller. Functions that work this way are called modifiers.\nincrement, which adds a given number of seconds to a Time object, can be written naturally\nas a modifier. Here is a rough draft:\ndef increment(time, seconds):\ntime.second += seconds\nif time.second >= 60:\ntime.second -= 60\ntime.minute += 1\nif time.minute >= 60:\ntime.minute -= 60\ntime.hour += 1\nThe first line performs the basic operation; the remainder deals with the special cases we\nsaw before.\nIs this function correct? What happens if seconds is much greater than sixty?\nIn that case, it is not enough to carry once; we have to keep doing it until time.second is\nless than sixty. One solution is to replace the if statements with while statements. That\nwould make the function correct, but not very efficient. As an exercise, write a correct\nversion of increment that doesn’t contain any loops.\n\n[B:thinkpython2:p179:002 | thinkpython2 2nd Edition (Copyright 2015) | page 179 | ch16]\nAnything that can be done with modifiers can also be done with pure functions. In fact,\nsome programming languages only allow pure functions. There is some evidence that\nprograms that use pure functions are faster to develop and less error-prone than programs\nthat use modifiers. But modifiers are convenient at times, and functional programs tend to\nbe less efficient.\n\n[B:thinkpython2:p160:001 | thinkpython2 2nd Edition (Copyright 2015) | page 160 | ch14]\n14.3 Format operator\nThe argument of write has to be a string, so if we want to put other values in a file, we\nhave to convert them to strings. The easiest way to do that is with str:\n>>> x = 52\n>>> fout.write(str(x))\nAn alternative is to use the format operator, %. When applied to integers, % is the modulus\noperator. But when the first operand is a string, % is the format operator.\nThe first operand is the format string, which contains one or more format sequences,\nwhich specify how the second operand is formatted. The result is a string.\nFor example, the format sequence '%d' means that the second operand should be formatted as a decimal integer:\n>>> camels = 42\n>>> '%d' % camels\n'42'\nThe result is the string '42', which is not to be confused with the integer value 42.\nA format sequence can appear anywhere in the string, so you can embed a value in a\nsentence:\n\n[B:thinkpython2:p160:002 | thinkpython2 2nd Edition (Copyright 2015) | page 160 | ch14]\n>>> 'I have spotted %d camels.' % camels\n'I have spotted 42 camels.'\nIf there is more than one format sequence in the string, the second argument has to be a\ntuple. Each format sequence is matched with an element of the tuple, in order.\nThe following example uses '%d' to format an integer, '%g' to format a floating-point number, and '%s' to format a string:\n>>> 'In %d years I have spotted %g %s.' % (3, 0.1, 'camels')\n'In 3 years I have spotted 0.1 camels.'",
+    "context_ids": [
+      "B:thinkpython2:p139:001",
+      "B:thinkpython2:p179:001",
+      "B:thinkpython2:p179:002",
+      "B:thinkpython2:p160:001",
+      "B:thinkpython2:p160:002"
+    ],
+    "context_chars": 4040,
+    "context_tokens_est": 1010,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1974,
+      "output": 58,
+      "thoughts": 0
+    },
+    "elapsed_s": 17.87,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.000737,
+    "run_at": "2026-11-16T04:58:13+00:00"
+  },
+  {
+    "query_id": "t02",
+    "split": "test",
+    "answerable": true,
+    "question": "What do you call a function that builds and returns a new object without changing any of the objects it was given?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "This is called a pure function [B:thinkpython2:p178:001].",
+    "citations": [
+      "B:thinkpython2:p178:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "builds and returns a new object without changing",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 265.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p174:001",
+            "page": 174,
+            "chapter_id": "ch15",
+            "score": 0.61644
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p120:000",
+            "page": 120,
+            "chapter_id": "ch10",
+            "score": 0.61091
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p173:000",
+            "page": 173,
+            "chapter_id": "ch15",
+            "score": 0.6098
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p174:000",
+          "B:thinkpython2:p119:001"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p174:000",
+          "B:thinkpython2:p174:001",
+          "B:thinkpython2:p119:001",
+          "B:thinkpython2:p120:000",
+          "B:thinkpython2:p173:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "pure function modifier",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 244.9,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p179:002",
+            "page": 179,
+            "chapter_id": "ch16",
+            "score": 0.78123
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p180:000",
+            "page": 180,
+            "chapter_id": "ch16",
+            "score": 0.6762
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p178:001",
+            "page": 178,
+            "chapter_id": "ch16",
+            "score": 0.6738
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p179:001",
+          "B:thinkpython2:p180:000",
+          "B:thinkpython2:p178:002"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p179:001",
+          "B:thinkpython2:p179:002",
+          "B:thinkpython2:p180:000",
+          "B:thinkpython2:p178:001",
+          "B:thinkpython2:p178:002"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p174:000 | thinkpython2 2nd Edition (Copyright 2015) | page 174 | ch15]\ny\n0.0x\n0.0\nwidth\nheight\n100.0\ncorner\n200.0\nbox 100.0\n200.0\nwidth\nheight\ncorner\nbox2\nFigure 15.3: Object diagram.\n>>> p1 == p2\nFalse\nThe is operator indicates that p1 and p2 are not the same object, which is what we expected. But you might have expected == to yield True because these points contain the\nsame data. In that case, you will be disappointed to learn that for instances, the default\nbehavior of the == operator is the same as the is operator; it checks object identity, not\nobject equivalence. That’s because for programmer-defined types, Python doesn’t know\nwhat should be considered equivalent. At least, not yet.\nIf you use copy.copy to duplicate a Rectangle, you will find that it copies the Rectangle\nobject but not the embedded Point.\n>>> box2 = copy.copy(box)\n>>> box2 is box\nFalse\n>>> box2.corner is box.corner\nTrue\nFigure 15.3 shows what the object diagram looks like. This operation is called a shallow\ncopy because it copies the object and any references it contains, but not the embedded\nobjects.\n\n[B:thinkpython2:p174:001 | thinkpython2 2nd Edition (Copyright 2015) | page 174 | ch15]\nFor most applications, this is not what you want. In this example, invoking\ngrow_rectangle on one of the Rectangles would not affect the other, but invoking\nmove_rectangle on either would affect both! This behavior is confusing and error-prone.\nFortunately, the copy module provides a method named deepcopy that copies not only the\nobject but also the objects it refers to, and the objects they refer to, and so on. You will not\nbe surprised to learn that this operation is called a deep copy.\n>>> box3 = copy.deepcopy(box)\n>>> box3 is box\nFalse\n>>> box3.corner is box.corner\nFalse\nbox3 and box are completely separate objects.\nAs an exercise, write a version of move_rectangle that creates and returns a new Rectangle\ninstead of modifying the old one.\n\n[B:thinkpython2:p119:001 | thinkpython2 2nd Edition (Copyright 2015) | page 119 | ch10]\n10.12 List arguments\nWhen you pass a list to a function, the function gets a reference to the list. If the function\nmodifies the list, the caller sees the change. For example, delete_head removes the first\nelement from a list:\ndef delete_head(t):\ndel t[0]\nHere’s how it is used:\n>>> letters = ['a', 'b', 'c']\n>>> delete_head(letters)\n>>> letters\n['b', 'c']\nThe parameter t and the variable letters are aliases for the same object. The stack diagram\nlooks like Figure 10.5.\nSince the list is shared by two frames, I drew it between them.\nIt is important to distinguish between operations that modify lists and operations that create new lists. For example, the append method modifies a list, but the + operator creates a\nnew list.\nHere’s an example using append:\n>>> t1 = [1, 2]\n>>> t2 = t1.append(3)\n>>> t1\n[1, 2, 3]\n>>> t2\nNone\n\n[B:thinkpython2:p120:000 | thinkpython2 2nd Edition (Copyright 2015) | page 120 | ch10]\nThe return value from append is None.\nHere’s an example using the + operator:\n>>> t3 = t1 + [4]\n>>> t1\n[1, 2, 3]\n>>> t3\n[1, 2, 3, 4]\nThe result of the operator is a new list, and the original list is unchanged.\nThis difference is important when you write functions that are supposed to modify lists.\nFor example, this function does not delete the head of a list:\ndef bad_delete_head(t):\nt = t[1:] # WRONG!\nThe slice operator creates a new list and the assignment makes t refer to it, but that doesn’t\naffect the caller.\n>>> t4 = [1, 2, 3]\n>>> bad_delete_head(t4)\n>>> t4\n[1, 2, 3]\nAt the beginning of bad_delete_head, t and t4 refer to the same list. At the end, t refers\nto a new list, but t4 still refers to the original, unmodified list.\nAn alternative is to write a function that creates and returns a new list. For example, tail\nreturns all but the first element of a list:\ndef tail(t):\nreturn t[1:]\nThis function leaves the original list unmodified. Here’s how it is used:\n>>> letters = ['a', 'b', 'c']\n>>> rest = tail(letters)\n>>> rest\n['b', 'c']\n\n[B:thinkpython2:p173:000 | thinkpython2 2nd Edition (Copyright 2015) | page 173 | ch15]\n15.5 Objects are mutable\nYou can change the state of an object by making an assignment to one of its attributes. For\nexample, to change the size of a rectangle without changing its position, you can modify\nthe values of width and height:\nbox.width = box.width + 50\nbox.height = box.height + 100\nYou can also write functions that modify objects. For example, grow_rectangle takes a\nRectangle object and two numbers, dwidth and dheight, and adds the numbers to the\nwidth and height of the rectangle:\ndef grow_rectangle(rect, dwidth, dheight):\nrect.width += dwidth\nrect.height += dheight\nHere is an example that demonstrates the effect:\n>>> box.width, box.height\n(150.0, 300.0)\n>>> grow_rectangle(box, 50, 100)\n>>> box.width, box.height\n(200.0, 400.0)\nInside the function, rect is an alias for box, so when the function modifies rect, box\nchanges.\nAs an exercise, write a function named move_rectangle that takes a Rectangle and two\nnumbers named dx and dy. It should change the location of the rectangle by adding dx to\nthe x coordinate of corner and adding dy to the y coordinate of corner.\n\n[B:thinkpython2:p179:001 | thinkpython2 2nd Edition (Copyright 2015) | page 179 | ch16]\n16.3 Modifiers\nSometimes it is useful for a function to modify the objects it gets as parameters. In that case,\nthe changes are visible to the caller. Functions that work this way are called modifiers.\nincrement, which adds a given number of seconds to a Time object, can be written naturally\nas a modifier. Here is a rough draft:\ndef increment(time, seconds):\ntime.second += seconds\nif time.second >= 60:\ntime.second -= 60\ntime.minute += 1\nif time.minute >= 60:\ntime.minute -= 60\ntime.hour += 1\nThe first line performs the basic operation; the remainder deals with the special cases we\nsaw before.\nIs this function correct? What happens if seconds is much greater than sixty?\nIn that case, it is not enough to carry once; we have to keep doing it until time.second is\nless than sixty. One solution is to replace the if statements with while statements. That\nwould make the function correct, but not very efficient. As an exercise, write a correct\nversion of increment that doesn’t contain any loops.\n\n[B:thinkpython2:p179:002 | thinkpython2 2nd Edition (Copyright 2015) | page 179 | ch16]\nAnything that can be done with modifiers can also be done with pure functions. In fact,\nsome programming languages only allow pure functions. There is some evidence that\nprograms that use pure functions are faster to develop and less error-prone than programs\nthat use modifiers. But modifiers are convenient at times, and functional programs tend to\nbe less efficient.\n\n[B:thinkpython2:p180:000 | thinkpython2 2nd Edition (Copyright 2015) | page 180 | ch16]\nIn general, I recommend that you write pure functions whenever it is reasonable and resort\nto modifiers only if there is a compelling advantage. This approach might be called a\nfunctional programming style.\nAs an exercise, write a “pure” version of increment that creates and returns a new Time\nobject rather than modifying the parameter.\n\n[B:thinkpython2:p178:001 | thinkpython2 2nd Edition (Copyright 2015) | page 178 | ch16]\n16.2 Pure functions\nIn the next few sections, we’ll write two functions that add time values. They demonstrate\ntwo kinds of functions: pure functions and modifiers. They also demonstrate a development plan I’ll call prototype and patch, which is a way of tackling a complex problem by\nstarting with a simple prototype and incrementally dealing with the complications.\nHere is a simple prototype of add_time:\ndef add_time(t1, t2):\nsum = Time()\nsum.hour = t1.hour + t2.hour\nsum.minute = t1.minute + t2.minute\nsum.second = t1.second + t2.second\nreturn sum\nThe function creates a new Time object, initializes its attributes, and returns a reference to\nthe new object. This is called a pure function because it does not modify any of the objects\npassed to it as arguments and it has no effect, like displaying a value or getting user input,\nother than returning a value.\nTo test this function, I’ll create two Time objects: start contains the start time of a movie,\nlike Monty Python and the Holy Grail, and duration contains the run time of the movie,\nwhich is one hour 35 minutes.\nadd_time figures out when the movie will be done.\n\n[B:thinkpython2:p178:002 | thinkpython2 2nd Edition (Copyright 2015) | page 178 | ch16]\n>>> start = Time()\n>>> start.hour = 9\n>>> start.minute = 45\n>>> start.second = 0\n>>> duration = Time()\n>>> duration.hour = 1\n>>> duration.minute = 35\n>>> duration.second = 0\n>>> done = add_time(start, duration)\n>>> print_time(done)\n10:80:00\nThe result, 10:80:00 might not be what you were hoping for. The problem is that this\nfunction does not deal with cases where the number of seconds or minutes adds up to\nmore than sixty. When that happens, we have to “carry” the extra seconds into the minute\ncolumn or the extra minutes into the hour column.\nHere’s an improved version:",
+    "context_ids": [
+      "B:thinkpython2:p174:000",
+      "B:thinkpython2:p174:001",
+      "B:thinkpython2:p119:001",
+      "B:thinkpython2:p120:000",
+      "B:thinkpython2:p173:000",
+      "B:thinkpython2:p179:001",
+      "B:thinkpython2:p179:002",
+      "B:thinkpython2:p180:000",
+      "B:thinkpython2:p178:001",
+      "B:thinkpython2:p178:002"
+    ],
+    "context_chars": 9048,
+    "context_tokens_est": 2262,
+    "n_searches": 2,
+    "n_model_calls": 3,
+    "tokens": {
+      "input": 5512,
+      "output": 64,
+      "thoughts": 0
+    },
+    "elapsed_s": 3.9,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.001814,
+    "run_at": "2026-11-16T04:58:17+00:00"
+  },
+  {
+    "query_id": "t03",
+    "split": "test",
+    "answerable": true,
+    "question": "When an integer is the left operand and a Time object is on the right of +, which special method makes the addition work?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "When an integer is the left operand and a Time object is on the right, the special method `__radd__` makes the addition work [B:thinkpython2:p189:000].",
+    "citations": [
+      "B:thinkpython2:p189:000"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "Time object right of plus integer left operand special method",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 254.3,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p189:000",
+            "page": 189,
+            "chapter_id": "ch17",
+            "score": 0.78788
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p188:000",
+            "page": 188,
+            "chapter_id": "ch17",
+            "score": 0.75166
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p188:001",
+            "page": 188,
+            "chapter_id": "ch17",
+            "score": 0.7143
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p188:001",
+          "B:thinkpython2:p189:001",
+          "B:thinkpython2:p187:002"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p188:001",
+          "B:thinkpython2:p189:000",
+          "B:thinkpython2:p189:001",
+          "B:thinkpython2:p187:002",
+          "B:thinkpython2:p188:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p188:001 | thinkpython2 2nd Edition (Copyright 2015) | page 188 | ch17]\n17.8 Type-based dispatch\nIn the previous section we added two Time objects, but you also might want to add an\ninteger to a Time object. The following is a version of __add__ that checks the type of\nother and invokes either add_time or increment:\n# inside class Time:\ndef __add__(self, other):\nif isinstance(other, Time):\nreturn self.add_time(other)\nelse:\nreturn self.increment(other)\ndef add_time(self, other):\nseconds = self.time_to_int() + other.time_to_int()\nreturn int_to_time(seconds)\ndef increment(self, seconds):\nseconds += self.time_to_int()\nreturn int_to_time(seconds)\nThe built-in function isinstance takes a value and a class object, and returns True if the\nvalue is an instance of the class.\nIf other is a Time object, __add__ invokes add_time. Otherwise it assumes that the parameter is a number and invokes increment. This operation is called a type-based dispatch\nbecause it dispatches the computation to different methods based on the type of the arguments.\nHere are examples that use the + operator with different types:\n\n[B:thinkpython2:p189:000 | thinkpython2 2nd Edition (Copyright 2015) | page 189 | ch17]\n>>> start = Time(9, 45)\n>>> duration = Time(1, 35)\n>>> print(start + duration)\n11:20:00\n>>> print(start + 1337)\n10:07:17\nUnfortunately, this implementation of addition is not commutative. If the integer is the\nfirst operand, you get\n>>> print(1337 + start)\nTypeError: unsupported operand type(s) for +: 'int' and 'instance'\nThe problem is, instead of asking the Time object to add an integer, Python is asking an\ninteger to add a Time object, and it doesn’t know how. But there is a clever solution for this\nproblem: the special method __radd__, which stands for “right-side add”. This method\nis invoked when a Time object appears on the right side of the + operator. Here’s the\ndefinition:\n# inside class Time:\ndef __radd__(self, other):\nreturn self.__add__(other)\nAnd here’s how it’s used:\n>>> print(1337 + start)\n10:07:17\nAs an exercise, write an add method for Points that works with either a Point object or a\ntuple:\n• If the second operand is a Point, the method should return a new Point whose x\ncoordinate is the sum of the x coordinates of the operands, and likewise for the y\ncoordinates.\n\n[B:thinkpython2:p189:001 | thinkpython2 2nd Edition (Copyright 2015) | page 189 | ch17]\n• If the second operand is a tuple, the method should add the first element of the tuple\nto the x coordinate and the second element to the y coordinate, and return a new\nPoint with the result.\n\n[B:thinkpython2:p187:002 | thinkpython2 2nd Edition (Copyright 2015) | page 187 | ch17]\n17.7 Operator overloading\nBy defining other special methods, you can specify the behavior of operators on\nprogrammer-defined types. For example, if you define a method named __add__ for the\nTime class, you can use the + operator on Time objects.\nHere is what the definition might look like:\n\n[B:thinkpython2:p188:000 | thinkpython2 2nd Edition (Copyright 2015) | page 188 | ch17]\n# inside class Time:\ndef __add__(self, other):\nseconds = self.time_to_int() + other.time_to_int()\nreturn int_to_time(seconds)\nAnd here is how you could use it:\n>>> start = Time(9, 45)\n>>> duration = Time(1, 35)\n>>> print(start + duration)\n11:20:00\nWhen you apply the + operator to Time objects, Python invokes __add__. When you print\nthe result, Python invokes __str__. So there is a lot happening behind the scenes!\nChanging the behavior of an operator so that it works with programmer-defined types is\ncalled operator overloading. For every operator in Python there is a corresponding special method, like __add__. For more details, see http://docs.python.org/3/reference/\ndatamodel.html#specialnames.\nAs an exercise, write an add method for the Point class.",
+    "context_ids": [
+      "B:thinkpython2:p188:001",
+      "B:thinkpython2:p189:000",
+      "B:thinkpython2:p189:001",
+      "B:thinkpython2:p187:002",
+      "B:thinkpython2:p188:000"
+    ],
+    "context_chars": 3825,
+    "context_tokens_est": 957,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 1997,
+      "output": 70,
+      "thoughts": 0
+    },
+    "elapsed_s": 4.84,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.000774,
+    "run_at": "2026-11-16T04:58:22+00:00"
+  },
+  {
+    "query_id": "t04",
+    "split": "test",
+    "answerable": true,
+    "question": "In the Inheritance chapter, what are class attributes?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": {
+      "chapter_id": "ch18"
+    },
+    "status": "answered",
+    "answer": "A class attribute is an attribute associated with a class object, defined inside a class definition but outside any method [B:thinkpython2:p202:001]. They are distinguished from instance attributes because they are associated with the class object rather than a particular instance [B:thinkpython2:p194:001].",
+    "citations": [
+      "B:thinkpython2:p202:001",
+      "B:thinkpython2:p194:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "class attributes inheritance",
+        "filter": {
+          "chapter_id": "ch18"
+        },
+        "top_k": 3,
+        "retrieval_ms": 286.7,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p202:001",
+            "page": 202,
+            "chapter_id": "ch18",
+            "score": 0.72621
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p194:001",
+            "page": 194,
+            "chapter_id": "ch18",
+            "score": 0.66548
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p193:000",
+            "page": 193,
+            "chapter_id": "ch18",
+            "score": 0.62827
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p203:000",
+          "B:thinkpython2:p195:000"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p202:001",
+          "B:thinkpython2:p203:000",
+          "B:thinkpython2:p194:001",
+          "B:thinkpython2:p195:000",
+          "B:thinkpython2:p193:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p202:001 | thinkpython2 2nd Edition (Copyright 2015) | page 202 | ch18]\n18.11 Glossary\nencode: To represent one set of values using another set of values by constructing a mapping between them.\nclass attribute: An attribute associated with a class object. Class attributes are defined\ninside a class definition but outside any method.\ninstance attribute: An attribute associated with an instance of a class.\nveneer: A method or function that provides a different interface to another function without doing much computation.\ninheritance: The ability to define a new class that is a modified version of a previously\ndefined class.\nparent class: The class from which a child class inherits.\nchild class: A new class created by inheriting from an existing class; also called a “subclass”.\nIS-A relationship: A relationship between a child class and its parent class.\nHAS-A relationship: A relationship between two classes where instances of one class contain references to instances of the other.\ndependency: A relationship between two classes where instances of one class use instances of the other class, but do not store them as attributes.\n\n[B:thinkpython2:p203:000 | thinkpython2 2nd Edition (Copyright 2015) | page 203 | ch18]\nclass diagram: A diagram that shows the classes in a program and the relationships between them.\nmultiplicity: A notation in a class diagram that shows, for a HAS-A relationship, how\nmany references there are to instances of another class.\ndata encapsulation: A program development plan that involves a prototype using global\nvariables and a final version that makes the global variables into instance attributes.\n\n[B:thinkpython2:p194:001 | thinkpython2 2nd Edition (Copyright 2015) | page 194 | ch18]\n18.2 Class attributes\nIn order to print Card objects in a way that people can easily read, we need a mapping\nfrom the integer codes to the corresponding ranks and suits. A natural way to do that is\nwith lists of strings. We assign these lists to class attributes:\n# inside class Card:\nsuit_names = ['Clubs', 'Diamonds', 'Hearts', 'Spades']\nrank_names = [None, 'Ace', '2', '3', '4', '5', '6', '7',\n'8', '9', '10', 'Jack', 'Queen', 'King']\ndef __str__(self):\nreturn '%s of %s' % (Card.rank_names[self.rank],\nCard.suit_names[self.suit])\nVariables like suit_names and rank_names, which are defined inside a class but outside\nof any method, are called class attributes because they are associated with the class object\nCard.\nThis term distinguishes them from variables like suit and rank, which are called instance\nattributes because they are associated with a particular instance.\nBoth kinds of attribute are accessed using dot notation. For example, in __str__, self\nis a Card object, and self.rank is its rank. Similarly, Card is a class object, and\nCard.rank_names is a list of strings associated with the class.\n\n[B:thinkpython2:p195:000 | thinkpython2 2nd Edition (Copyright 2015) | page 195 | ch18]\nlist\nsuit_names\nlist\nrank_names\nCard\ntype\n1\n11\nsuit\nrank\ncard1\nCard\nFigure 18.1: Object diagram.\nEvery card has its own suit and rank, but there is only one copy of suit_names and\nrank_names.\nPutting it all together, the expression Card.rank_names[self.rank] means “use the attribute rank from the object self as an index into the list rank_names from the class Card,\nand select the appropriate string.”\nThe first element of rank_names is None because there is no card with rank zero. By including None as a place-keeper, we get a mapping with the nice property that the index 2 maps\nto the string '2', and so on. To avoid this tweak, we could have used a dictionary instead\nof a list.\nWith the methods we have so far, we can create and print cards:\n>>> card1 = Card(2, 11)\n>>> print(card1)\nJack of Hearts\nFigure 18.1 is a diagram of the Card class object and one Card instance. Card is a class\nobject; its type is type. card1 is an instance of Card, so its type is Card. To save space, I\ndidn’t draw the contents of suit_names and rank_names.\n\n[B:thinkpython2:p193:000 | thinkpython2 2nd Edition (Copyright 2015) | page 193 | ch18]\nChapter 18\nInheritance\nThe language feature most often associated with object-oriented programming is inheritance. Inheritance is the ability to define a new class that is a modified version of an existing class. In this chapter I demonstrate inheritance using classes that represent playing\ncards, decks of cards, and poker hands.\nIf you don’t play poker, you can read about it at http://en.wikipedia.org/wiki/Poker,\nbut you don’t have to; I’ll tell you what you need to know for the exercises.\nCode examples from this chapter are available from https://thinkpython.com/code/\nCard.py.",
+    "context_ids": [
+      "B:thinkpython2:p202:001",
+      "B:thinkpython2:p203:000",
+      "B:thinkpython2:p194:001",
+      "B:thinkpython2:p195:000",
+      "B:thinkpython2:p193:000"
+    ],
+    "context_chars": 4668,
+    "context_tokens_est": 1167,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 2067,
+      "output": 90,
+      "thoughts": 0
+    },
+    "elapsed_s": 9.45,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.000845,
+    "run_at": "2026-11-16T04:58:32+00:00"
+  },
+  {
+    "query_id": "t05",
+    "split": "test",
+    "answerable": true,
+    "question": "In the Analysis of Algorithms appendix, what limitation does the hashtable implementation have regarding keys?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": {
+      "chapter_id": "appendix_B"
+    },
+    "status": "abstain",
+    "answer": "INSUFFICIENT_EVIDENCE: <what is missing>",
+    "citations": [],
+    "invalid_citations": [],
+    "reason": "model_abstained",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "hashtable keys limitation appendix analysis of algorithms",
+        "filter": {
+          "chapter_id": "appendix_B"
+        },
+        "top_k": 3,
+        "retrieval_ms": 432.7,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p223:000",
+            "page": 223,
+            "chapter_id": "appendix_B",
+            "score": 0.69354
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p231:000",
+            "page": 231,
+            "chapter_id": "appendix_B",
+            "score": 0.65655
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p228:000",
+            "page": 228,
+            "chapter_id": "appendix_B",
+            "score": 0.64384
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p223:001",
+          "B:thinkpython2:p230:002",
+          "B:thinkpython2:p228:001"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p223:000",
+          "B:thinkpython2:p223:001",
+          "B:thinkpython2:p230:002",
+          "B:thinkpython2:p231:000",
+          "B:thinkpython2:p228:000",
+          "B:thinkpython2:p228:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "hashtable keys limitation hashable",
+        "filter": {
+          "chapter_id": "appendix_B"
+        },
+        "top_k": 3,
+        "retrieval_ms": 280.1,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p231:000",
+            "page": 231,
+            "chapter_id": "appendix_B",
+            "score": 0.65551
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p228:000",
+            "page": 228,
+            "chapter_id": "appendix_B",
+            "score": 0.6523
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p230:001",
+            "page": 230,
+            "chapter_id": "appendix_B",
+            "score": 0.63102
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p230:002",
+          "B:thinkpython2:p228:001",
+          "B:thinkpython2:p230:000"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p230:000",
+          "B:thinkpython2:p230:001"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "HashMap keys limitation hash",
+        "filter": {
+          "chapter_id": "appendix_B"
+        },
+        "top_k": 3,
+        "retrieval_ms": 187.8,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p230:001",
+            "page": 230,
+            "chapter_id": "appendix_B",
+            "score": 0.66098
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p229:000",
+            "page": 229,
+            "chapter_id": "appendix_B",
+            "score": 0.65708
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p229:001",
+            "page": 229,
+            "chapter_id": "appendix_B",
+            "score": 0.64368
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p230:000",
+          "B:thinkpython2:p230:002",
+          "B:thinkpython2:p228:001",
+          "B:thinkpython2:p229:001"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p229:000"
+        ],
+        "dropped_by_budget": [
+          "B:thinkpython2:p229:001"
+        ]
+      },
+      {
+        "event": "model_abstained"
+      }
+    ],
+    "context": "[B:thinkpython2:p223:000 | thinkpython2 2nd Edition (Copyright 2015) | page 223 | appendix_B]\nAppendix B\nAnalysis of Algorithms\nThis appendix is an edited excerpt from Think Complexity, by Allen B. Downey,\nalso published by O’Reilly Media (2012). When you are done with this book,\nyou might want to move on to that one.\nAnalysis of algorithms is a branch of computer science that studies the performance of\nalgorithms, especially their run time and space requirements. See http://en.wikipedia.\norg/wiki/Analysis_of_algorithms.\nThe practical goal of algorithm analysis is to predict the performance of different algorithms in order to guide design decisions.\nDuring the 2008 United States Presidential Campaign, candidate Barack Obama was asked\nto perform an impromptu analysis when he visited Google. Chief executive Eric Schmidt\njokingly asked him for “the most efficient way to sort a million 32-bit integers.” Obama\nhad apparently been tipped off, because he quickly replied, “I think the bubble sort would\nbe the wrong way to go.” See http://www.youtube.com/watch?v=k4RRi_ntQc8.\nThis is true: bubble sort is conceptually simple but slow for large datasets. The answer Schmidt was probably looking for is “radix sort” (http://en.wikipedia.org/wiki/\nRadix_sort)1.\n\n[B:thinkpython2:p223:001 | thinkpython2 2nd Edition (Copyright 2015) | page 223 | appendix_B]\nThe goal of algorithm analysis is to make meaningful comparisons between algorithms,\nbut there are some problems:\n• The relative performance of the algorithms might depend on characteristics of the\nhardware, so one algorithm might be faster on Machine A, another on Machine B.\nThe general solution to this problem is to specify a machine model and analyze the\nnumber of steps, or operations, an algorithm requires under a given model.\n• Relative performance might depend on the details of the dataset. For example, some\nsorting algorithms run faster if the data are already partially sorted; other algorithms\n1But if you get a question like this in an interview, I think a better answer is, “The fastest way to sort a million\nintegers is to use whatever sort function is provided by the language I’m using. Its performance is good enough\nfor the vast majority of applications, but if it turned out that my application was too slow, I would use a profiler\nto see where the time was being spent. If it looked like a faster sort algorithm would have a significant effect on\nperformance, then I would look around for a good implementation of radix sort.”\n\n[B:thinkpython2:p230:002 | thinkpython2 2nd Edition (Copyright 2015) | page 230 | appendix_B]\nThe next add costs 9 units, but then we can add 7 more before the next resize, so the total is\n30 units for the first 16 adds.\nAfter 32 adds, the total cost is 62 units, and I hope you are starting to see a pattern. After n\nadds, where n is a power of two, the total cost is 2n − 2 units, so the average work per add\nis a little less than 2 units. When n is a power of two, that’s the best case; for other values of\nn the average work is a little higher, but that’s not important. The important thing is that it\nis O(1).\nFigure B.1 shows how this works graphically. Each block represents a unit of work. The\ncolumns show the total work for each add in order from left to right: the first two adds cost\n1 unit each, the third costs 3 units, etc.\n\n[B:thinkpython2:p231:000 | thinkpython2 2nd Edition (Copyright 2015) | page 231 | appendix_B]\nFigure B.1: The cost of a hashtable add.\nThe extra work of rehashing appears as a sequence of increasingly tall towers with increasing space between them. Now if you knock over the towers, spreading the cost of resizing\nover all adds, you can see graphically that the total cost after n adds is 2n − 2.\nAn important feature of this algorithm is that when we resize the HashTable it grows\ngeometrically; that is, we multiply the size by a constant. If you increase the size\narithmetically—adding a fixed number each time—the average time per add is linear.\nYou can download my implementation of HashMap from https://thinkpython.com/\ncode/Map.py, but remember that there is no reason to use it; if you want a map, just use a\nPython dictionary.\n\n[B:thinkpython2:p228:000 | thinkpython2 2nd Edition (Copyright 2015) | page 228 | appendix_B]\nB.4 Hashtables\nTo explain how hashtables work and why their performance is so good, I start with a simple\nimplementation of a map and gradually improve it until it’s a hashtable.\nI use Python to demonstrate these implementations, but in real life you wouldn’t write\ncode like this in Python; you would just use a dictionary! So for the rest of this chapter, you\nhave to imagine that dictionaries don’t exist and you want to implement a data structure\nthat maps from keys to values. The operations you have to implement are:\nadd(k, v): Add a new item that maps from key k to value v. With a Python dictionary, d,\nthis operation is written d[k] = v.\nget(k): Look up and return the value that corresponds to key k. With a Python dictionary,\nd, this operation is written d[k] or d.get(k).\nFor now, I assume that each key only appears once. The simplest implementation of this\ninterface uses a list of tuples, where each tuple is a key-value pair.\nclass LinearMap:\ndef __init__(self):\nself.items = []\ndef add(self, k, v):\nself.items.append((k, v))\ndef get(self, k):\nfor key, val in self.items:\nif key == k:\n\n[B:thinkpython2:p228:001 | thinkpython2 2nd Edition (Copyright 2015) | page 228 | appendix_B]\nreturn val\nraise KeyError\nadd appends a key-value tuple to the list of items, which takes constant time.\nget uses a for loop to search the list: if it finds the target key it returns the corresponding\nvalue; otherwise it raises a KeyError. So get is linear.\nAn alternative is to keep the list sorted by key. Then get could use a bisection search, which\nis O(log n). But inserting a new item in the middle of a list is linear, so this might not be the\nbest option. There are other data structures that can implement add and get in log time,\nbut that’s still not as good as constant time, so let’s move on.\nOne way to improve LinearMap is to break the list of key-value pairs into smaller lists.\nHere’s an implementation called BetterMap, which is a list of 100 LinearMaps. As we’ll\nsee in a second, the order of growth for get is still linear, but BetterMap is a step on the\npath toward hashtables:\nclass BetterMap:\ndef __init__(self, n=100):\nself.maps = []\nfor i in range(n):\nself.maps.append(LinearMap())\n\n[B:thinkpython2:p230:000 | thinkpython2 2nd Edition (Copyright 2015) | page 230 | appendix_B]\nself.resize()\nself.maps.add(k, v)\nself.num += 1\ndef resize(self):\nnew_maps = BetterMap(self.num * 2)\nfor m in self.maps.maps:\nfor k, v in m.items:\nnew_maps.add(k, v)\nself.maps = new_maps\n__init__ creates a BetterMap and initializes num, which keeps track of the number of items.\nget just dispatches to BetterMap. The real work happens in add, which checks the number\nof items and the size of the BetterMap: if they are equal, the average number of items per\nLinearMap is 1, so it calls resize.\nresize makes a new BetterMap, twice as big as the previous one, and then “rehashes” the\nitems from the old map to the new.\n\n[B:thinkpython2:p230:001 | thinkpython2 2nd Edition (Copyright 2015) | page 230 | appendix_B]\nRehashing is necessary because changing the number of LinearMaps changes the denominator of the modulus operator in find_map. That means that some objects that used to hash\ninto the same LinearMap will get split up (which is what we wanted, right?).\nRehashing is linear, so resize is linear, which might seem bad, since I promised that add\nwould be constant time. But remember that we don’t have to resize every time, so add is\nusually constant time and only occasionally linear. The total amount of work to run add n\ntimes is proportional to n, so the average time of each add is constant time!\nTo see how this works, think about starting with an empty HashTable and adding a sequence of items. We start with 2 LinearMaps, so the first 2 adds are fast (no resizing required). Let’s say that they take one unit of work each. The next add requires a resize, so\nwe have to rehash the first two items (let’s call that 2 more units of work) and then add the\nthird item (one more unit). Adding the next item costs 1 unit, so the total so far is 6 units\nof work for 4 items.\nThe next add costs 5 units, but the next three are only one unit each, so the total is 14 units\nfor the first 8 adds.\n\n[B:thinkpython2:p229:000 | thinkpython2 2nd Edition (Copyright 2015) | page 229 | appendix_B]\ndef find_map(self, k):\nindex = hash(k) % len(self.maps)\nreturn self.maps[index]\ndef add(self, k, v):\nm = self.find_map(k)\nm.add(k, v)\ndef get(self, k):\nm = self.find_map(k)\nreturn m.get(k)\n__init__ makes a list of n LinearMaps.\nfind_map is used by add and get to figure out which map to put the new item in, or which\nmap to search.\nfind_map uses the built-in function hash, which takes almost any Python object and returns\nan integer. A limitation of this implementation is that it only works with hashable keys.\nMutable types like lists and dictionaries are unhashable.\nHashable objects that are considered equivalent return the same hash value, but the converse is not necessarily true: two objects with different values can return the same hash\nvalue.\nfind_map uses the modulus operator to wrap the hash values into the range from 0 to\nlen(self.maps), so the result is a legal index into the list. Of course, this means that many\ndifferent hash values will wrap onto the same index. But if the hash function spreads things\nout pretty evenly (which is what hash functions are designed to do), then we expect n/100\nitems per LinearMap.",
+    "context_ids": [
+      "B:thinkpython2:p223:000",
+      "B:thinkpython2:p223:001",
+      "B:thinkpython2:p230:002",
+      "B:thinkpython2:p231:000",
+      "B:thinkpython2:p228:000",
+      "B:thinkpython2:p228:001",
+      "B:thinkpython2:p230:000",
+      "B:thinkpython2:p230:001",
+      "B:thinkpython2:p229:000"
+    ],
+    "context_chars": 9712,
+    "context_tokens_est": 2428,
+    "n_searches": 3,
+    "n_model_calls": 4,
+    "tokens": {
+      "input": 8505,
+      "output": 76,
+      "thoughts": 0
+    },
+    "elapsed_s": 11.94,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.002742,
+    "run_at": "2026-11-16T04:58:44+00:00"
+  },
+  {
+    "query_id": "t06",
+    "split": "test",
+    "answerable": true,
+    "question": "How does a generator expression differ from a list comprehension in when it produces its values?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "answered",
+    "answer": "Unlike a list comprehension, a generator expression does not compute its values all at once, but instead waits to be asked [B:thinkpython2:p207:001].",
+    "citations": [
+      "B:thinkpython2:p207:001"
+    ],
+    "invalid_citations": [],
+    "reason": "answered_with_citations",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "generator expression list comprehension produce values",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 209.7,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p207:001",
+            "page": 207,
+            "chapter_id": "ch19",
+            "score": 0.78735
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p213:001",
+            "page": 213,
+            "chapter_id": "ch19",
+            "score": 0.72776
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p206:001",
+            "page": 206,
+            "chapter_id": "ch19",
+            "score": 0.67538
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p208:000",
+          "B:thinkpython2:p207:000"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p207:001",
+          "B:thinkpython2:p208:000",
+          "B:thinkpython2:p213:001",
+          "B:thinkpython2:p206:001",
+          "B:thinkpython2:p207:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "answer"
+      }
+    ],
+    "context": "[B:thinkpython2:p207:001 | thinkpython2 2nd Edition (Copyright 2015) | page 207 | ch19]\n19.3 Generator expressions\nGenerator expressions are similar to list comprehensions, but with parentheses instead of\nsquare brackets:\n>>> g = (x**2 for x in range(5))\n>>> g\n<generator object <genexpr> at 0x7f4c45a786c0>\nThe result is a generator object that knows how to iterate through a sequence of values. But\nunlike a list comprehension, it does not compute the values all at once; it waits to be asked.\nThe built-in function next gets the next value from the generator:\n>>> next(g)\n0\n>>> next(g)\n1\nWhen you get to the end of the sequence, next raises a StopIteration exception. You can\nalso use a for loop to iterate through the values:\n>>> for val in g:\n... print(val)\n4\n9\n16\nThe generator object keeps track of where it is in the sequence, so the for loop picks up\nwhere next left off. Once the generator is exhausted, it continues to raise StopIteration:\n>>> next(g)\nStopIteration\nGenerator expressions are often used with functions like sum, max, and min:\n>>> sum(x**2 for x in range(5))\n30\n19.4 any and all\nPython provides a built-in function, any, that takes a sequence of boolean values and returns True if any of the values are True. It works on lists:\n\n[B:thinkpython2:p208:000 | thinkpython2 2nd Edition (Copyright 2015) | page 208 | ch19]\n>>> any([False, False, True])\nTrue\nBut it is often used with generator expressions:\n>>> any(letter == 't' for letter in 'monty')\nTrue\nThat example isn’t very useful because it does the same thing as the in operator. But we\ncould use any to rewrite some of the search functions we wrote in Section 9.3. For example,\nwe could write avoids like this:\ndef avoids(word, forbidden):\nreturn not any(letter in forbidden for letter in word)\nThe function almost reads like English, “word avoids forbidden if there are not any forbidden letters in word.”\nUsing any with a generator expression is efficient because it stops immediately if it finds a\nTrue value, so it doesn’t have to evaluate the whole sequence.\nPython provides another built-in function, all, that returns True if every element of the\nsequence is True. As an exercise, use all to re-write uses_all from Section 9.3.\n\n[B:thinkpython2:p213:001 | thinkpython2 2nd Edition (Copyright 2015) | page 213 | ch19]\n19.10 Glossary\nconditional expression: An expression that has one of two values, depending on a condition.\nlist comprehension: An expression with a for loop in square brackets that yields a new\nlist.\ngenerator expression: An expression with a for loop in parentheses that yields a generator object.\nmultiset: A mathematical entity that represents a mapping between the elements of a set\nand the number of times they appear.\nfactory: A function, usually passed as a parameter, used to create objects.\n\n[B:thinkpython2:p206:001 | thinkpython2 2nd Edition (Copyright 2015) | page 206 | ch19]\n19.2 List comprehensions\nIn Section 10.7 we saw the map and filter patterns. For example, this function takes a list\nof strings, maps the string method capitalize to the elements, and returns a new list of\nstrings:\ndef capitalize_all(t):\nres = []\nfor s in t:\nres.append(s.capitalize())\nreturn res\nWe can write this more concisely using a list comprehension:\ndef capitalize_all(t):\nreturn [s.capitalize() for s in t]\nThe bracket operators indicate that we are constructing a new list. The expression inside\nthe brackets specifies the elements of the list, and the for clause indicates what sequence\nwe are traversing.\nThe syntax of a list comprehension is a little awkward because the loop variable, s in this\nexample, appears in the expression before we get to the definition.\nList comprehensions can also be used for filtering. For example, this function selects only\nthe elements of t that are upper case, and returns a new list:\ndef only_upper(t):\nres = []\nfor s in t:\nif s.isupper():\nres.append(s)\nreturn res\n\n[B:thinkpython2:p207:000 | thinkpython2 2nd Edition (Copyright 2015) | page 207 | ch19]\nWe can rewrite it using a list comprehension\ndef only_upper(t):\nreturn [s for s in t if s.isupper()]\nList comprehensions are concise and easy to read, at least for simple expressions. And they\nare usually faster than the equivalent for loops, sometimes much faster. So if you are mad\nat me for not mentioning them earlier, I understand.\nBut, in my defense, list comprehensions are harder to debug because you can’t put a print\nstatement inside the loop. I suggest that you use them only if the computation is simple\nenough that you are likely to get it right the first time. And for beginners that means never.",
+    "context_ids": [
+      "B:thinkpython2:p207:001",
+      "B:thinkpython2:p208:000",
+      "B:thinkpython2:p213:001",
+      "B:thinkpython2:p206:001",
+      "B:thinkpython2:p207:000"
+    ],
+    "context_chars": 4605,
+    "context_tokens_est": 1152,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 2095,
+      "output": 60,
+      "thoughts": 0
+    },
+    "elapsed_s": 1.92,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.000779,
+    "run_at": "2026-11-16T04:58:46+00:00"
+  },
+  {
+    "query_id": "tu1",
+    "split": "test",
+    "answerable": false,
+    "question": "How do async and await let you run several coroutines concurrently?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "abstain",
+    "answer": "INSUFFICIENT_EVIDENCE: The book does not contain information about async, await, or coroutines.",
+    "citations": [],
+    "invalid_citations": [],
+    "reason": "model_abstained",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "async await coroutines concurrently",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 294.5,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p086:002",
+            "page": 86,
+            "chapter_id": "ch07",
+            "score": 0.50896
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p087:000",
+            "page": 87,
+            "chapter_id": "ch07",
+            "score": 0.49066
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p186:000",
+            "page": 186,
+            "chapter_id": "ch17",
+            "score": 0.48462
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p087:000",
+          "B:thinkpython2:p087:001",
+          "B:thinkpython2:p185:002"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p086:002",
+          "B:thinkpython2:p087:000",
+          "B:thinkpython2:p087:001",
+          "B:thinkpython2:p185:002",
+          "B:thinkpython2:p186:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "model_abstained"
+      }
+    ],
+    "context": "[B:thinkpython2:p086:002 | thinkpython2 2nd Edition (Copyright 2015) | page 86 | ch07]\n7.3 The while statement\nComputers are often used to automate repetitive tasks. Repeating identical or similar tasks\nwithout making errors is something that computers do well and people do poorly. In a\ncomputer program, repetition is also called iteration.\nWe have already seen two functions, countdown and print_n, that iterate using recursion.\nBecause iteration is so common, Python provides language features to make it easier. One\nis the for statement we saw in Section 4.2. We’ll get back to that later.\nAnother is the while statement. Here is a version of countdown that uses a while statement:\n\n[B:thinkpython2:p087:000 | thinkpython2 2nd Edition (Copyright 2015) | page 87 | ch07]\ndef countdown(n):\nwhile n > 0:\nprint(n)\nn = n - 1\nprint('Blastoff!')\nYou can almost read the while statement as if it were English. It means, “While n is greater\nthan 0, display the value of n and then decrement n. When you get to 0, display the word\nBlastoff!”\nMore formally, here is the flow of execution for a while statement:\n1. Determine whether the condition is true or false.\n2. If false, exit the while statement and continue execution at the next statement.\n3. If the condition is true, run the body and then go back to step 1.\nThis type of flow is called a loop because the third step loops back around to the top.\nThe body of the loop should change the value of one or more variables so that the condition\nbecomes false eventually and the loop terminates. Otherwise the loop will repeat forever,\nwhich is called an infinite loop. An endless source of amusement for computer scientists\nis the observation that the directions on shampoo, “Lather, rinse, repeat”, are an infinite\nloop.\nIn the case of countdown, we can prove that the loop terminates: if n is zero or negative, the\nloop never runs. Otherwise, n gets smaller each time through the loop, so eventually we\nhave to get to 0.\n\n[B:thinkpython2:p087:001 | thinkpython2 2nd Edition (Copyright 2015) | page 87 | ch07]\nFor some other loops, it is not so easy to tell. For example:\ndef sequence(n):\nwhile n != 1:\nprint(n)\nif n % 2 == 0: # n is even\nn = n / 2\nelse: # n is odd\nn = n*3 + 1\nThe condition for this loop is n != 1, so the loop will continue until n is 1, which makes\nthe condition false.\nEach time through the loop, the program outputs the value of n and then checks whether\nit is even or odd. If it is even, n is divided by 2. If it is odd, the value of n is replaced with\nn*3 + 1. For example, if the argument passed to sequence is 3, the resulting values of n\nare 3, 10, 5, 16, 8, 4, 2, 1.\nSince n sometimes increases and sometimes decreases, there is no obvious proof that n will\never reach 1, or that the program terminates. For some particular values of n, we can prove\ntermination. For example, if the starting value is a power of two, n will be even every\ntime through the loop until it reaches 1. The previous example ends with such a sequence,\nstarting with 16.\nThe hard question is whether we can prove that this program terminates for all positive values of n. So far, no one has been able to prove it or disprove it! (See http:\n//en.wikipedia.org/wiki/Collatz_conjecture.)\n\n[B:thinkpython2:p185:002 | thinkpython2 2nd Edition (Copyright 2015) | page 185 | ch17]\n17.3 Another example\nHere’s a version of increment (from Section 16.3) rewritten as a method:\n# inside class Time:\ndef increment(self, seconds):\nseconds += self.time_to_int()\nreturn int_to_time(seconds)\nThis version assumes that time_to_int is written as a method. Also, note that it is a pure\nfunction, not a modifier.\nHere’s how you would invoke increment:\n>>> start.print_time()\n09:45:00\n>>> end = start.increment(1337)\n>>> end.print_time()\n10:07:17\n\n[B:thinkpython2:p186:000 | thinkpython2 2nd Edition (Copyright 2015) | page 186 | ch17]\nThe subject, start, gets assigned to the first parameter, self. The argument, 1337, gets\nassigned to the second parameter, seconds.\nThis mechanism can be confusing, especially if you make an error. For example, if you\ninvoke increment with two arguments, you get:\n>>> end = start.increment(1337, 460)\nTypeError: increment() takes 2 positional arguments but 3 were given\nThe error message is initially confusing, because there are only two arguments in parentheses. But the subject is also considered an argument, so all together that’s three.\nBy the way, a positional argument is an argument that doesn’t have a parameter name;\nthat is, it is not a keyword argument. In this function call:\nsketch(parrot, cage, dead=True)\nparrot and cage are positional, and dead is a keyword argument.",
+    "context_ids": [
+      "B:thinkpython2:p086:002",
+      "B:thinkpython2:p087:000",
+      "B:thinkpython2:p087:001",
+      "B:thinkpython2:p185:002",
+      "B:thinkpython2:p186:000"
+    ],
+    "context_chars": 4652,
+    "context_tokens_est": 1163,
+    "n_searches": 1,
+    "n_model_calls": 2,
+    "tokens": {
+      "input": 2163,
+      "output": 43,
+      "thoughts": 0
+    },
+    "elapsed_s": 2.38,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.000756,
+    "run_at": "2026-11-16T04:58:48+00:00"
+  },
+  {
+    "query_id": "tu2",
+    "split": "test",
+    "answerable": false,
+    "question": "In a child class, how do you use super() to call the parent class's __init__ method?",
+    "config": "c_lite",
+    "method": "dense",
+    "top_k": 3,
+    "budget_chars": 10000,
+    "max_searches": 3,
+    "filter": null,
+    "status": "abstain",
+    "answer": "INSUFFICIENT_EVIDENCE: The book \"Think Python, 2nd Edition\" does not mention or explain the use of the `super()` function.",
+    "citations": [],
+    "invalid_citations": [],
+    "reason": "model_abstained",
+    "events": [
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "super init parent class",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 279.4,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p198:002",
+            "page": 198,
+            "chapter_id": "ch18",
+            "score": 0.62981
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p186:002",
+            "page": 186,
+            "chapter_id": "ch17",
+            "score": 0.61515
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p202:001",
+            "page": 202,
+            "chapter_id": "ch18",
+            "score": 0.55151
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p198:001",
+          "B:thinkpython2:p199:000",
+          "B:thinkpython2:p187:000",
+          "B:thinkpython2:p203:000"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p198:001",
+          "B:thinkpython2:p198:002",
+          "B:thinkpython2:p199:000",
+          "B:thinkpython2:p186:002",
+          "B:thinkpython2:p187:000",
+          "B:thinkpython2:p202:001",
+          "B:thinkpython2:p203:000"
+        ],
+        "dropped_by_budget": []
+      },
+      {
+        "event": "search",
+        "tool": "search_book",
+        "method": "dense",
+        "query": "super function python",
+        "filter": null,
+        "top_k": 3,
+        "retrieval_ms": 236.7,
+        "results": [
+          {
+            "rank": 1,
+            "id": "B:thinkpython2:p190:000",
+            "page": 190,
+            "chapter_id": "ch17",
+            "score": 0.65538
+          },
+          {
+            "rank": 2,
+            "id": "B:thinkpython2:p207:000",
+            "page": 207,
+            "chapter_id": "ch19",
+            "score": 0.62456
+          },
+          {
+            "rank": 3,
+            "id": "B:thinkpython2:p042:000",
+            "page": 42,
+            "chapter_id": "ch03",
+            "score": 0.62406
+          }
+        ],
+        "neighbors": [
+          "B:thinkpython2:p189:002",
+          "B:thinkpython2:p206:001",
+          "B:thinkpython2:p041:002"
+        ],
+        "added_to_context": [
+          "B:thinkpython2:p189:002",
+          "B:thinkpython2:p190:000",
+          "B:thinkpython2:p206:001",
+          "B:thinkpython2:p207:000"
+        ],
+        "dropped_by_budget": [
+          "B:thinkpython2:p041:002",
+          "B:thinkpython2:p042:000"
+        ]
+      },
+      {
+        "event": "model_abstained"
+      }
+    ],
+    "context": "[B:thinkpython2:p198:001 | thinkpython2 2nd Edition (Copyright 2015) | page 198 | ch18]\n18.7 Inheritance\nInheritance is the ability to define a new class that is a modified version of an existing class.\nAs an example, let’s say we want a class to represent a “hand”, that is, the cards held by\none player. A hand is similar to a deck: both are made up of a collection of cards, and both\nrequire operations like adding and removing cards.\nA hand is also different from a deck; there are operations we want for hands that don’t\nmake sense for a deck. For example, in poker we might compare two hands to see which\none wins. In bridge, we might compute a score for a hand in order to make a bid.\nThis relationship between classes—similar, but different—lends itself to inheritance. To\ndefine a new class that inherits from an existing class, you put the name of the existing\nclass in parentheses:\nclass Hand(Deck):\n\"\"\"Represents a hand of playing cards.\"\"\"\nThis definition indicates that Hand inherits from Deck; that means we can use methods like\npop_card and add_card for Hands as well as Decks.\nWhen a new class inherits from an existing one, the existing one is called the parent and\nthe new class is called the child.\n\n[B:thinkpython2:p198:002 | thinkpython2 2nd Edition (Copyright 2015) | page 198 | ch18]\nIn this example, Hand inherits __init__ from Deck, but it doesn’t really do what we want:\ninstead of populating the hand with 52 new cards, the init method for Hands should initialize cards with an empty list.\nIf we provide an init method in the Hand class, it overrides the one in the Deck class:\n# inside class Hand:\ndef __init__(self, label=''):\nself.cards = []\nself.label = label\nWhen you create a Hand, Python invokes this init method, not the one in Deck.\n>>> hand = Hand('new hand')\n>>> hand.cards\n[]\n>>> hand.label\n'new hand'\nThe other methods are inherited from Deck, so we can use pop_card and add_card to deal\na card:\n>>> deck = Deck()\n>>> card = deck.pop_card()\n>>> hand.add_card(card)\n>>> print(hand)\nKing of Spades\n\n[B:thinkpython2:p199:000 | thinkpython2 2nd Edition (Copyright 2015) | page 199 | ch18]\nA natural next step is to encapsulate this code in a method called move_cards:\n# inside class Deck:\ndef move_cards(self, hand, num):\nfor i in range(num):\nhand.add_card(self.pop_card())\nmove_cards takes two arguments, a Hand object and the number of cards to deal. It modifies both self and hand, and returns None.\nIn some games, cards are moved from one hand to another, or from a hand back to the\ndeck. You can use move_cards for any of these operations: self can be either a Deck or a\nHand, and hand, despite the name, can also be a Deck.\nInheritance is a useful feature. Some programs that would be repetitive without inheritance\ncan be written more elegantly with it. Inheritance can facilitate code reuse, since you can\ncustomize the behavior of parent classes without having to modify them. In some cases,\nthe inheritance structure reflects the natural structure of the problem, which makes the\ndesign easier to understand.\n\n[B:thinkpython2:p186:002 | thinkpython2 2nd Edition (Copyright 2015) | page 186 | ch17]\n17.5 The init method\nThe init method (short for “initialization”) is a special method that gets invoked when an\nobject is instantiated. Its full name is __init__ (two underscore characters, followed by\ninit, and then two more underscores). An init method for the Time class might look like\nthis:\n# inside class Time:\ndef __init__(self, hour=0, minute=0, second=0):\nself.hour = hour\nself.minute = minute\nself.second = second\nIt is common for the parameters of __init__ to have the same names as the attributes. The\nstatement\nself.hour = hour\n\n[B:thinkpython2:p187:000 | thinkpython2 2nd Edition (Copyright 2015) | page 187 | ch17]\nstores the value of the parameter hour as an attribute of self.\nThe parameters are optional, so if you call Time with no arguments, you get the default\nvalues.\n>>> time = Time()\n>>> time.print_time()\n00:00:00\nIf you provide one argument, it overrides hour:\n>>> time = Time (9)\n>>> time.print_time()\n09:00:00\nIf you provide two arguments, they override hour and minute.\n>>> time = Time(9, 45)\n>>> time.print_time()\n09:45:00\nAnd if you provide three arguments, they override all three default values.\nAs an exercise, write an init method for the Point class that takes x and y as optional\nparameters and assigns them to the corresponding attributes.\n\n[B:thinkpython2:p202:001 | thinkpython2 2nd Edition (Copyright 2015) | page 202 | ch18]\n18.11 Glossary\nencode: To represent one set of values using another set of values by constructing a mapping between them.\nclass attribute: An attribute associated with a class object. Class attributes are defined\ninside a class definition but outside any method.\ninstance attribute: An attribute associated with an instance of a class.\nveneer: A method or function that provides a different interface to another function without doing much computation.\ninheritance: The ability to define a new class that is a modified version of a previously\ndefined class.\nparent class: The class from which a child class inherits.\nchild class: A new class created by inheriting from an existing class; also called a “subclass”.\nIS-A relationship: A relationship between a child class and its parent class.\nHAS-A relationship: A relationship between two classes where instances of one class contain references to instances of the other.\ndependency: A relationship between two classes where instances of one class use instances of the other class, but do not store them as attributes.\n\n[B:thinkpython2:p203:000 | thinkpython2 2nd Edition (Copyright 2015) | page 203 | ch18]\nclass diagram: A diagram that shows the classes in a program and the relationships between them.\nmultiplicity: A notation in a class diagram that shows, for a HAS-A relationship, how\nmany references there are to instances of another class.\ndata encapsulation: A program development plan that involves a prototype using global\nvariables and a final version that makes the global variables into instance attributes.\n\n[B:thinkpython2:p189:002 | thinkpython2 2nd Edition (Copyright 2015) | page 189 | ch17]\n17.9 Polymorphism\nType-based dispatch is useful when it is necessary, but (fortunately) it is not always necessary. Often you can avoid it by writing functions that work correctly for arguments with\ndifferent types.\nMany of the functions we wrote for strings also work for other sequence types. For example, in Section 11.2 we used histogram to count the number of times each letter appears in\na word.\ndef histogram(s):\nd = dict()\nfor c in s:\nif c not in d:\nd[c] = 1\n\n[B:thinkpython2:p190:000 | thinkpython2 2nd Edition (Copyright 2015) | page 190 | ch17]\nelse:\nd[c] = d[c]+1\nreturn d\nThis function also works for lists, tuples, and even dictionaries, as long as the elements of\ns are hashable, so they can be used as keys in d.\n>>> t = ['spam', 'egg', 'spam', 'spam', 'bacon', 'spam']\n>>> histogram(t)\n{'bacon': 1, 'egg': 1, 'spam': 4}\nFunctions that work with several types are called polymorphic. Polymorphism can facilitate code reuse. For example, the built-in function sum, which adds the elements of a\nsequence, works as long as the elements of the sequence support addition.\nSince Time objects provide an add method, they work with sum:\n>>> t1 = Time(7, 43)\n>>> t2 = Time(7, 41)\n>>> t3 = Time(7, 37)\n>>> total = sum([t1, t2, t3])\n>>> print(total)\n23:01:00\nIn general, if all of the operations inside a function work with a given type, the function\nworks with that type.\nThe best kind of polymorphism is the unintentional kind, where you discover that a function you already wrote can be applied to a type you never planned for.\n\n[B:thinkpython2:p206:001 | thinkpython2 2nd Edition (Copyright 2015) | page 206 | ch19]\n19.2 List comprehensions\nIn Section 10.7 we saw the map and filter patterns. For example, this function takes a list\nof strings, maps the string method capitalize to the elements, and returns a new list of\nstrings:\ndef capitalize_all(t):\nres = []\nfor s in t:\nres.append(s.capitalize())\nreturn res\nWe can write this more concisely using a list comprehension:\ndef capitalize_all(t):\nreturn [s.capitalize() for s in t]\nThe bracket operators indicate that we are constructing a new list. The expression inside\nthe brackets specifies the elements of the list, and the for clause indicates what sequence\nwe are traversing.\nThe syntax of a list comprehension is a little awkward because the loop variable, s in this\nexample, appears in the expression before we get to the definition.\nList comprehensions can also be used for filtering. For example, this function selects only\nthe elements of t that are upper case, and returns a new list:\ndef only_upper(t):\nres = []\nfor s in t:\nif s.isupper():\nres.append(s)\nreturn res\n\n[B:thinkpython2:p207:000 | thinkpython2 2nd Edition (Copyright 2015) | page 207 | ch19]\nWe can rewrite it using a list comprehension\ndef only_upper(t):\nreturn [s for s in t if s.isupper()]\nList comprehensions are concise and easy to read, at least for simple expressions. And they\nare usually faster than the equivalent for loops, sometimes much faster. So if you are mad\nat me for not mentioning them earlier, I understand.\nBut, in my defense, list comprehensions are harder to debug because you can’t put a print\nstatement inside the loop. I suggest that you use them only if the computation is simple\nenough that you are likely to get it right the first time. And for beginners that means never.",
+    "context_ids": [
+      "B:thinkpython2:p198:001",
+      "B:thinkpython2:p198:002",
+      "B:thinkpython2:p199:000",
+      "B:thinkpython2:p186:002",
+      "B:thinkpython2:p187:000",
+      "B:thinkpython2:p202:001",
+      "B:thinkpython2:p203:000",
+      "B:thinkpython2:p189:002",
+      "B:thinkpython2:p190:000",
+      "B:thinkpython2:p206:001",
+      "B:thinkpython2:p207:000"
+    ],
+    "context_chars": 9510,
+    "context_tokens_est": 2378,
+    "n_searches": 2,
+    "n_model_calls": 3,
+    "tokens": {
+      "input": 5561,
+      "output": 70,
+      "thoughts": 0
+    },
+    "elapsed_s": 6.46,
+    "model": "gemini-3.5-flash-lite",
+    "cost_usd": 0.001843,
+    "run_at": "2026-11-16T04:58:55+00:00"
+  }
+]

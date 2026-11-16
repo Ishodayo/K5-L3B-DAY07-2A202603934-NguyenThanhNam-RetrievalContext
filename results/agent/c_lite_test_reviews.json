@@ -1,0 +1,61 @@
+[
+  {
+    "query_id": "t01",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng; p139:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "t02",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng 'pure function'; p178:001 có định nghĩa.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "t03",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng __radd__; p189:000.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "t04",
+    "citation_support": [
+      true,
+      true
+    ],
+    "reason": "Đúng; p202:001 (Glossary) + p194:001 ('associated with the class object ... distinguishes them from ... instance attributes').",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "t05",
+    "citation_support": [],
+    "reason": "Từ chối nhầm: context CÓ p229:000 ('only works with hashable keys; Mutable types ... are unhashable') nhưng model lite vẫn trả 'INSUFFICIENT_EVIDENCE: <what is missing>' (chép nguyên placeholder của prompt).",
+    "answer_grade": 0
+  },
+  {
+    "query_id": "t06",
+    "citation_support": [
+      true
+    ],
+    "reason": "Đúng; p207:001.",
+    "answer_grade": 2
+  },
+  {
+    "query_id": "tu1",
+    "citation_support": [],
+    "reason": "Từ chối, không thêm khẳng định.",
+    "abstention_correct": true
+  },
+  {
+    "query_id": "tu2",
+    "citation_support": [],
+    "reason": "Từ chối, không thêm khẳng định.",
+    "abstention_correct": true
+  }
+]

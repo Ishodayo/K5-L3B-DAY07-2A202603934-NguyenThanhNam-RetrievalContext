@@ -1,0 +1,9 @@
+﻿query_id,answerable,status,citations,answer_grade,citation_support,abstention_correct,reason
+t01,1,answered,B:thinkpython2:p139:001,2,1,,"Đúng: tuple (thương, số dư); p139:001 có 'returns a tuple of two values, the quotient and remainder'."
+t02,1,answered,B:thinkpython2:p178:001;B:thinkpython2:p182:000,2,1;1,,Đúng 'pure function'; p178:001 có định nghĩa + 'no effect ... other than returning a value'; p182:000 (Glossary pure function).
+t03,1,answered,B:thinkpython2:p189:000,2,1,,Đúng __radd__ 'right-side add'; p189:000.
+t04,1,answered,B:thinkpython2:p202:001;B:thinkpython2:p194:001,2,1;1,,"Đúng: gắn với class object, định nghĩa trong class ngoài method; p202:001 (Glossary) + p194:001 (mục 18.2) hỗ trợ cả ý phân biệt instance attribute."
+t05,1,abstain,,0,,,"Từ chối nhầm câu có đáp án. Lần search 3 đã lấy được p229:000 (evidence) nhưng budget 4000 ký tự đầy nên chunk bị bỏ, model không thấy."
+t06,1,answered,B:thinkpython2:p207:001,2,1,,"Đúng: không tính hết một lần, đợi được hỏi; p207:001."
+tu1,0,abstain,,,,1,"Từ chối, không thêm khẳng định; search 3 lần."
+tu2,0,abstain,,,,1,"Từ chối, không thêm khẳng định; search 3 lần."

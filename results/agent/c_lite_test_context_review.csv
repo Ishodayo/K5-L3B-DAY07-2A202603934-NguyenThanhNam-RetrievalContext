@@ -1,0 +1,7 @@
+﻿query_id,context_ids,context_grade,reason
+t01,B:thinkpython2:p139:001;B:thinkpython2:p179:001;B:thinkpython2:p179:002;B:thinkpython2:p160:001;B:thinkpython2:p160:002,2,p139:001 đủ.
+t02,B:thinkpython2:p174:000;B:thinkpython2:p174:001;B:thinkpython2:p119:001;B:thinkpython2:p120:000;B:thinkpython2:p173:000;B:thinkpython2:p179:001;B:thinkpython2:p179:002;B:thinkpython2:p180:000;B:thinkpython2:p178:001;B:thinkpython2:p178:002,2,p178:001 đủ.
+t03,B:thinkpython2:p188:001;B:thinkpython2:p189:000;B:thinkpython2:p189:001;B:thinkpython2:p187:002;B:thinkpython2:p188:000,2,p189:000 đủ.
+t04,B:thinkpython2:p202:001;B:thinkpython2:p203:000;B:thinkpython2:p194:001;B:thinkpython2:p195:000;B:thinkpython2:p193:000,2,p194:001 + p202:001 đủ.
+t05,B:thinkpython2:p223:000;B:thinkpython2:p223:001;B:thinkpython2:p230:002;B:thinkpython2:p231:000;B:thinkpython2:p228:000;B:thinkpython2:p228:001;B:thinkpython2:p230:000;B:thinkpython2:p230:001;B:thinkpython2:p229:000,2,"Có p229:000 chứa đủ 'only works with hashable keys' + 'Mutable types ... are unhashable', đúng nguồn appendix_B."
+t06,B:thinkpython2:p207:001;B:thinkpython2:p208:000;B:thinkpython2:p213:001;B:thinkpython2:p206:001;B:thinkpython2:p207:000,2,p207:001 đủ.

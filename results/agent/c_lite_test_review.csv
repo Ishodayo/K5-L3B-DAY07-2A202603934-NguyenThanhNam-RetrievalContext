@@ -1,0 +1,9 @@
+﻿query_id,answerable,status,citations,answer_grade,citation_support,abstention_correct,reason
+t01,1,answered,B:thinkpython2:p139:001,2,1,,Đúng; p139:001.
+t02,1,answered,B:thinkpython2:p178:001,2,1,,Đúng 'pure function'; p178:001 có định nghĩa.
+t03,1,answered,B:thinkpython2:p189:000,2,1,,Đúng __radd__; p189:000.
+t04,1,answered,B:thinkpython2:p202:001;B:thinkpython2:p194:001,2,1;1,,Đúng; p202:001 (Glossary) + p194:001 ('associated with the class object ... distinguishes them from ... instance attributes').
+t05,1,abstain,,0,,,Từ chối nhầm: context CÓ p229:000 ('only works with hashable keys; Mutable types ... are unhashable') nhưng model lite vẫn trả 'INSUFFICIENT_EVIDENCE: <what is missing>' (chép nguyên placeholder của prompt).
+t06,1,answered,B:thinkpython2:p207:001,2,1,,Đúng; p207:001.
+tu1,0,abstain,,,,1,"Từ chối, không thêm khẳng định."
+tu2,0,abstain,,,,1,"Từ chối, không thêm khẳng định."

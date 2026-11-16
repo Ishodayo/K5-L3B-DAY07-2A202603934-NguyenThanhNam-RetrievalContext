@@ -1,0 +1,43 @@
+{
+  "config": "baseline",
+  "split": "test",
+  "graded": 6,
+  "counts": {
+    "0": 1,
+    "1": 0,
+    "2": 5
+  },
+  "mean": 1.667,
+  "labels": [
+    {
+      "query_id": "t01",
+      "context_grade": 2,
+      "reason": "p139:001 đủ evidence + nguồn."
+    },
+    {
+      "query_id": "t02",
+      "context_grade": 2,
+      "reason": "p178:001 + p182:000 đủ."
+    },
+    {
+      "query_id": "t03",
+      "context_grade": 2,
+      "reason": "p189:000 đủ."
+    },
+    {
+      "query_id": "t04",
+      "context_grade": 2,
+      "reason": "p194:001 + p202:001 đủ."
+    },
+    {
+      "query_id": "t05",
+      "context_grade": 0,
+      "reason": "Không có p229:000: bị bỏ do budget 4000 đầy (dropped_by_budget ở search 3)."
+    },
+    {
+      "query_id": "t06",
+      "context_grade": 2,
+      "reason": "p207:001 đủ."
+    }
+  ]
+}

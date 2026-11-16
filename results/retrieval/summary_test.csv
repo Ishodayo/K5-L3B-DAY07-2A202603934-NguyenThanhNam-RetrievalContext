@@ -1,0 +1,3 @@
+config,split,method,tokenizer,neighbors,desc,top_k,budget_chars,N,errors,hit1,hit1_rate,hit3,hit3_rate,hitk,context_evidence,context_evidence_rate,mrr10,filter_questions,median_ms,mean_context_chars,mean_context_tokens_est,mean_context_chunks,setup_seconds,cost_usd,run_at
+dense,test,dense,-,-,"M1 dense pgvector (bge-base-en-v1.5, cosine, exact), top-3",3,4000,6,0,4/6,0.667,4/6,0.667,4/6,4/6,0.667,0.733,2,338.5,2690,673,3,39.19,0.0,2026-11-16T04:55:08+00:00
+dense_nb2,test,dense,-,both,"H1 variant: dense top-3 + previous and next chunk of the same section, budget 10000",3,10000,6,0,4/6,0.667,4/6,0.667,4/6,4/6,0.667,0.733,2,381.8,4613,1154,5.33,39.19,0.0,2026-11-16T04:55:10+00:00
