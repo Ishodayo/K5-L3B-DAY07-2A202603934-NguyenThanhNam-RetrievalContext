@@ -99,16 +99,25 @@ def cmd_agent_eval(args: argparse.Namespace) -> int:
 def cmd_review_sheet(args: argparse.Namespace) -> int:
     from .reviews import export_sheet
 
+    from .reviews import export_context_sheet
+
     for name in args.configs.split(","):
         md, csv_path = export_sheet(name.strip(), args.split)
         print(f"read  {md.relative_to(config.ROOT)}\nfill  {csv_path.relative_to(config.ROOT)}")
+        if args.context:
+            md, csv_path = export_context_sheet(name.strip(), args.split)
+            print(f"read  {md.relative_to(config.ROOT)}\nfill  {csv_path.relative_to(config.ROOT)}")
     return 0
 
 
 def cmd_import_reviews(args: argparse.Namespace) -> int:
-    from .reviews import import_reviews
+    from .reviews import AGENT_DIR, import_context, import_reviews
 
     for name in args.configs.split(","):
+        if (AGENT_DIR / f"{name.strip()}_{args.split}_context_review.csv").exists():
+            c = import_context(name.strip(), args.split)
+            print(f"{name}: context 0/1/2 = {c['counts']['0']}/{c['counts']['1']}/{c['counts']['2']} "
+                  f"(graded {c['graded']}) mean={c['mean']}")
         r = import_reviews(name.strip(), args.split)
         g = r["grounded_answer"]
         print(f"{name}: grounded 0/1/2 = {g['0']}/{g['1']}/{g['2']} mean={g['mean']} | citation "
@@ -122,8 +131,9 @@ def cmd_compare(args: argparse.Namespace) -> int:
     from .compare import build
 
     rows = build(args.split, [n.strip() for n in args.configs.split(",")])
-    cols = ["config", "hit1", "hit3", "retrieval_ctx", "agent_ctx", "grounded_mean", "citation_valid",
-            "abstention", "false_abstention", "mean_searches", "mean_elapsed_s", "cost_usd_total"]
+    cols = ["config", "hit1", "hit3", "retrieval_ctx", "agent_ctx", "context_0/1/2", "grounded_0/1/2",
+            "grounded_mean", "citation_valid", "abstention", "false_abstention", "mean_searches",
+            "mean_elapsed_s", "cost_usd_total"]
     print(" | ".join(cols))
     for r in rows:
         print(" | ".join(str(r[c]) for c in cols))
@@ -222,6 +232,7 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("review-sheet", help="write .md to read + blank .csv to fill for manual labels")
     p.add_argument("--split", choices=["dev", "test"], required=True)
     p.add_argument("--configs", default="baseline")
+    p.add_argument("--context", action="store_true", help="also write the context 0/1/2 sheet (BENCHMARK §2)")
     p.set_defaults(func=cmd_review_sheet)
 
     p = sub.add_parser("import-reviews", help="filled .csv -> reviews.json -> agent metrics")

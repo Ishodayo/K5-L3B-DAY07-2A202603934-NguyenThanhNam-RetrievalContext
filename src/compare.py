@@ -68,11 +68,15 @@ def build(split: str, names: list[str]) -> list[dict[str, Any]]:
         rname = RETRIEVAL_OF.get(name) or auto.get("retrieval_config")
         r = retr.get(rname, {})
         g = (met or {}).get("grounded_answer", {})
+        ctxm = _load(config.RESULTS_DIR / "agent" / f"{name}_{split}_context_metrics.json")
         row = {
             "config": name, "model": auto["model"], "desc": auto["desc"],
             "retrieval_cfg": rname, "hit1": r.get("hit1"), "hit3": r.get("hit3"),
             "retrieval_ctx": r.get("context_evidence"),
             "agent_ctx": auto.get("context_evidence"), "agent_ctx_miss": ",".join(auto.get("context_evidence_miss", [])),
+            "context_0/1/2": (f"{ctxm['counts']['0']}/{ctxm['counts']['1']}/{ctxm['counts']['2']}"
+                              if ctxm else None),
+            "context_mean": ctxm["mean"] if ctxm else None,
             "grounded_0/1/2": f"{g.get('0')}/{g.get('1')}/{g.get('2')}" if met else "chưa chấm",
             "grounded_mean": g.get("mean") if met else None,
             "citation_valid": f"{met['citation_validity']['n']}/{met['citation_validity']['N']}" if met else None,

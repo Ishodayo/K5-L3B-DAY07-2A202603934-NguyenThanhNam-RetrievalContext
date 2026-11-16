@@ -167,5 +167,29 @@
       "cost_usd_per_case": 0.000925
     }
   ],
-  "test_runs": []
+  "test_runs": {
+    "retrieval": [
+      {
+        "configs": [
+          "dense",
+          "dense_nb2"
+        ],
+        "run_at": "2026-11-16T04:55:10+00:00"
+      }
+    ],
+    "agent": [
+      {
+        "config": "baseline",
+        "ids": null,
+        "run_at": "2026-11-16T04:57:20+00:00"
+      },
+      {
+        "config": "c_lite",
+        "ids": null,
+        "run_at": "2026-11-16T04:58:55+00:00"
+      }
+    ],
+    "note": "first and only test run; selection committed before test in commit 4651516 (2026-11-16T04:51:59Z), test started 04:55:10Z"
+  },
+  "committed_in": "4651516"
 }

@@ -81,6 +81,70 @@ def export_sheet(cfg: str, split: str) -> tuple[Path, Path]:
     return md_path, csv_path
 
 
+CTX_FIELDS = ["query_id", "context_ids", "context_grade", "reason"]
+
+
+def export_context_sheet(cfg: str, split: str) -> tuple[Path, Path]:
+    """BENCHMARK §2: grade the FINAL agent context 0/1/2 for answerable cases (0 = no evidence,
+    1 = evidence but missing a condition or source, 2 = enough evidence and source)."""
+    questions = {q["id"]: q for q in json.loads(QUESTIONS_OUT.read_text(encoding="utf-8"))}
+    chunks = {c["id"]: c for c in json.loads((config.DATA_DIR / "chunks.json").read_text(encoding="utf-8"))}
+    md = [f"# Chấm context 0/1/2 — `{cfg}` / {split}", "",
+          "Đọc context cuối agent nhận được (các chunk dưới), so với đáp án chuẩn và evidence gold. "
+          "**0** = không có evidence · **1** = có nhưng thiếu điều kiện hoặc nguồn · **2** = đủ evidence và nguồn.", ""]
+    rows = []
+    for t in _traces(cfg, split):
+        q = questions.get(t["query_id"])
+        if q is None:
+            continue  # unanswerable cases are not graded for context
+        md += [f"## {q['id']} — {q['question']}", "", f"**Đáp án chuẩn:** {q['expected_answer']}  ",
+               "**Evidence gold:** " + " · ".join(f"p{g['page']}: “{' '.join(g['evidence'].split())}”"
+                                                  for g in q["gold"]), "",
+               f"**Context cuối:** {len(t['context_ids'])} chunk, {t['context_chars']} ký tự", ""]
+        for cid in t["context_ids"]:
+            md += [f"<details><summary><code>{cid}</code> (trang {chunks[cid]['page']})</summary>", "",
+                   " ".join(chunks[cid]["text"].split()), "", "</details>", ""]
+        md += ["---", ""]
+        rows.append({"query_id": q["id"], "context_ids": ";".join(t["context_ids"]), "context_grade": "",
+                     "reason": ""})
+    md_path = AGENT_DIR / f"{cfg}_{split}_context_review.md"
+    csv_path = AGENT_DIR / f"{cfg}_{split}_context_review.csv"
+    md_path.write_text("\n".join(md), encoding="utf-8")
+    if not csv_path.exists():
+        with csv_path.open("w", newline="", encoding="utf-8-sig") as f:
+            w = csv.DictWriter(f, fieldnames=CTX_FIELDS)
+            w.writeheader()
+            w.writerows(rows)
+    return md_path, csv_path
+
+
+def import_context(cfg: str, split: str) -> dict[str, Any]:
+    path = AGENT_DIR / f"{cfg}_{split}_context_review.csv"
+    text = path.read_text(encoding="utf-8-sig")
+    header = text.splitlines()[0] if text else ""
+    rows = list(csv.DictReader(text.splitlines(), delimiter=";" if header.count(";") > header.count(",") else ","))
+    counts, labels, problems = {"0": 0, "1": 0, "2": 0}, [], []
+    for r in rows:
+        g = r["context_grade"].strip()
+        if g == "":
+            continue  # BENCHMARK §2 asks for at least 5 graded answerable cases, not all
+        if g not in counts or not r["reason"].strip():
+            problems.append(f"{r['query_id']}: context_grade must be 0/1/2 with a reason")
+            continue
+        counts[g] += 1
+        labels.append({"query_id": r["query_id"], "context_grade": int(g), "reason": r["reason"].strip()})
+    if problems:
+        raise SystemExit("Fix the CSV first:\n  " + "\n  ".join(problems))
+    if len(labels) < 5:
+        print(f"warning: {len(labels)} graded cases; BENCHMARK §2 asks for at least 5")
+    n = len(labels)
+    report = {"config": cfg, "split": split, "graded": n, "counts": counts,
+              "mean": round((counts["1"] + 2 * counts["2"]) / n, 3) if n else None, "labels": labels}
+    (AGENT_DIR / f"{cfg}_{split}_context_metrics.json").write_text(
+        json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return report
+
+
 def _flag(value: str, name: str, qid: str) -> bool:
     v = value.strip().lower()
     if v in ("1", "true", "yes", "y", "đúng", "x"):
