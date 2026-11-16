@@ -1,0 +1,21 @@
+[
+  {
+    "source_id": "thinkpython2",
+    "title": "Think Python: How to Think Like a Computer Scientist, 2nd Edition (Python 3)",
+    "author": "Allen B. Downey",
+    "publisher": "Green Tea Press",
+    "language": "en",
+    "source_path_or_url": "https://greenteapress.com/thinkpython2/thinkpython2.pdf",
+    "license_or_permission": "CC BY-NC 3.0 Unported (trang bản quyền, PDF trang 4): được sao chép, phân phối, chỉnh sửa phi thương mại, ghi nguồn",
+    "license_url": "https://creativecommons.org/licenses/by-nc/3.0/",
+    "accessed_at": "2026-11-14",
+    "version_or_snapshot": "Copyright 2015; file PDF build 2026-10-10 (pdfTeX), sha256 6033000bac3f9268ad75ee041bf8e5d9a3bc8a33bb156399cbd014918cb59f94",
+    "file_size_bytes": 907689,
+    "physical_pages": 244,
+    "counted_pages_total": 203,
+    "page_numbering": "gold_page dùng số trang PDF (1-based); số trang in = trang PDF - 22",
+    "version": "2nd Edition (Copyright 2015)",
+    "pdf_sha256": "6033000bac3f9268ad75ee041bf8e5d9a3bc8a33bb156399cbd014918cb59f94",
+    "copied_from": "Day 6 repo data/manifest.json (commit 9cbecf5); page lists omitted"
+  }
+]

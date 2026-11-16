@@ -1,0 +1,229 @@
+[
+  {
+    "id": "d01",
+    "split": "dev",
+    "type": "direct",
+    "question": "What three kinds of errors can occur in a Python program?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d02",
+    "split": "dev",
+    "type": "paraphrase",
+    "question": "Why are errors that only show up while a program is running also referred to as exceptions?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d03",
+    "split": "dev",
+    "type": "direct",
+    "question": "What does the // operator do in Python?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d04",
+    "split": "dev",
+    "type": "paraphrase",
+    "question": "How can I check whether one whole number divides evenly into another?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d05",
+    "split": "dev",
+    "type": "condition_exception",
+    "question": "Does a function with infinite recursion really run forever in Python?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d06",
+    "split": "dev",
+    "type": "paraphrase",
+    "question": "What is the idea of trusting that a called function returns the correct result instead of tracing through its execution?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d07",
+    "split": "dev",
+    "type": "direct",
+    "question": "Why do you get an error when you try to change one character of a string with greeting[0] = 'J'?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d08",
+    "split": "dev",
+    "type": "condition_exception",
+    "question": "If I need a sorted version of a list but must keep the original list unchanged, what should I do?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d09",
+    "split": "dev",
+    "type": "condition_exception",
+    "question": "Can a list be used as a key in a Python dictionary?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d10",
+    "split": "dev",
+    "type": "condition_exception",
+    "question": "When a global variable refers to a dictionary, in which case must a function declare it with the global statement?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d11",
+    "split": "dev",
+    "type": "metadata_filter",
+    "question": "In the Dictionaries chapter's debugging advice, what is a \"sanity check\"?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer",
+    "filter": {
+      "chapter_id": "ch11"
+    }
+  },
+  {
+    "id": "d12",
+    "split": "dev",
+    "type": "metadata_filter",
+    "question": "In the data structure selection case study, what does the debugging tip called rubberducking suggest?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer",
+    "filter": {
+      "chapter_id": "ch13"
+    }
+  },
+  {
+    "id": "d13",
+    "split": "dev",
+    "type": "direct",
+    "question": "What does the pickle module do?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d14",
+    "split": "dev",
+    "type": "condition_exception",
+    "question": "After pickling and then unpickling a list, is the result the same object as the original list?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d15",
+    "split": "dev",
+    "type": "paraphrase",
+    "question": "Which function duplicates an object together with every object nested inside it?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "d16",
+    "split": "dev",
+    "type": "metadata_filter",
+    "question": "According to the debugging appendix, what does it mean when an AttributeError says an object has NoneType?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer",
+    "filter": {
+      "chapter_id": "appendix_A"
+    }
+  },
+  {
+    "id": "t01",
+    "split": "test",
+    "type": "direct",
+    "question": "What does the built-in function divmod return?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "t02",
+    "split": "test",
+    "type": "paraphrase",
+    "question": "What do you call a function that builds and returns a new object without changing any of the objects it was given?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "t03",
+    "split": "test",
+    "type": "condition_exception",
+    "question": "When an integer is the left operand and a Time object is on the right of +, which special method makes the addition work?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "t04",
+    "split": "test",
+    "type": "metadata_filter",
+    "question": "In the Inheritance chapter, what are class attributes?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer",
+    "filter": {
+      "chapter_id": "ch18"
+    }
+  },
+  {
+    "id": "t05",
+    "split": "test",
+    "type": "metadata_filter",
+    "question": "In the Analysis of Algorithms appendix, what limitation does the hashtable implementation have regarding keys?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer",
+    "filter": {
+      "chapter_id": "appendix_B"
+    }
+  },
+  {
+    "id": "t06",
+    "split": "test",
+    "type": "paraphrase",
+    "question": "How does a generator expression differ from a list comprehension in when it produces its values?",
+    "answerable": true,
+    "expected_behavior": "search_and_answer"
+  },
+  {
+    "id": "du1",
+    "split": "dev",
+    "type": "unanswerable",
+    "question": "How do you use the with statement to open a file so that Python closes it automatically?",
+    "answerable": false,
+    "expected_behavior": "search_and_abstain",
+    "absence_reason": "Chapter 14 (Files) opens files with open() and closes them with close(); the book never uses or explains the with statement / context managers."
+  },
+  {
+    "id": "du2",
+    "split": "dev",
+    "type": "unanswerable",
+    "question": "How do you write a decorator that wraps a function, and what does the @ syntax do?",
+    "answerable": false,
+    "expected_behavior": "search_and_abstain",
+    "absence_reason": "Functions are covered (ch03, ch06) including functions as arguments, but decorators and the @decorator syntax never appear."
+  },
+  {
+    "id": "tu1",
+    "split": "test",
+    "type": "unanswerable",
+    "question": "How do async and await let you run several coroutines concurrently?",
+    "answerable": false,
+    "expected_behavior": "search_and_abstain",
+    "absence_reason": "Chapter 19 covers generator expressions, but the book has no asyncio, async/await, coroutines or concurrency."
+  },
+  {
+    "id": "tu2",
+    "split": "test",
+    "type": "unanswerable",
+    "question": "In a child class, how do you use super() to call the parent class's __init__ method?",
+    "answerable": false,
+    "expected_behavior": "search_and_abstain",
+    "absence_reason": "Chapter 18 (Inheritance) explains parent/child classes and overriding, but super() is never used or mentioned."
+  }
+]

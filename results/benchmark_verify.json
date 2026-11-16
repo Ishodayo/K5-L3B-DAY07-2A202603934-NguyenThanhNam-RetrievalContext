@@ -1,0 +1,290 @@
+{
+  "counts": {
+    "dev_unanswerable": 2,
+    "dev_answerable": 16,
+    "test_unanswerable": 2,
+    "test_answerable": 6
+  },
+  "total_cases": 26,
+  "gold_evidence": 27,
+  "evidence_rewritten_from_day6": 18,
+  "with_filter": 5,
+  "dev_chapters": [
+    "appendix_A",
+    "ch02",
+    "ch05",
+    "ch06",
+    "ch08",
+    "ch10",
+    "ch11",
+    "ch13",
+    "ch14",
+    "ch15"
+  ],
+  "test_chapters": [
+    "appendix_B",
+    "ch12",
+    "ch16",
+    "ch17",
+    "ch18",
+    "ch19"
+  ],
+  "starter_validate": "ok",
+  "evidence": [
+    {
+      "id": "d01",
+      "page": 35,
+      "chunks": [
+        "B:thinkpython2:p035:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d02",
+      "page": 35,
+      "chunks": [
+        "B:thinkpython2:p035:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d03",
+      "page": 61,
+      "chunks": [
+        "B:thinkpython2:p061:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d03",
+      "page": 69,
+      "chunks": [
+        "B:thinkpython2:p069:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d04",
+      "page": 61,
+      "chunks": [
+        "B:thinkpython2:p061:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d05",
+      "page": 67,
+      "chunks": [
+        "B:thinkpython2:p067:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d06",
+      "page": 79,
+      "chunks": [
+        "B:thinkpython2:p079:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d07",
+      "page": 96,
+      "chunks": [
+        "B:thinkpython2:p096:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d08",
+      "page": 121,
+      "chunks": [
+        "B:thinkpython2:p121:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d08",
+      "page": 121,
+      "chunks": [
+        "B:thinkpython2:p121:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d09",
+      "page": 130,
+      "chunks": [
+        "B:thinkpython2:p130:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d10",
+      "page": 133,
+      "chunks": [
+        "B:thinkpython2:p133:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d11",
+      "page": 133,
+      "chunks": [
+        "B:thinkpython2:p133:002"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d12",
+      "page": 155,
+      "chunks": [
+        "B:thinkpython2:p155:002"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d13",
+      "page": 164,
+      "chunks": [
+        "B:thinkpython2:p164:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d14",
+      "page": 164,
+      "chunks": [
+        "B:thinkpython2:p164:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d15",
+      "page": 174,
+      "chunks": [
+        "B:thinkpython2:p174:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d15",
+      "page": 175,
+      "chunks": [
+        "B:thinkpython2:p175:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "d16",
+      "page": 219,
+      "chunks": [
+        "B:thinkpython2:p219:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t01",
+      "page": 139,
+      "chunks": [
+        "B:thinkpython2:p139:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t02",
+      "page": 178,
+      "chunks": [
+        "B:thinkpython2:p178:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t02",
+      "page": 182,
+      "chunks": [
+        "B:thinkpython2:p182:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t03",
+      "page": 189,
+      "chunks": [
+        "B:thinkpython2:p189:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t04",
+      "page": 194,
+      "chunks": [
+        "B:thinkpython2:p194:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t04",
+      "page": 202,
+      "chunks": [
+        "B:thinkpython2:p202:001"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t05",
+      "page": 229,
+      "chunks": [
+        "B:thinkpython2:p229:000"
+      ],
+      "exact": true
+    },
+    {
+      "id": "t06",
+      "page": 207,
+      "chunks": [
+        "B:thinkpython2:p207:001"
+      ],
+      "exact": true
+    }
+  ],
+  "absence": [
+    {
+      "id": "du1",
+      "patterns": [
+        "\\bwith\\b[^.\\n]{0,30}open",
+        "__enter__|__exit__",
+        "context\\s*manager"
+      ],
+      "matches": []
+    },
+    {
+      "id": "du2",
+      "patterns": [
+        "\\bdecorat",
+        "@\\w+\\s*\\n\\s*def\\b"
+      ],
+      "matches": []
+    },
+    {
+      "id": "tu1",
+      "patterns": [
+        "\\basync\\b",
+        "\\bawait\\b",
+        "asyncio",
+        "coroutine",
+        "\\bconcurren"
+      ],
+      "matches": []
+    },
+    {
+      "id": "tu2",
+      "patterns": [
+        "\\bsuper\\s*\\(",
+        "\\bsuper\\(\\)"
+      ],
+      "matches": []
+    }
+  ],
+  "problems": []
+}
