@@ -74,7 +74,8 @@ class Session(Protocol):
 class GeminiSession:
     """Gemini via google-genai with manual function calling (so every call is traced)."""
 
-    def __init__(self, model: str, *, temperature: float = 0.0, client=None, max_retries: int = 4) -> None:
+    def __init__(self, model: str, *, temperature: float = 0.0, client=None, max_retries: int = 4,
+                 system_prompt: str = SYSTEM_PROMPT, tool_description: str = TOOL_DESCRIPTION) -> None:
         from google import genai
         from google.genai import types
 
@@ -83,12 +84,12 @@ class GeminiSession:
         self.model = model
         self.max_retries = max_retries
         tool = types.Tool(function_declarations=[types.FunctionDeclaration(
-            name="search_book", description=TOOL_DESCRIPTION,
+            name="search_book", description=tool_description,
             parameters=types.Schema(type="OBJECT", required=["query"],
                                     properties={"query": types.Schema(type="STRING",
                                                                       description="search query")}))])
         self.config = types.GenerateContentConfig(
-            system_instruction=SYSTEM_PROMPT, tools=[tool], temperature=temperature,
+            system_instruction=system_prompt, tools=[tool], temperature=temperature,
             automatic_function_calling=types.AutomaticFunctionCallingConfig(disable=True))
         self.contents: list[Any] = []
 

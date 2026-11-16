@@ -88,3 +88,26 @@ data/day7/           chunks, sources, questions, agent_cases
 results/             trace, nhãn, metrics, so sánh, selection
 tests/test_day6_adapter.py, test_benchmark.py, test_retrieval.py, test_agent_loop.py
 ```
+
+## 7. Thử thách nâng cao (WHO World health statistics 2023)
+
+Chi tiết tài liệu, index, benchmark và tiêu chí chọn: [data/advanced/README.md](data/advanced/README.md).
+
+1. Tải PDF từ https://www.who.int/publications/i/item/9789240074323 (CC BY-NC-SA 3.0 IGO), lưu thành `starter/data/advanced/9789240074323-eng.pdf` (thư mục bị `.gitignore`; sha256 được kiểm tra khi chạy).
+2. Trích xuất + index (vision tốn ~$1 lần đầu; dùng `--vision-model skip` để chỉ đọc cache `data/advanced/vision.json`, không gọi API):
+```bash
+.\.venv\Scripts\python -m src.run adv ingest --vision-model skip
+.\.venv\Scripts\python -m src.run adv index
+.\.venv\Scripts\python -m src.run adv bench
+.\.venv\Scripts\python -m src.run adv search "Japan life expectancy at birth 2019"
+```
+`adv index` embed 1180 chunk trên CPU (~50 phút) vào bảng `adv_chunks` (cùng Postgres Day 6, bảng `chunks` không đổi).
+
+3. Dev, chọn cấu hình, test (gọi Gemini, tốn phí; test đã chạy một lần — không chạy lại):
+```bash
+.\.venv\Scripts\python -m src.run adv eval --split dev --config a_hybrid_k8
+.\.venv\Scripts\python -m src.run adv eval --split test --config a_hybrid_k8 --confirm-test
+.\.venv\Scripts\python -m src.run adv review --split test --config a_hybrid_k8
+.\.venv\Scripts\python -m src.run adv import --split test --config a_hybrid_k8
+```
+`adv review` tạo `results/advanced/{config}_{split}_review.md` (đọc: câu trả lời, đáp án chuẩn, trang evidence, text chunk được trích) + `.csv` (điền `pass` 1/0 và `reason`); `adv import` tính tỷ lệ đạt theo nhóm → `{config}_{split}_grades.json`.

@@ -1,0 +1,26 @@
+{
+  "selected_config": "a_hybrid_k8",
+  "decided_at": "2026-11-16T07:22:02+00:00",
+  "rule": "data/advanced/README.md 'Tiêu chí chọn cấu hình' (1) most dev passes (2) cheaper (3) fewer searches",
+  "dev": {
+    "a_hybrid": {
+      "pass": "17/18",
+      "fail": [
+        "ad_mh2: abstained, evidence p062:t01 dropped by 12000-char budget"
+      ],
+      "cost_usd": 0.394
+    },
+    "a_hybrid_k8": {
+      "pass": "18/18",
+      "cost_usd": 0.4499
+    }
+  },
+  "note": "dev pass/fail read by comparing every answer with the expected answer and cited chunks (AI hỗ trợ, gợi ý; học viên duyệt và xác nhận); the only difference between configs is ad_mh2 (abstain vs correct).",
+  "test_runs": [
+    {
+      "config": "a_hybrid_k8",
+      "ids": null,
+      "run_at": "2026-11-16T07:27:56+00:00"
+    }
+  ]
+}

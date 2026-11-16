@@ -1,0 +1,26 @@
+{
+  "config": "a_hybrid_k8",
+  "split": "test",
+  "model": "gemini-3.5-flash",
+  "cases": 30,
+  "errors": 0,
+  "status": {
+    "answered": 22,
+    "abstain": 8
+  },
+  "evidence_page_in_context": {
+    "table": "6/6",
+    "image": "5/5",
+    "chart": "4/5",
+    "multihop": "4/4",
+    "text": "4/4"
+  },
+  "mean_searches": 2.47,
+  "mean_elapsed_s": 10.4,
+  "tokens_total": {
+    "input": 518633,
+    "output": 4872,
+    "thoughts": 28321
+  },
+  "cost_usd_total": 1.0767
+}

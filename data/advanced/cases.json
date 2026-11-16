@@ -1,0 +1,338 @@
+[
+ {
+  "id": "ad_tab1",
+  "split": "dev",
+  "group": "table",
+  "question": "According to Annex 1 of World health statistics 2023, what was Japan's life expectancy at birth in 2019 for males, females and both sexes?",
+  "answerable": true
+ },
+ {
+  "id": "ad_tab2",
+  "split": "dev",
+  "group": "table",
+  "question": "What maternal mortality ratio does Annex 1 report for Chad for 2020?",
+  "answerable": true
+ },
+ {
+  "id": "ad_tab3",
+  "split": "dev",
+  "group": "table",
+  "question": "In Annex 1, what is Somalia's life expectancy at birth (both sexes) and healthy life expectancy at birth (both sexes) for 2019?",
+  "answerable": true
+ },
+ {
+  "id": "ad_img1",
+  "split": "dev",
+  "group": "image",
+  "question": "In the map of Figure 1.2 (maternal mortality ratio by country/area, 2020), what are the highest and the lowest colour classes in the legend?",
+  "answerable": true
+ },
+ {
+  "id": "ad_img2",
+  "split": "dev",
+  "group": "image",
+  "question": "According to the timeline in Figure 3.3 (Seventy-five years of improving public health), in which year was smallpox eradicated and how long was the vaccination campaign that led to it?",
+  "answerable": true
+ },
+ {
+  "id": "ad_img3",
+  "split": "dev",
+  "group": "image",
+  "question": "What does the colour scale of the Zimbabwe map in Figure 2.2 measure, for which population group, and what range does it cover?",
+  "answerable": true
+ },
+ {
+  "id": "ad_ch1",
+  "split": "dev",
+  "group": "chart",
+  "question": "According to Figure 1.12, how many COVID-19 deaths had been reported in the WHO European Region up to 11 March 2023?",
+  "answerable": true
+ },
+ {
+  "id": "ad_ch2",
+  "split": "dev",
+  "group": "chart",
+  "question": "In Figure 3.1, what was life expectancy at birth in the Western Pacific Region in 1950, and what is it projected to be in 2048?",
+  "answerable": true
+ },
+ {
+  "id": "ad_ch3",
+  "split": "dev",
+  "group": "chart",
+  "question": "According to Figure 2.13, what proportion of the population used safely-managed drinking-water services in 2020 in the African Region and in the European Region?",
+  "answerable": true
+ },
+ {
+  "id": "ad_mh1",
+  "split": "dev",
+  "group": "multihop",
+  "question": "How many years higher was Japan's life expectancy at birth (both sexes, 2019) in Annex 1 than the 2019 life expectancy of the WHO Western Pacific Region shown in Figure 3.1?",
+  "answerable": true
+ },
+ {
+  "id": "ad_mh2",
+  "split": "dev",
+  "group": "multihop",
+  "question": "By how much did Thailand's road traffic mortality rate in 2019 (Annex 1) exceed the global road traffic death rate in 2019 given in the injuries section of the report?",
+  "answerable": true
+ },
+ {
+  "id": "ad_t1",
+  "split": "dev",
+  "group": "text",
+  "question": "According to the key messages, how did global life expectancy at birth change between 2000 and 2019?",
+  "answerable": true
+ },
+ {
+  "id": "ad_t2",
+  "split": "dev",
+  "group": "text",
+  "question": "What are the 2025 milestones of WHO's End TB Strategy for the TB incidence rate and for TB deaths, and what was the net reduction in incidence achieved from 2015 to 2021?",
+  "answerable": true
+ },
+ {
+  "id": "ad_t3",
+  "split": "dev",
+  "group": "text",
+  "question": "By what percentage did the global suicide rate fall between 2000 and 2019, and what were the rates at the start and end of the period?",
+  "answerable": true
+ },
+ {
+  "id": "ad_t4",
+  "split": "dev",
+  "group": "text",
+  "question": "What share of women globally attended four or more antenatal care visits between 2015 and 2021, and what minimum number of contacts does WHO recommend?",
+  "answerable": true
+ },
+ {
+  "id": "ad_u1",
+  "split": "dev",
+  "group": "unanswerable",
+  "question": "How many hospital beds per 10 000 population does Germany have according to World health statistics 2023?",
+  "answerable": false
+ },
+ {
+  "id": "ad_u2",
+  "split": "dev",
+  "group": "unanswerable",
+  "question": "How many cholera cases were reported globally in 2022?",
+  "answerable": false
+ },
+ {
+  "id": "ad_u3",
+  "split": "dev",
+  "group": "unanswerable",
+  "question": "What was Viet Nam's maternal mortality ratio in 2022?",
+  "answerable": false
+ },
+ {
+  "id": "at_tab1",
+  "split": "test",
+  "group": "table",
+  "question": "What was Viet Nam's healthy life expectancy at birth for both sexes in 2019, according to Annex 1?",
+  "answerable": true
+ },
+ {
+  "id": "at_tab2",
+  "split": "test",
+  "group": "table",
+  "question": "What total population (both sexes) does Annex 1 give for India in 2021, and in what unit?",
+  "answerable": true
+ },
+ {
+  "id": "at_tab3",
+  "split": "test",
+  "group": "table",
+  "question": "What was the tuberculosis incidence in Indonesia in 2021 according to Annex 1?",
+  "answerable": true
+ },
+ {
+  "id": "at_tab4",
+  "split": "test",
+  "group": "table",
+  "question": "What was Germany's total alcohol per capita consumption (age 15+) in 2019 in Annex 1?",
+  "answerable": true
+ },
+ {
+  "id": "at_tab5",
+  "split": "test",
+  "group": "table",
+  "question": "What is the global density of medical doctors per 10 000 population reported in Annex 1, and for which period?",
+  "answerable": true
+ },
+ {
+  "id": "at_tab6",
+  "split": "test",
+  "group": "table",
+  "question": "In the table of Figure 2.12 (rank of deaths by age group and sex, 2019), what rank does suicide have for females aged 15–29, and what rank does road traffic injury have for males aged 15–29?",
+  "answerable": true
+ },
+ {
+  "id": "at_img1",
+  "split": "test",
+  "group": "image",
+  "question": "Figure 1.6 is a world map with two kinds of symbols. What do the coloured country areas and the circles each represent, and what is the highest class for the coloured areas?",
+  "answerable": true
+ },
+ {
+  "id": "at_img2",
+  "split": "test",
+  "group": "image",
+  "question": "On the map in Figure 1.16 (national health and climate change plan or strategy in place, 2021), what status is shown for China, for Canada and for Australia?",
+  "answerable": true
+ },
+ {
+  "id": "at_img3",
+  "split": "test",
+  "group": "image",
+  "question": "According to the timeline in Figure 3.3, what two events are listed for 2003?",
+  "answerable": true
+ },
+ {
+  "id": "at_img4",
+  "split": "test",
+  "group": "image",
+  "question": "Figure 2.19 shows two subnational maps of Rwanda. Which two indicators are mapped and for which period?",
+  "answerable": true
+ },
+ {
+  "id": "at_img5",
+  "split": "test",
+  "group": "image",
+  "question": "On the Zimbabwe map in Figure 2.2, which province in the south-west of the country contains most of the districts in the highest (darkest red) incidence class?",
+  "answerable": true
+ },
+ {
+  "id": "at_ch1",
+  "split": "test",
+  "group": "chart",
+  "question": "According to Figure 2.20b, what percentages of people living with HIV in the Eastern Mediterranean Region in 2021 knew their status, were on treatment, and were virally suppressed?",
+  "answerable": true
+ },
+ {
+  "id": "at_ch2",
+  "split": "test",
+  "group": "chart",
+  "question": "According to Figure 2.7, how many children under 5 were affected by stunting globally in 2000 and in 2022?",
+  "answerable": true
+ },
+ {
+  "id": "at_ch3",
+  "split": "test",
+  "group": "chart",
+  "question": "In the malaria deaths chart (Figure 2.5b), which two countries account for the largest shares of malaria deaths and what are their shares?",
+  "answerable": true
+ },
+ {
+  "id": "at_ch4",
+  "split": "test",
+  "group": "chart",
+  "question": "According to Figure 3.2, what was the probability of survival to 60 years of age in the WHO African Region in 1950, and what is it projected to be in 2048?",
+  "answerable": true
+ },
+ {
+  "id": "at_ch5",
+  "split": "test",
+  "group": "chart",
+  "question": "According to Figure 1.12, which WHO region reported the fewest COVID-19 deaths up to 11 March 2023, and how many?",
+  "answerable": true
+ },
+ {
+  "id": "at_mh1",
+  "split": "test",
+  "group": "multihop",
+  "question": "How many times higher was Nigeria's maternal mortality ratio in 2020 than the global maternal mortality ratio in 2020, using Annex 1?",
+  "answerable": true
+ },
+ {
+  "id": "at_mh2",
+  "split": "test",
+  "group": "multihop",
+  "question": "How much higher was Viet Nam's road traffic mortality rate in 2019 (Annex 1) than the global road traffic death rate in 2019 reported in the injuries section?",
+  "answerable": true
+ },
+ {
+  "id": "at_mh3",
+  "split": "test",
+  "group": "multihop",
+  "question": "The report gives the number of excess deaths associated with the COVID-19 pandemic in 2020–2021 and the number of reported COVID-19 deaths up to 11 March 2023. What are the two numbers and roughly how many more excess deaths were there?",
+  "answerable": true
+ },
+ {
+  "id": "at_mh4",
+  "split": "test",
+  "group": "multihop",
+  "question": "Compare the 2022 prevalence of stunting in children under 5 in India with that of the WHO South-East Asia Region in Annex 1: what are the two values and the difference?",
+  "answerable": true
+ },
+ {
+  "id": "at_t1",
+  "split": "test",
+  "group": "text",
+  "question": "Which types of wild poliovirus have been declared eradicated, in which years, and which type remains?",
+  "answerable": true
+ },
+ {
+  "id": "at_t2",
+  "split": "test",
+  "group": "text",
+  "question": "What value did the UHC service coverage index reach by 2021, and what proportion of the population spent more than 10% of their household budget on health out of pocket in 2019?",
+  "answerable": true
+ },
+ {
+  "id": "at_t3",
+  "split": "test",
+  "group": "text",
+  "question": "If past trends continue, what share of global deaths will be attributed to NCDs by 2048, and how many NCD deaths does WHO project for that year?",
+  "answerable": true
+ },
+ {
+  "id": "at_t4",
+  "split": "test",
+  "group": "text",
+  "question": "Under a medium–high emissions scenario, how many additional deaths per year did the 2014 WHO assessment estimate climate change would cause by 2030, and which causes of death were included?",
+  "answerable": true
+ },
+ {
+  "id": "at_u1",
+  "split": "test",
+  "group": "unanswerable",
+  "question": "How many COVID-19 vaccine doses had been administered globally by the end of 2022?",
+  "answerable": false
+ },
+ {
+  "id": "at_u2",
+  "split": "test",
+  "group": "unanswerable",
+  "question": "How many mpox cases were reported worldwide in 2022?",
+  "answerable": false
+ },
+ {
+  "id": "at_u3",
+  "split": "test",
+  "group": "unanswerable",
+  "question": "What was India's life expectancy at birth in 2021?",
+  "answerable": false
+ },
+ {
+  "id": "at_u4",
+  "split": "test",
+  "group": "unanswerable",
+  "question": "How many new cancer cases were diagnosed worldwide in 2020 according to the report?",
+  "answerable": false
+ },
+ {
+  "id": "at_u5",
+  "split": "test",
+  "group": "unanswerable",
+  "question": "What is Japan's current health expenditure per capita in US dollars?",
+  "answerable": false
+ },
+ {
+  "id": "at_u6",
+  "split": "test",
+  "group": "unanswerable",
+  "question": "What is the HIV prevalence among adults aged 15–49 in South Africa?",
+  "answerable": false
+ }
+]

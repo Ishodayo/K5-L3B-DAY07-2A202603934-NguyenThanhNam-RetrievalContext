@@ -1,0 +1,200 @@
+{
+  "config": "a_hybrid_k8",
+  "split": "test",
+  "by_group": {
+    "table": "6/6",
+    "image": "5/5",
+    "chart": "4/5",
+    "multihop": "3/4",
+    "text": "4/4",
+    "unanswerable": "6/6"
+  },
+  "pass": "28/30",
+  "pass_rate": 0.9333,
+  "meets_90pct": true,
+  "errors": 0,
+  "mean_elapsed_s": 10.4,
+  "cost_usd_total": 1.0767,
+  "labels": [
+    {
+      "query_id": "at_tab1",
+      "group": "table",
+      "pass": 1,
+      "reason": "Đúng 65.3 năm; dòng Viet Nam Annex 1-1 (p102)."
+    },
+    {
+      "query_id": "at_tab2",
+      "group": "table",
+      "pass": 1,
+      "reason": "Đúng 1 407 564, đơn vị nghìn người (000s); dòng India (p98)."
+    },
+    {
+      "query_id": "at_tab3",
+      "group": "table",
+      "pass": 1,
+      "reason": "Đúng 354 per 100 000; dòng Indonesia (p98-99)."
+    },
+    {
+      "query_id": "at_tab4",
+      "group": "table",
+      "pass": 1,
+      "reason": "Đúng 12.2 lít cồn nguyên chất; dòng Germany Annex 1-2 (p106)."
+    },
+    {
+      "query_id": "at_tab5",
+      "group": "table",
+      "pass": 1,
+      "reason": "Đúng 16.3 per 10 000, giai đoạn 2013–2021; dòng Global Annex 1-3 (p118)."
+    },
+    {
+      "query_id": "at_tab6",
+      "group": "table",
+      "pass": 1,
+      "reason": "Đúng: suicide nữ 15–29 hạng 3, road traffic nam 15–29 hạng 1; p063:t00 chứa bảng Fig 2.12."
+    },
+    {
+      "query_id": "at_img1",
+      "group": "image",
+      "pass": 1,
+      "reason": "Đúng: nền màu = U5MR, hình tròn = NMR (per 1000 live births), lớp cao nhất >75; Fig 1.6 (p20)."
+    },
+    {
+      "query_id": "at_img2",
+      "group": "image",
+      "pass": 1,
+      "reason": "Đúng: China Yes, Canada No, Australia Not a participant; đối chiếu bản đồ gốc Fig 1.16 (p38)."
+    },
+    {
+      "query_id": "at_img3",
+      "group": "image",
+      "pass": 1,
+      "reason": "Đúng 2 sự kiện 2003 (FCTC, '3 by 5'); Fig 3.3 (p88)."
+    },
+    {
+      "query_id": "at_img4",
+      "group": "image",
+      "pass": 1,
+      "reason": "Đúng 2 chỉ số (RMNCH SCI, ANC ≥4 lần) và giai đoạn 2019–2020; Fig 2.19 (p74)."
+    },
+    {
+      "query_id": "at_img5",
+      "group": "image",
+      "pass": 1,
+      "reason": "Đúng Matabeleland South; các huyện nêu (Umzingwane, Insiza, Gwanda, Beitbridge) thuộc tỉnh này; Fig 2.2 (p48)."
+    },
+    {
+      "query_id": "at_ch1",
+      "group": "chart",
+      "pass": 1,
+      "reason": "Đúng 41/27/24%; Fig 2.20b (p75)."
+    },
+    {
+      "query_id": "at_ch2",
+      "group": "chart",
+      "pass": 1,
+      "reason": "Đúng 204.2 và 148.1 triệu; Fig 2.7 (p57)."
+    },
+    {
+      "query_id": "at_ch3",
+      "group": "chart",
+      "pass": 0,
+      "reason": "Từ chối nhầm: chunk Fig 2.5b (p054:v00) đã được tìm thấy ở search 3 và 5 nhưng bị bỏ vì budget 20000 ký tự đầy."
+    },
+    {
+      "query_id": "at_ch4",
+      "group": "chart",
+      "pass": 1,
+      "reason": "Đúng 34.1% và 74.1%; p085:t00 chứa nhãn số của Fig 3.2 theo thứ tự panel."
+    },
+    {
+      "query_id": "at_ch5",
+      "group": "chart",
+      "pass": 1,
+      "reason": "Đúng African Region 175 315; Fig 1.12 (p29)."
+    },
+    {
+      "query_id": "at_mh1",
+      "group": "multihop",
+      "pass": 1,
+      "reason": "Đúng 1047 / 223 ≈ 4.7; Annex p100 + p102."
+    },
+    {
+      "query_id": "at_mh2",
+      "group": "multihop",
+      "pass": 1,
+      "reason": "Đúng 30.6 − 16.7 = 13.9; Annex p110 + text p62."
+    },
+    {
+      "query_id": "at_mh3",
+      "group": "multihop",
+      "pass": 1,
+      "reason": "Đúng 14.9 triệu (p30) và gần 6.9 triệu (p29), chênh ≈ 8.0 triệu."
+    },
+    {
+      "query_id": "at_mh4",
+      "group": "multihop",
+      "pass": 0,
+      "reason": "Từ chối nhầm: dòng South-East Asia Region Annex 1-4 (p126:r44) được tìm thấy ở search 2-4 nhưng bị bỏ vì budget đầy."
+    },
+    {
+      "query_id": "at_t1",
+      "group": "text",
+      "pass": 1,
+      "reason": "Đúng type 2 (2015), type 3 (2019), còn type 1; p56."
+    },
+    {
+      "query_id": "at_t2",
+      "group": "text",
+      "pass": 1,
+      "reason": "Đúng 68 và 13.5% (~1 tỷ người); p71."
+    },
+    {
+      "query_id": "at_t3",
+      "group": "text",
+      "pass": 1,
+      "reason": "Đúng ~86% và 77 triệu ca tử vong NCD; p90."
+    },
+    {
+      "query_id": "at_t4",
+      "group": "text",
+      "pass": 1,
+      "reason": "Đúng ~250 000 ca/năm và đủ 5 nguyên nhân; p36."
+    },
+    {
+      "query_id": "at_u1",
+      "group": "unanswerable",
+      "pass": 1,
+      "reason": "Từ chối đúng: báo cáo chỉ có số 'as of March 2023' (~13 tỷ liều, p34), không có số cuối 2022; không khẳng định thêm. Ghi chú: regex kiểm tra vắng mặt ban đầu bỏ sót câu p34."
+    },
+    {
+      "query_id": "at_u2",
+      "group": "unanswerable",
+      "pass": 1,
+      "reason": "Từ chối, không khẳng định thêm."
+    },
+    {
+      "query_id": "at_u3",
+      "group": "unanswerable",
+      "pass": 1,
+      "reason": "Từ chối 2021, nêu chỉ có số 2019; không dùng số 2019 làm 2021."
+    },
+    {
+      "query_id": "at_u4",
+      "group": "unanswerable",
+      "pass": 1,
+      "reason": "Từ chối, không khẳng định thêm."
+    },
+    {
+      "query_id": "at_u5",
+      "group": "unanswerable",
+      "pass": 1,
+      "reason": "Từ chối, không khẳng định thêm."
+    },
+    {
+      "query_id": "at_u6",
+      "group": "unanswerable",
+      "pass": 1,
+      "reason": "Từ chối, không khẳng định thêm."
+    }
+  ]
+}

@@ -67,9 +67,31 @@ Chấm context 0/1/2 trên test (6 câu có đáp án; 0 = không có evidence, 
   - Trước/sau: H1 nâng Context Evidence dev 15/16 → 16/16 và trên test 5/6 → 6/6, tăng input ~50 % (2.189 → 3.283 token/câu). H2, H3 không cải thiện trên dev. Agent tự viết lại query là yếu tố lớn nhất: Context của agent (15–16/16) cao hơn retrieval một lượt bằng câu hỏi gốc (13/16).
   - Đánh đổi: trên dev mọi cấu hình gần trần (Grounded 1.94–2.00), khác biệt chủ yếu ở context và chi phí. C-lite rẻ ~11× (dev) / ~9,5× (test), nhanh hơn, Grounded test bằng baseline (1.67), nhưng lỗi của nó là lỗi model (bỏ qua evidence có sẵn) — khó sửa bằng retrieval; lỗi của baseline (budget) sửa được bằng C1/C2.
   - Giới hạn: test nhỏ (mỗi câu = 16,7 điểm %), không kết luận chất lượng tổng quát; dev/test cùng một cuốn sách; câu hỏi do người làm viết sau khi đọc trang gold (có lợi cho lexical); test Day 6 đã từng chạy retrieval ở Day 6 (không dùng để chỉnh); gold thiếu một số evidence thay thế (d09) nên metric tự động đếm thấp hơn thực tế; người chấm cũng là tác giả benchmark; Gemini có thể trả lời khác nhau giữa các lần chạy dù temperature 0; corpus tiếng Anh nên chưa kiểm tra tách từ tiếng Việt.
-  - Dữ liệu gửi ra dịch vụ ngoài: chỉ đoạn text của sách (giấy phép CC BY-NC 3.0, cho phép dùng phi thương mại) và câu hỏi benchmark được gửi lên Gemini API; không có dữ liệu cá nhân, mật hay key; API key nằm trong `.env` (không commit).
+  - Dữ liệu gửi ra dịch vụ ngoài: chỉ đoạn text của sách (giấy phép CC BY-NC 3.0, cho phép dùng phi thương mại), câu hỏi benchmark và — ở phần nâng cao — text/ảnh trang báo cáo WHO (CC BY-NC-SA 3.0 IGO, cho phép dùng phi thương mại) được gửi lên Gemini API; không có dữ liệu cá nhân, mật hay key; API key nằm trong `.env` (không commit).
   - Công cụ AI: AI hỗ trợ viết code, gợi ý thiết kế thí nghiệm và gợi ý nhãn; học viên duyệt và xác nhận — đọc lại câu trả lời, đối chiếu với text chunk; mọi số liệu lấy từ file kết quả trong repo.
 
 ## Thử thách nâng cao (nếu thực hiện)
 
-Không thực hiện.
+Chi tiết và cách chạy: [data/advanced/README.md](../../data/advanced/README.md), [HOW_TO_RUN.md §7](../../HOW_TO_RUN.md).
+
+- **Tài liệu, nguồn, quyền sử dụng, số trang và phiên bản:** WHO, *World health statistics 2023: monitoring health for the SDGs* (ISBN 9789240074323), https://www.who.int/publications/i/item/9789240074323, giấy phép CC BY-NC-SA 3.0 IGO. PDF 136 trang (119 trang đánh số, trang in = trang PDF − 12), sha256 `26292b8d…`. PDF không commit (tải lại theo link); dữ liệu trích xuất trong repo giữ cùng giấy phép.
+- **Cách xử lý text, bảng, ảnh, biểu đồ; phạm vi index và phần chưa xử lý:** index toàn bộ nội dung hữu ích, mỗi chunk giữ trang PDF, trang in, mục, loại:
+  - *Text* (257 chunk): text layer bằng PyMuPDF, đoạn ≤ 1400 ký tự, không vượt trang.
+  - *Bảng* (824 chunk): 4 phần Annex 1 (p96–127) trích bằng `find_tables`; trang trái (tên nước) ghép với trang phải (cùng thứ tự dòng); mỗi nước/vùng × mỗi phần = 1 chunk, nhãn cột = chỉ số | loại số liệu | giới | năm. Đã đối chiếu dòng Viet Nam với ảnh trang gốc: khớp.
+  - *Hình* (99 chunk): 39 trang có biểu đồ/bản đồ/sơ đồ được render 150 dpi và chép bằng `gemini-3.5-flash` (tiêu đề, loại, trục/đơn vị, chú giải, mọi số in trên hình, ghi chú; giá trị không in số ghi "≈"), chi phí $1.01. Kiểm 13 trang so với bản gốc: giá trị in sẵn khớp; 3 lỗi được ghi (màu Saudi Arabia ở Fig 1.16, màu bản đồ Fig 2.19, Fig 2.2 không nêu tên tỉnh vùng đậm nhất) — [results/advanced/vision_check.json](../../results/advanced/vision_check.json).
+  - Chưa xử lý: 10 trang trống/bìa (p2, 6, 12, 44, 94, 132–136); biểu đồ không in số chỉ có ước lượng "≈"; 415/1180 chunk dài hơn 512 token bị cắt khi embed (BM25 vẫn dùng toàn văn).
+  - Vector store: bảng riêng `adv_chunks` trong Postgres/pgvector của Day 6 (bảng `chunks` không đổi), `bge-base-en-v1.5` 768 chiều; retrieval hybrid RRF (dense top-30 + BM25 top-30).
+- **Cách chia benchmark, schema evidence, model và cấu hình đã chốt trên dev:** 48 câu chia dev/test trước khi chạy (dev 15 + 3 thiếu; test 30 = bảng 6, ảnh/sơ đồ 5, biểu đồ 5, multi-hop 4, text 4, thiếu 6); mỗi câu có nhóm, đáp án, trang PDF + vùng evidence (hàng/cột, hình/nhãn), đơn vị/phép tính; câu thiếu evidence có regex quét toàn bộ 1180 chunk ([data/advanced/questions.json](../../data/advanced/questions.json), kiểm chứng [results/advanced/benchmark_verify.json](../../results/advanced/benchmark_verify.json)). Agent: Gemini 3.5-flash, prompt riêng cho báo cáo WHO (giá trị kèm đơn vị/năm, phép tính, mỗi câu có citation). Dev: `a_hybrid` (top-5, budget 12000, ≤ 4 search) 17/18 — ad_mh2 từ chối nhầm vì chunk evidence bị bỏ do budget đầy; `a_hybrid_k8` (top-8, budget 20000, ≤ 5 search) 18/18 → chọn `a_hybrid_k8` theo tiêu chí ghi trước (dev đạt cao nhất → chi phí) ([results/advanced/selection.json](../../results/advanced/selection.json)); test chạy **một lần** sau đó.
+
+| Nhóm test | Đạt / tổng | Tỷ lệ | Lỗi / nhận xét |
+|---|---|---|---|
+| Bảng | 6/6 | 100 % | Annex 1 (5 câu) + bảng hình 2.12 |
+| Ảnh, sơ đồ | 5/5 | 100 % | Bản đồ 1.6, 1.16, 2.2, 2.19; dòng thời gian 3.3 |
+| Biểu đồ | 4/5 | 80 % | at_ch3 (Fig 2.5b): chunk hình đã được tìm thấy nhưng bị bỏ vì budget 20000 đầy → từ chối nhầm |
+| Multi-hop | 3/4 | 75 % | at_mh4: dòng South-East Asia Region (p126) bị bỏ vì budget đầy → từ chối nhầm |
+| Text | 4/4 | 100 % | — |
+| Thiếu bằng chứng | 6/6 | 100 % | Từ chối đúng; at_u1: báo cáo có số liều vaccine "as of March 2023" (regex kiểm tra ban đầu bỏ sót), câu hỏi hỏi cuối 2022 nên vẫn đúng là thiếu |
+| **Toàn bộ** | **28/30** | **93,3 %** | ≥ 90 % (cần ≥ 27/30); 0 lỗi hệ thống |
+
+- **Trace, nhãn và evidence từng câu; thời gian, chi phí, lỗi hệ thống:** trace `results/advanced/a_hybrid_k8_test_traces.json` (query, kết quả, chunk thêm vào/bị bỏ, context, câu trả lời, citation, token); nhãn đạt/không đạt có lý do `results/advanced/a_hybrid_k8_test_review.csv` → `_grades.json` (AI hỗ trợ, gợi ý; học viên duyệt và xác nhận — đọc lại câu trả lời, đối chiếu với text chunk và trang gốc). Test: 0 lỗi, TB 2,47 lượt search, 10,4 s/câu, $1.08 (≈ $0.036/câu). Tổng chi phí phần nâng cao ≈ $2.93 (vision $1.01, dev $0.84, test $1.08); embed local 53 phút CPU.
+- **Giới hạn, cách tái lập và đường dẫn benchmark:** lỗi còn lại đều cùng một nguyên nhân với phần cơ bản (budget context đầy làm rơi evidence đã tìm thấy) — cách sửa tiếp theo là ưu tiên giữ chunk mới khớp truy vấn hoặc rút gọn chunk hình, nhưng không chỉnh sau khi xem test; benchmark do người làm viết sau khi đọc tài liệu; vision có thể đọc sai màu bản đồ; test 30 câu (mỗi câu = 3,3 điểm %). Tái lập: [HOW_TO_RUN.md §7](../../HOW_TO_RUN.md) (`adv ingest --vision-model skip` dùng cache, không gọi API).

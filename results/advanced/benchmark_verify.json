@@ -1,0 +1,66 @@
+{
+  "questions": 48,
+  "counts": {
+    "dev/chart": 3,
+    "dev/image": 3,
+    "dev/multihop": 2,
+    "dev/table": 3,
+    "dev/text": 4,
+    "dev/unanswerable": 3,
+    "test/chart": 5,
+    "test/image": 5,
+    "test/multihop": 4,
+    "test/table": 6,
+    "test/text": 4,
+    "test/unanswerable": 6
+  },
+  "chunks": 1180,
+  "absence": {
+    "ad_u1": {
+      "regex": "hospital bed|\\bbeds?\\b",
+      "hits": [],
+      "n": 0
+    },
+    "ad_u2": {
+      "regex": "cholera",
+      "hits": [],
+      "n": 0
+    },
+    "ad_u3": {
+      "regex": "maternal mortality.{0,60}2022",
+      "hits": [],
+      "n": 0
+    },
+    "at_u1": {
+      "regex": "vaccine doses|doses administered",
+      "hits": [],
+      "n": 0
+    },
+    "at_u2": {
+      "regex": "mpox|monkeypox",
+      "hits": [],
+      "n": 0
+    },
+    "at_u3": {
+      "regex": "life expectancy.{0,40}2021",
+      "hits": [],
+      "n": 0
+    },
+    "at_u4": {
+      "regex": "cancer incidence|new cancer cases",
+      "hits": [],
+      "n": 0
+    },
+    "at_u5": {
+      "regex": "health expenditure per capita|current health expenditure",
+      "hits": [],
+      "n": 0
+    },
+    "at_u6": {
+      "regex": "HIV prevalence",
+      "hits": [],
+      "n": 0
+    }
+  },
+  "problems": []
+}

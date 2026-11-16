@@ -1,0 +1,31 @@
+﻿query_id,group,answerable,status,citations,pass,reason
+at_tab1,table,1,answered,A:who_whs2023:p102:r34,1,Đúng 65.3 năm; dòng Viet Nam Annex 1-1 (p102).
+at_tab2,table,1,answered,A:who_whs2023:p098:r28,1,"Đúng 1 407 564, đơn vị nghìn người (000s); dòng India (p98)."
+at_tab3,table,1,answered,A:who_whs2023:p098:r29,1,Đúng 354 per 100 000; dòng Indonesia (p98-99).
+at_tab4,table,1,answered,A:who_whs2023:p106:r15,1,Đúng 12.2 lít cồn nguyên chất; dòng Germany Annex 1-2 (p106).
+at_tab5,table,1,answered,A:who_whs2023:p118:r47,1,"Đúng 16.3 per 10 000, giai đoạn 2013–2021; dòng Global Annex 1-3 (p118)."
+at_tab6,table,1,answered,A:who_whs2023:p063:t00,1,"Đúng: suicide nữ 15–29 hạng 3, road traffic nam 15–29 hạng 1; p063:t00 chứa bảng Fig 2.12."
+at_img1,image,1,answered,A:who_whs2023:p020:v00,1,"Đúng: nền màu = U5MR, hình tròn = NMR (per 1000 live births), lớp cao nhất >75; Fig 1.6 (p20)."
+at_img2,image,1,answered,A:who_whs2023:p038:v00,1,"Đúng: China Yes, Canada No, Australia Not a participant; đối chiếu bản đồ gốc Fig 1.16 (p38)."
+at_img3,image,1,answered,A:who_whs2023:p088:v01,1,"Đúng 2 sự kiện 2003 (FCTC, '3 by 5'); Fig 3.3 (p88)."
+at_img4,image,1,answered,A:who_whs2023:p074:t00;A:who_whs2023:p074:v01,1,"Đúng 2 chỉ số (RMNCH SCI, ANC ≥4 lần) và giai đoạn 2019–2020; Fig 2.19 (p74)."
+at_img5,image,1,answered,A:who_whs2023:p048:v00;A:who_whs2023:p048:v01;A:who_whs2023:p048:t02,1,"Đúng Matabeleland South; các huyện nêu (Umzingwane, Insiza, Gwanda, Beitbridge) thuộc tỉnh này; Fig 2.2 (p48)."
+at_ch1,chart,1,answered,A:who_whs2023:p075:t00;A:who_whs2023:p075:v01,1,Đúng 41/27/24%; Fig 2.20b (p75).
+at_ch2,chart,1,answered,A:who_whs2023:p057:v00,1,Đúng 204.2 và 148.1 triệu; Fig 2.7 (p57).
+at_ch3,chart,1,abstain,,0,Từ chối nhầm: chunk Fig 2.5b (p054:v00) đã được tìm thấy ở search 3 và 5 nhưng bị bỏ vì budget 20000 ký tự đầy.
+at_ch4,chart,1,answered,A:who_whs2023:p085:t00,1,Đúng 34.1% và 74.1%; p085:t00 chứa nhãn số của Fig 3.2 theo thứ tự panel.
+at_ch5,chart,1,answered,A:who_whs2023:p029:t00;A:who_whs2023:p029:v01,1,Đúng African Region 175 315; Fig 1.12 (p29).
+at_mh1,multihop,1,answered,A:who_whs2023:p100:r20;A:who_whs2023:p102:r45,1,Đúng 1047 / 223 ≈ 4.7; Annex p100 + p102.
+at_mh2,multihop,1,answered,A:who_whs2023:p110:r32;A:who_whs2023:p062:t01,1,Đúng 30.6 − 16.7 = 13.9; Annex p110 + text p62.
+at_mh3,multihop,1,answered,A:who_whs2023:p030:t00;A:who_whs2023:p029:t00,1,"Đúng 14.9 triệu (p30) và gần 6.9 triệu (p29), chênh ≈ 8.0 triệu."
+at_mh4,multihop,1,abstain,,0,Từ chối nhầm: dòng South-East Asia Region Annex 1-4 (p126:r44) được tìm thấy ở search 2-4 nhưng bị bỏ vì budget đầy.
+at_t1,text,1,answered,A:who_whs2023:p056:t00,1,"Đúng type 2 (2015), type 3 (2019), còn type 1; p56."
+at_t2,text,1,answered,A:who_whs2023:p071:t01,1,Đúng 68 và 13.5% (~1 tỷ người); p71.
+at_t3,text,1,answered,A:who_whs2023:p090:t00;A:who_whs2023:p090:t01,1,Đúng ~86% và 77 triệu ca tử vong NCD; p90.
+at_t4,text,1,answered,A:who_whs2023:p036:t03,1,Đúng ~250 000 ca/năm và đủ 5 nguyên nhân; p36.
+at_u1,unanswerable,0,abstain,,1,"Từ chối đúng: báo cáo chỉ có số 'as of March 2023' (~13 tỷ liều, p34), không có số cuối 2022; không khẳng định thêm. Ghi chú: regex kiểm tra vắng mặt ban đầu bỏ sót câu p34."
+at_u2,unanswerable,0,abstain,,1,"Từ chối, không khẳng định thêm."
+at_u3,unanswerable,0,abstain,,1,"Từ chối 2021, nêu chỉ có số 2019; không dùng số 2019 làm 2021."
+at_u4,unanswerable,0,abstain,,1,"Từ chối, không khẳng định thêm."
+at_u5,unanswerable,0,abstain,,1,"Từ chối, không khẳng định thêm."
+at_u6,unanswerable,0,abstain,,1,"Từ chối, không khẳng định thêm."

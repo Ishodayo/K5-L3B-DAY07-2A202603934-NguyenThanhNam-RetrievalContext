@@ -154,6 +154,39 @@ def cmd_select(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_adv(args: argparse.Namespace) -> int:
+    """Advanced challenge commands (WHO World health statistics 2023)."""
+    a = args.adv
+    if a == "ingest":
+        from .advanced.ingest import build
+        print(json.dumps(build(args.vision_model), ensure_ascii=False, indent=2))
+    elif a == "index":
+        from .advanced.index import build_index
+        print(json.dumps(build_index(), ensure_ascii=False, indent=2))
+    elif a == "search":
+        from .advanced.index import make_retriever
+        for r in make_retriever(args.method).search(args.query, top_k=args.top_k):
+            print(f"#{r['rank']} {r['score']:.4f} {r['id']} p{r['page']} {r['metadata']['kind']:6} | "
+                  f"{' '.join(r['text'].split())[:120]}")
+    elif a == "bench":
+        from .advanced.bench import build_and_verify
+        r = build_and_verify()
+        print(json.dumps({k: v for k, v in r.items() if k != "absence"}, ensure_ascii=False, indent=2))
+        print("RESULT:", "all checks passed" if not r["problems"] else f"{len(r['problems'])} problem(s)")
+    elif a == "eval":
+        from .advanced.evaluate import run
+        ids = [i.strip() for i in args.ids.split(",")] if args.ids else None
+        print(json.dumps(run(args.split, args.config, ids=ids, confirm_test=args.confirm_test), indent=2))
+    elif a == "review":
+        from .advanced.evaluate import review_sheet
+        print("read / fill:", *review_sheet(args.config, args.split))
+    elif a == "import":
+        from .advanced.evaluate import import_grades
+        r = import_grades(args.config, args.split)
+        print(json.dumps({k: v for k, v in r.items() if k != "labels"}, ensure_ascii=False, indent=2))
+    return 0
+
+
 def cmd_build_benchmark(args: argparse.Namespace) -> int:
     from . import benchmark as bm
 
@@ -249,6 +282,18 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--configs", default="baseline,m2_bm25,m3_hybrid,c1_neighbors,c2_budget,c_lite")
     p.add_argument("--overwrite", action="store_true")
     p.set_defaults(func=cmd_select)
+
+    p = sub.add_parser("adv", help="advanced challenge: ingest | index | bench | search | eval | review | import")
+    p.add_argument("adv", choices=["ingest", "index", "bench", "search", "eval", "review", "import"])
+    p.add_argument("query", nargs="?", default="")
+    p.add_argument("--vision-model", default=None, help="Gemini model for figure pages; 'skip' = use cache only")
+    p.add_argument("--method", default="hybrid", choices=["dense", "bm25", "hybrid"])
+    p.add_argument("--top-k", type=int, default=5)
+    p.add_argument("--split", choices=["dev", "test"], default="dev")
+    p.add_argument("--config", default="a_hybrid")
+    p.add_argument("--ids")
+    p.add_argument("--confirm-test", action="store_true")
+    p.set_defaults(func=cmd_adv)
 
     p = sub.add_parser("build-benchmark", help="Day 6 questions + unanswerable -> data/day7 JSON")
     p.set_defaults(func=cmd_build_benchmark)
